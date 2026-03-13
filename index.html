@@ -6,6 +6,7 @@
   <title>THis – Truth Hunters</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <!-- Fredoka One still used for the Go! button -->
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -29,22 +30,12 @@
       align-items: center;
     }
 
-    /* ── Arc logo ── */
-    .logo-svg {
+    /* ── Logo image ── */
+    .logo-img {
       width: 100%;
-      max-width: 540px;
+      max-width: 480px;
       display: block;
-      margin-bottom: -45px;
-    }
-
-    /* ── Melting face ── */
-    .face-svg {
-      width: 175px;
-      height: 215px;
-      filter: drop-shadow(3px 6px 10px rgba(80,20,20,0.25));
-      position: relative;
-      z-index: 2;
-      margin-bottom: 28px;
+      margin: 0 auto 20px;
     }
 
     /* ── Taglines ── */
@@ -87,8 +78,7 @@
     }
 
     @media (max-width: 460px) {
-      .logo-svg  { max-width: 340px; }
-      .face-svg  { width: 140px; height: 172px; }
+      .logo-img  { max-width: 320px; }
       .tagline-bold { font-size: 18px; }
       .go-btn    { font-size: 26px; padding: 13px 52px; }
     }
@@ -97,112 +87,8 @@
 <body>
 <div class="container">
 
-  <!-- ══ ARC LOGO TEXT ══ -->
-  <svg class="logo-svg" viewBox="0 -15 560 220"
-       xmlns="http://www.w3.org/2000/svg" aria-label="geezy or cheesy">
-    <defs>
-      <!-- Gentle upward arc from left to right -->
-      <path id="arc" d="M 18,202 Q 280,12 542,202"/>
-    </defs>
-
-    <!-- 3D depth layers — darkest/lowest first -->
-    <text font-family="'Fredoka One', cursive" dy="10">
-      <textPath xlink:href="#arc" href="#arc" startOffset="2%">
-        <tspan font-size="76" fill="#22505f">geezy</tspan>
-        <tspan font-size="40" fill="#22505f" dx="2"> or </tspan>
-        <tspan font-size="76" fill="#22505f">cheesy</tspan>
-      </textPath>
-    </text>
-    <text font-family="'Fredoka One', cursive" dy="8">
-      <textPath xlink:href="#arc" href="#arc" startOffset="2%">
-        <tspan font-size="76" fill="#2e6070">geezy</tspan>
-        <tspan font-size="40" fill="#2e6070" dx="2"> or </tspan>
-        <tspan font-size="76" fill="#2e6070">cheesy</tspan>
-      </textPath>
-    </text>
-    <text font-family="'Fredoka One', cursive" dy="6">
-      <textPath xlink:href="#arc" href="#arc" startOffset="2%">
-        <tspan font-size="76" fill="#3e7282">geezy</tspan>
-        <tspan font-size="40" fill="#3e7282" dx="2"> or </tspan>
-        <tspan font-size="76" fill="#3e7282">cheesy</tspan>
-      </textPath>
-    </text>
-    <text font-family="'Fredoka One', cursive" dy="4">
-      <textPath xlink:href="#arc" href="#arc" startOffset="2%">
-        <tspan font-size="76" fill="#508494">geezy</tspan>
-        <tspan font-size="40" fill="#508494" dx="2"> or </tspan>
-        <tspan font-size="76" fill="#508494">cheesy</tspan>
-      </textPath>
-    </text>
-    <text font-family="'Fredoka One', cursive" dy="2">
-      <textPath xlink:href="#arc" href="#arc" startOffset="2%">
-        <tspan font-size="76" fill="#6898a8">geezy</tspan>
-        <tspan font-size="40" fill="#6898a8" dx="2"> or </tspan>
-        <tspan font-size="76" fill="#6898a8">cheesy</tspan>
-      </textPath>
-    </text>
-    <!-- Front layer — lightest -->
-    <text font-family="'Fredoka One', cursive" dy="0">
-      <textPath xlink:href="#arc" href="#arc" startOffset="2%">
-        <tspan font-size="76" fill="#9ac8d8">geezy</tspan>
-        <tspan font-size="40" fill="#9ac8d8" dx="2"> or </tspan>
-        <tspan font-size="76" fill="#9ac8d8">cheesy</tspan>
-      </textPath>
-    </text>
-  </svg>
-
-  <!-- ══ MELTING FACE ══ -->
-  <svg class="face-svg" viewBox="0 0 180 215"
-       xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-
-    <!-- Face base circle -->
-    <circle cx="90" cy="84" r="72" fill="#ba2e2e"/>
-
-    <!-- Melting/drooping lower half -->
-    <path d="
-      M 22,112
-      C 16,138 12,162 10,182
-      C  8,198  18,210  32,210
-      C  46,210  52,198  50,184
-      C  48,170  46,152  44,138
-      Q  67,148  90,148
-      Q 113,148 136,138
-      C 134,152 132,170 130,184
-      C 128,198 134,210 148,210
-      C 162,210 172,198 170,182
-      C 168,162 164,138 158,112
-      Q 126,128  90,128
-      Q  54,128  22,112 Z"
-      fill="#ba2e2e"/>
-
-    <!-- Drips at bottom -->
-    <ellipse cx="48"  cy="213" rx="10" ry="7"  fill="#ba2e2e"/>
-    <path d="M 87,204 Q 86,220 90,225 Q 94,220 93,204 Z" fill="#ba2e2e"/>
-    <ellipse cx="132" cy="213" rx="10" ry="7"  fill="#ba2e2e"/>
-
-    <!-- Sheen / highlight ring -->
-    <circle cx="90" cy="84" r="70" fill="none"
-            stroke="#d44444" stroke-width="5" opacity="0.45"/>
-
-    <!-- Left eye — white oval -->
-    <ellipse cx="63" cy="75" rx="19" ry="22" fill="white"/>
-    <!-- Left eye — sad V shape (like crying) -->
-    <path d="M 55,66 L 63,78 L 71,66"
-          stroke="#222" stroke-width="4.5" fill="none"
-          stroke-linecap="round" stroke-linejoin="round"/>
-
-    <!-- Right eye — white oval -->
-    <ellipse cx="117" cy="75" rx="19" ry="22" fill="white"/>
-    <!-- Right eye — sad V shape -->
-    <path d="M 109,66 L 117,78 L 125,66"
-          stroke="#222" stroke-width="4.5" fill="none"
-          stroke-linecap="round" stroke-linejoin="round"/>
-
-    <!-- Mouth — slight wobbly frown -->
-    <path d="M 70,108 Q 82,100 90,105 Q 98,110 110,103"
-          stroke="#222" stroke-width="3.5" fill="none"
-          stroke-linecap="round"/>
-  </svg>
+  <!-- ══ LOGO IMAGE ══ -->
+  <img class="logo-img" src="geezy.png" alt="geezy or cheesy">
 
   <!-- ══ TAGLINES ══ -->
   <p class="tagline-bold">Where Doge and Pepe hang out.</p>
