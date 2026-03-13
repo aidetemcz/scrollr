@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THis – Truth Hunters</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f0f2f5;
+      color: #0f1419;
+      min-height: 100vh;
+    }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .topbar-inner {
+      max-width: 750px; margin: 0 auto; padding: 0 20px;
+      height: 56px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-size: 26px; font-weight: 900; letter-spacing: -1.5px;
+      color: #0f1419; user-select: none; line-height: 1;
+    }
+    .logo .th { color: #1d9bf0; }
+    .logo .is { color: #0f1419; }
+    .tagline {
+      font-size: 12px; color: #6b7280; font-weight: 500; letter-spacing: 0.3px;
+    }
+
+    /* ── FEED ── */
+    #feed { max-width: 750px; margin: 0 auto; padding-bottom: 80px; }
+
+    /* ── POST ── */
+    .post {
+      background: white;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 16px 20px 10px;
+      transition: background 0.1s;
+    }
+    .post:first-child { border-top: none; }
+    .post-body { display: flex; gap: 12px; }
+
+    /* ── AVATAR ── */
+    .av-wrap { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+    .av {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 14px; color: white;
+      user-select: none; flex-shrink: 0;
+    }
+
+    /* ── POST CONTENT ── */
+    .post-content { flex: 1; min-width: 0; }
+    .post-meta {
+      display: flex; align-items: baseline; gap: 5px; flex-wrap: wrap; margin-bottom: 5px;
+    }
+    .post-name { font-weight: 700; font-size: 15px; color: #0f1419; }
+    .post-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 17px; height: 17px; background: #1d9bf0; border-radius: 50%;
+      color: white; font-size: 10px; font-weight: 900; flex-shrink: 0;
+      margin-left: 1px;
+    }
+    .post-handle, .post-sep, .post-time { color: #6b7280; font-size: 13.5px; }
+    .post-more {
+      margin-left: auto; background: none; border: none; cursor: pointer;
+      color: #6b7280; font-size: 18px; line-height: 1; padding: 2px 6px;
+      border-radius: 50%; transition: background 0.15s, color 0.15s;
+    }
+    .post-more:hover { background: #e1f5fe; color: #1d9bf0; }
+
+    .post-text {
+      font-size: 15px; line-height: 1.6; margin-bottom: 12px;
+      color: #0f1419; white-space: pre-wrap; word-break: break-word;
+    }
+
+    /* ── MEDIA ── */
+    .post-media {
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid #e2e8f0; margin-bottom: 12px;
+    }
+    .post-media img {
+      width: 100%; display: block; max-height: 420px;
+      object-fit: cover; background: #f0f2f5;
+    }
+    .post-video-wrap {
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid #e2e8f0; margin-bottom: 12px;
+      position: relative; aspect-ratio: 16 / 9;
+      background: #111; cursor: pointer;
+    }
+    .post-video-wrap img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      opacity: 0.75; transition: opacity 0.2s;
+    }
+    .post-video-wrap:hover img { opacity: 0.6; }
+    .post-video-wrap iframe {
+      width: 100%; height: 100%; border: none; display: block;
+    }
+    .play-btn {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 64px; height: 64px; border-radius: 50%;
+      background: rgba(0,0,0,0.65);
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none; transition: background 0.2s, transform 0.2s;
+    }
+    .post-video-wrap:hover .play-btn { background: rgba(0,0,0,0.82); transform: translate(-50%, -50%) scale(1.08); }
+    .play-arrow {
+      width: 0; height: 0;
+      border-top: 13px solid transparent;
+      border-bottom: 13px solid transparent;
+      border-left: 22px solid white;
+      margin-left: 6px;
+    }
+    .video-label {
+      position: absolute; bottom: 10px; left: 12px;
+      background: rgba(0,0,0,0.6); color: white;
+      font-size: 11px; padding: 3px 8px; border-radius: 20px;
+      font-weight: 600; letter-spacing: 0.5px;
+    }
+
+    /* ── ACTION BAR ── */
+    .post-actions { display: flex; gap: 2px; flex-wrap: wrap; margin-top: 2px; }
+    .act {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 6px 10px; border: none; background: none; border-radius: 20px;
+      cursor: pointer; font-size: 13px; color: #6b7280;
+      transition: color .15s, background .15s;
+      font-family: inherit; white-space: nowrap;
+    }
+    .act-icon { font-size: 16px; line-height: 1; }
+    .act-count { font-size: 13px; min-width: 16px; }
+
+    .act.comment:hover   { background: rgba(29,155,240,.1);  color: #1d9bf0; }
+    .act.comment.on      { color: #1d9bf0; }
+    .act.repost:hover    { background: rgba(0,186,124,.1);   color: #00ba7c; }
+    .act.repost.on       { color: #00ba7c; font-weight: 700; }
+    .act.like:hover      { background: rgba(29,155,240,.1);  color: #1d9bf0; }
+    .act.like.on         { color: #1d9bf0; font-weight: 700; }
+    .act.dislike:hover   { background: rgba(255,122,0,.1);   color: #f97316; }
+    .act.dislike.on      { color: #f97316; font-weight: 700; }
+    .act.heart:hover     { background: rgba(249,24,128,.1);  color: #f91880; }
+    .act.heart.on        { color: #f91880; font-weight: 700; }
+    .act.hate:hover      { background: rgba(220,38,38,.1);   color: #dc2626; }
+    .act.hate.on         { color: #dc2626; font-weight: 700; }
+
+    /* ── COMMENTS ── */
+    .comments-wrap {
+      display: none; margin-top: 12px;
+      border-top: 1px solid #e2e8f0; padding-top: 14px;
+    }
+    .comments-wrap.open { display: block; }
+    .new-comment-row {
+      display: flex; gap: 10px; margin-bottom: 16px; align-items: flex-start;
+    }
+    .my-av {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: #94a3b8; display: flex; align-items: center;
+      justify-content: center; font-size: 12px; font-weight: 800;
+      color: white; flex-shrink: 0; margin-top: 2px;
+    }
+    .comment-input-wrap { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+    .comment-input {
+      width: 100%; border: 1.5px solid #e2e8f0; border-radius: 20px;
+      padding: 9px 16px; font-size: 14px; font-family: inherit;
+      outline: none; resize: none; line-height: 1.45;
+      min-height: 40px; max-height: 120px; overflow-y: auto;
+      transition: border-color 0.2s;
+    }
+    .comment-input:focus { border-color: #1d9bf0; }
+    .comment-send {
+      align-self: flex-end; padding: 7px 18px;
+      background: #0f1419; color: white; border: none; border-radius: 20px;
+      cursor: pointer; font-size: 13px; font-weight: 700;
+      font-family: inherit; transition: background 0.2s;
+    }
+    .comment-send:hover { background: #374151; }
+
+    .comment-list { display: flex; flex-direction: column; gap: 12px; }
+    .comment-item { display: flex; gap: 9px; }
+    .c-av {
+      width: 30px; height: 30px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 800; color: white; flex-shrink: 0;
+    }
+    .c-name { font-weight: 700; font-size: 13px; margin-bottom: 2px; }
+    .c-text { font-size: 14px; line-height: 1.45; color: #374151; }
+
+    /* ── FEED FOOTER ── */
+    .feed-footer {
+      max-width: 750px; margin: 0 auto;
+      text-align: center; padding: 40px 20px;
+      color: #9ca3af; font-size: 13px;
+      border-top: 1px solid #e2e8f0;
+      background: white;
+    }
+    .feed-footer em { font-style: normal; color: #6b7280; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 520px) {
+      .post { padding: 12px 14px 8px; }
+      .act { padding: 5px 7px; font-size: 12px; }
+      .act-icon { font-size: 15px; }
+      .logo { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="logo"><span class="th">TH</span><span class="is">is</span></div>
+    <div class="tagline">Truth Hunters &nbsp;·&nbsp; Síť pravdy</div>
+  </div>
+</header>
+
+<div id="feed"></div>
+
+<div class="feed-footer">
+  Zobrazeny všechny příspěvky &nbsp;·&nbsp;
+  <em>Všechny příspěvky jsou fiktivní a slouží výhradně vzdělávacím účelům</em>
+</div>
+
+<script>
+/* ---------------------------------------------------
+   DATA -- 20 prispevku (kategorie skryte, pro ucitele)
+   Kategorie: manipulace | polopravda | AI generovane |
+              neutralni | legracni | prinosne
+--------------------------------------------------- */
+const POSTS = [
+  {
+    id: 1,
+    name: "Zdraví Online", handle: "zdravionline_cz", init: "ZO", color: "#0ea5e9",
+    badge: false, time: "2 hod",
+    text: "🚨 NOVÁ STUDIE: Vědci z Harvardu prokázali, že pití 3 šálků kávy denně prodlužuje délku života až o 10 let! Studie sledovala 50 000 účastníků po dobu 20 let. Sdílejte, ať to ví všichni! ☕",
+    media: { type: "image", src: "https://picsum.photos/seed/kava_studie/600/380" },
+    comments: [
+      { name: "PetrN", color: "#6366f1", text: "To zní moc dobře na to, aby to byla pravda..." },
+      { name: "Tereza_K", color: "#ec4899", text: "Konečně důvod pít ještě víc kávy 😄" }
+    ],
+    s: { c: 142, r: 891, l: 3420, d: 234, h: 1205, x: 45 },
+    cat: "polopravda"
+  },
+  {
+    id: 2,
+    name: "Škola je škola", handle: "skolajeskola", init: "ŠŠ", color: "#f59e0b",
+    badge: false, time: "45 min",
+    text: "Když učitel říká \u201emáte na to celý víkend\u201d a ty víš, že to uděláš v neděli večer ve 22:55 😂\n\n#školníproblém #relatable #procrastination",
+    media: { type: "image", src: "https://picsum.photos/seed/skola_meme/600/400" },
+    comments: [
+      { name: "AdamV", color: "#10b981", text: "Tohle je každý týden 😭" },
+      { name: "LucieM", color: "#f43f5e", text: "A ten stres v neděli v noci je nepopsatelný" }
+    ],
+    s: { c: 567, r: 2341, l: 8920, d: 12, h: 5610, x: 3 },
+    cat: "legrační"
+  },
+  {
+    id: 3,
+    name: "EkoVize", handle: "ekovize_cz", init: "EV", color: "#22c55e",
+    badge: true, time: "3 hod",
+    text: "Věděli jste, že každý rok skončí v oceánech přes 8 milionů tun plastu? 🌊\n\nPodívejte se na toto video, které vysvětluje, jak funguje recyklace v ČR a co s tím může každý z nás udělat. ♻️",
+    media: {
+      type: "video",
+      videoId: "Yomf5pBN8dY",
+      thumb: "https://img.youtube.com/vi/Yomf5pBN8dY/hqdefault.jpg",
+      label: "YouTube · 4:32"
+    },
+    comments: [
+      { name: "KláraB", color: "#0ea5e9", text: "Skvělé video! Posílám dál celé třídě." },
+      { name: "OndřejF", color: "#8b5cf6", text: "Toto by se mělo promítat ve školách povinně." }
+    ],
+    s: { c: 89, r: 445, l: 1230, d: 18, h: 876, x: 9 },
+    cat: "přínosné"
+  },
+  {
+    id: 4,
+    name: "Celebrity Buzz", handle: "celeb_buzz_cz", init: "CB", color: "#e11d48",
+    badge: false, time: "1 hod",
+    text: "💥 EXKLUZIVNÍ: Podle zdrojů z jeho nejbližšího okolí slavný zpěvák Jan K. tajně financuje extremistická hnutí v zahraničí. Detaily v odkazu v biu! 🔗\n\n#šokující #skandál #pravda",
+    media: { type: "image", src: "https://picsum.photos/seed/celeb_scandal/600/380" },
+    comments: [
+      { name: "RadekT", color: "#6366f1", text: "Kde jsou důkazy? Tohle je klasický klikbait bez zdroje..." },
+      { name: "MartinP", color: "#f59e0b", text: "Než to budete sdílet, ověřte si, kdo tohle píše a jaké má zdroje!" }
+    ],
+    s: { c: 1204, r: 3892, l: 4521, d: 1893, h: 712, x: 2341 },
+    cat: "manipulace"
+  },
+  {
+    id: 5,
+    name: "ArtBot_3000", handle: "artbot3000", init: "AI", color: "#8b5cf6",
+    badge: false, time: "5 hod",
+    text: "Letošní podzimní výlet na Šumavu byl naprosto úžasný 🍂 Tohle místo si zamilujete! Snad se tam brzy vrátím. 📸✨",
+    media: { type: "image", src: "https://picsum.photos/seed/sumava_podzim/600/420" },
+    comments: [
+      { name: "JanaK", color: "#ec4899", text: "Krásná fotka! Jaký foťák jsi používal?" },
+      { name: "TomásH", color: "#0ea5e9", text: "Hmm, to pozadí a ruce v rohu vypadají nějak podivně... 🤔" }
+    ],
+    s: { c: 78, r: 234, l: 1876, d: 45, h: 1102, x: 12 },
+    cat: "AI generované"
+  },
+  {
+    id: 6,
+    name: "Fakta & Čísla", handle: "fakta_cisla_cz", init: "FČ", color: "#1e293b",
+    badge: false, time: "4 hod",
+    text: "📊 Kriminalita v ČR vzrostla za posledních 5 let o 340 %! Přitom vláda tvrdí, že je vše pod kontrolou. Otevřete oči! Data v infografice níže. 👇 Sdílejte dříve, než to smažou!",
+    media: { type: "image", src: "https://picsum.photos/seed/graf_kriminalita/600/380" },
+    comments: [
+      { name: "VeronikaS", color: "#10b981", text: "Jaký je zdroj těch dat? Tohle číslo jsem nikde jinde neviděla." },
+      { name: "FilipN", color: "#f43f5e", text: "Statistiky lze snadno zmanipulovat záměrnou volbou časového okna nebo výběrem dat." }
+    ],
+    s: { c: 892, r: 5621, l: 7234, d: 2134, h: 1823, x: 3401 },
+    cat: "manipulace"
+  },
+  {
+    id: 7,
+    name: "Příroda CZ", handle: "priroda_cz", init: "PŘ", color: "#16a34a",
+    badge: true, time: "6 hod",
+    text: "Liška ryšavá zachycená fotopastí v Krkonoším 🦊 Jejich populace se v ČR po desetiletích poklesu pomalu zotavuje. Nádherný záběr od @lesnisprava_kr. 🌿",
+    media: { type: "image", src: "https://picsum.photos/seed/liska_krkonose/600/400" },
+    comments: [
+      { name: "AlenaD", color: "#f59e0b", text: "Jak nádherné! Tohle mi udělalo radost celý den 😍" },
+      { name: "MirekV", color: "#0ea5e9", text: "Fotopasti jsou skvělý způsob, jak šetrně sledovat faunu." }
+    ],
+    s: { c: 234, r: 876, l: 4521, d: 5, h: 3890, x: 2 },
+    cat: "neutrální"
+  },
+  {
+    id: 8,
+    name: "Zdraví Pro Všechny", handle: "zdravi_pro_vse", init: "ZP", color: "#dc2626",
+    badge: false, time: "30 min",
+    text: "⚠️ URGENTNÍ VAROVÁNÍ: Nová studie potvrzuje, že záření z 5G sítí způsobuje u dětí poruchy spánku, bolesti hlavy a oslabení imunity! SDÍLEJTE DŘÍVE, NEŽ TO SMAŽOU! Chraňte své děti! 😱🔴",
+    media: { type: "image", src: "https://picsum.photos/seed/5g_tower/600/350" },
+    comments: [
+      { name: "DoktorJan", color: "#10b981", text: "Toto není pravda. Žádná taková peer-reviewed studie neexistuje. Prosím ověřujte zdroje." },
+      { name: "SimonaR", color: "#6366f1", text: "\"Smažou\" je klasický znak dezinformace — vytváří falešný pocit naléhavosti a tajemství." }
+    ],
+    s: { c: 2341, r: 8902, l: 5623, d: 4521, h: 1230, x: 6789 },
+    cat: "manipulace"
+  },
+  {
+    id: 9,
+    name: "Humor CZ", handle: "humor_cz_official", init: "HC", color: "#f59e0b",
+    badge: true, time: "2 hod",
+    text: "Tohle video musíte vidět 😂😂😂 Tatínek poprvé zkouší jalapeños — reakce je naprosto k nezaplacení! 🌶️🔥 Kdo to posílá svému tátovi?",
+    media: {
+      type: "video",
+      videoId: "dQw4w9WgXcQ",
+      thumb: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+      label: "YouTube · 3:33"
+    },
+    comments: [
+      { name: "ZuzanaN", color: "#ec4899", text: "HAHAHA 😂 Posílám celé rodině!" },
+      { name: "PavolK", color: "#0ea5e9", text: "Počkat... tohle video vůbec nesedí k tomu popisu 🤔" }
+    ],
+    s: { c: 3401, r: 12450, l: 45230, d: 234, h: 23410, x: 56 },
+    cat: "legrační"
+  },
+  {
+    id: 10,
+    name: "Věda Dnes", handle: "veda_dnes_cz", init: "VD", color: "#2563eb",
+    badge: true, time: "8 hod",
+    text: "Čeští vědci z Masarykovy univerzity zveřejnili studii, podle které 30 minut svižné chůze denně snižuje riziko srdečních onemocnění o 19 %. Výsledky jsou v souladu s dalšími světovými výzkumy. 🏃‍♂️❤️\n\nCelá studie dostupná v bio.",
+    media: { type: "image", src: "https://picsum.photos/seed/chuzevzdravI/600/380" },
+    comments: [
+      { name: "KarolínaM", color: "#8b5cf6", text: "Konečně vědecká motivace chodit pěšky do školy! 😄" },
+      { name: "JiříP", color: "#16a34a", text: "Dobrá zpráva — a hlavně je to ověřená, recenzovaná studie." }
+    ],
+    s: { c: 456, r: 1230, l: 5670, d: 34, h: 3450, x: 21 },
+    cat: "přínosné"
+  },
+  {
+    id: 11,
+    name: "Meteo Šok CZ", handle: "meteo_sok_cz", init: "MS", color: "#0369a1",
+    badge: false, time: "1 hod",
+    text: "❄️ METEOROLOGOVÉ VARUJÍ: Letošní zima bude nejchladnější za posledních 100 let! Teploty mohou klesnout na −30 °C i v Praze. Zásobte se jídlem a topivem ihned! 🌨️🥶",
+    media: { type: "image", src: "https://picsum.photos/seed/zima_blizzard/600/380" },
+    comments: [
+      { name: "MeteoProfi", color: "#0ea5e9", text: "Toto nepochází od žádné legitimní meteorologické stanice. Typické šíření paniky." },
+      { name: "BarboraK", color: "#f59e0b", text: "Tohle se každý rok někde objeví a nikdy to tak nebývá..." }
+    ],
+    s: { c: 1892, r: 7823, l: 6234, d: 3401, h: 1023, x: 4512 },
+    cat: "polopravda"
+  },
+  {
+    id: 12,
+    name: "Sport CZ", handle: "sport_cz_live", init: "SC", color: "#dc2626",
+    badge: true, time: "3 hod",
+    text: "🏆 ZLATÝ GÓL! Souček střelil v 92. minutě vítěznou trefu a česká reprezentace postupuje do čtvrtfinále! Celá republika slaví! 🇨🇿⚽🎉\n\n#EURO #CZE #Souček",
+    media: { type: "image", src: "https://picsum.photos/seed/fotbal_gol/600/400" },
+    comments: [
+      { name: "FanousekFC", color: "#dc2626", text: "YEEEEES! Neskutečné! Mám husí kůži!! 🔥🔥" },
+      { name: "LenkaCZ", color: "#f59e0b", text: "Konečně dobrá zpráva! Celá rodina skákala radostí 🇨🇿" }
+    ],
+    s: { c: 4521, r: 18930, l: 67230, d: 123, h: 45210, x: 45 },
+    cat: "neutrální"
+  },
+  {
+    id: 13,
+    name: "Pavel Procházka", handle: "pprochazka_foto", init: "PP", color: "#7c3aed",
+    badge: false, time: "4 hod",
+    text: "Úžasné setkání dnes na nám. Republiky — tato paní mi řekla, že mi přináší štěstí 😊 Taková energie, takový klid. Věřte lidem kolem vás! 🙏✨ #Praha #lidé",
+    media: { type: "image", src: "https://picsum.photos/seed/portret_ai_cz/600/500" },
+    comments: [
+      { name: "KristýnaV", color: "#ec4899", text: "Počkejte... tahle fotka vypadá jako AI generovaná. Ruce a pozadí jsou divné 🧐" },
+      { name: "RobertN", color: "#6366f1", text: "Vlasy, uši i detaily oblečení souhlasí — tohle není skutečná fotografie." }
+    ],
+    s: { c: 234, r: 567, l: 2890, d: 123, h: 1780, x: 89 },
+    cat: "AI generované"
+  },
+  {
+    id: 14,
+    name: "ZŠ Mánesova Brno", handle: "zs_manesova_brno", init: "ZŠ", color: "#0891b2",
+    badge: true, time: "1 den",
+    text: "📢 Připomínáme: v pátek 15. března se koná Den otevřených dveří od 14:00 do 17:00. Budoucí prvňáčci a jejich rodiče jsou srdečně vítáni! 🏫\n\nTěšíme se na vás! Vstup volný. 🌟",
+    media: { type: "image", src: "https://picsum.photos/seed/skola_brno_dvere/600/380" },
+    comments: [
+      { name: "RodiceMalé", color: "#10b981", text: "Moc se těšíme! Přijdeme určitě 😊" },
+      { name: "TatínekNovák", color: "#f59e0b", text: "Bude tam i možnost si prohlédnout školní jídelnu a zahradu?" }
+    ],
+    s: { c: 45, r: 123, l: 456, d: 2, h: 312, x: 1 },
+    cat: "přínosné"
+  },
+  {
+    id: 15,
+    name: "Bezpečné ulice", handle: "bezpecne_ulice_cz", init: "BU", color: "#b45309",
+    badge: false, time: "5 hod",
+    text: "🔴 POZOR OBYVATELÉ BRNA: V centru byl zadržen muž bez dokladů s napojením na mezinárodní zločinecký gang. SDÍLEJTE, ať se lidé mají na pozoru! Město je v ohrožení! 😱",
+    media: { type: "image", src: "https://picsum.photos/seed/policie_ulice/600/380" },
+    comments: [
+      { name: "OldřichK", color: "#10b981", text: "Zkontroloval jsem — tato zpráva neodpovídá žádnému oficiálnímu sdělení Policie ČR." },
+      { name: "SimonaTN", color: "#8b5cf6", text: "Vyvolávání strachu bez ověřitelných zdrojů je klasická dezinformační taktika." }
+    ],
+    s: { c: 3412, r: 12340, l: 8923, d: 5621, h: 1023, x: 7892 },
+    cat: "manipulace"
+  },
+  {
+    id: 16,
+    name: "Knihomol CZ", handle: "knihomol_cz", init: "KN", color: "#9333ea",
+    badge: false, time: "12 hod",
+    text: "Právě dočteno: \u201eFaktomluva\u201d od Hanse Roslinga 📚\n\nPovinná četba pro každého, kdo chce pochopit, jak nás vlastní mozek klame při hodnocení zpráv a dat. Naučí vás ptát se správně. Vřele doporučuji! ✨",
+    media: { type: "image", src: "https://picsum.photos/seed/kniha_ctenI/600/400" },
+    comments: [
+      { name: "JanaB", color: "#0ea5e9", text: "Tuto knihu zbožňuji! Skvělé doporučení." },
+      { name: "RadovanP", color: "#16a34a", text: "Přidávám na seznam, díky za tip!" }
+    ],
+    s: { c: 123, r: 456, l: 1890, d: 12, h: 1230, x: 5 },
+    cat: "přínosné"
+  },
+  {
+    id: 17,
+    name: "Dobrý den CZ", handle: "dobryden_cz", init: "DD", color: "#f43f5e",
+    badge: false, time: "7 hod",
+    text: "Dnes ráno jsem viděl, jak starší paní na zastávce ztratila peněženku. Chlapec (asi 12 let) ji zvedl, doběhl za ní a vrátil ji. Ona začala plakat. On se jen usmál a šel do školy. 💙\n\nSvět je plný dobrých lidí. Připomínejme si to.",
+    media: { type: "image", src: "https://picsum.photos/seed/dobro_pribeH/600/380" },
+    comments: [
+      { name: "MajaR", color: "#ec4899", text: "Tohle mi udělalo radost na celý den ❤️ Díky za sdílení." },
+      { name: "ZdenekH", color: "#f59e0b", text: "Přesně takové příběhy potřebujeme vídat mnohem častěji." }
+    ],
+    s: { c: 892, r: 4521, l: 23410, d: 34, h: 19230, x: 12 },
+    cat: "přínosné"
+  },
+  {
+    id: 18,
+    name: "Každodenní krize", handle: "kazdodennikrize", init: "KK", color: "#64748b",
+    badge: false, time: "3 hod",
+    text: "Já: \u201eDnes půjdu spát v 22:00, mám zítra test.\u201d 💪\n\nJá ve 00:47: *sleduju dokument o hlubokořezném výzkumu oceánu a jím suché rohlíky* 🦑🌊",
+    media: { type: "image", src: "https://picsum.photos/seed/noc_meme_procras/600/360" },
+    comments: [
+      { name: "BetkaV", color: "#8b5cf6", text: "Tohle je trestný čin, protože jsem se v tom přesně poznala 😭" },
+      { name: "TomasN", color: "#0ea5e9", text: "Nahraďte suché rohlíky za chipsy a to jsem přesně já každou neděli." }
+    ],
+    s: { c: 2341, r: 9870, l: 34210, d: 23, h: 21340, x: 8 },
+    cat: "legrační"
+  },
+  {
+    id: 19,
+    name: "Příroda Fakta", handle: "priroda_fakta_cz", init: "PF", color: "#059669",
+    badge: true, time: "1 den",
+    text: "🐙 Věděli jste?\n\nChobotnice mají TŘI srdce a jejich krev je modrá — obsahuje hemocyanin (s mědí) místo hemoglobinu. Každé rameno má vlastní nervový systém a může jednat částečně samostatně. Patří mezi nejinteligentnější bezobratlé živočichy Země.\n\n#příroda #věda #zajímavost",
+    media: { type: "image", src: "https://picsum.photos/seed/chobotnice_okean/600/420" },
+    comments: [
+      { name: "BiologKlára", color: "#10b981", text: "Přesně! A ještě umí měnit barvu a texturu kůže v řádu milisekund. Fascinující živočich." },
+      { name: "MartinekJ", color: "#6366f1", text: "O těch třech srdcích jsem nevěděl, super fakt!" }
+    ],
+    s: { c: 567, r: 2341, l: 8920, d: 15, h: 6710, x: 4 },
+    cat: "přínosné"
+  },
+  {
+    id: 20,
+    name: "Politika CZ", handle: "politika_cz_dnes", init: "PC", color: "#1e40af",
+    badge: false, time: "2 hod",
+    text: "Premiér dnes v rozhovoru prohlásil: \u201eObčané musí být připraveni na oběti.\u201d\n\nSdílíme bez komentáře. Vy sami posuďte. 👀🔁 #politika #oběti #pravda",
+    media: { type: "image", src: "https://picsum.photos/seed/politik_mikrofon/600/380" },
+    comments: [
+      { name: "AnnaK", color: "#dc2626", text: "A co říkal předtím a potom? Citát vytržený z kontextu nemá žádnou vypovídací hodnotu..." },
+      { name: "VáclavP", color: "#f59e0b", text: "Přečetl jsem celý rozhovor — mluvil o nutnosti klimatických opatření, nikoli o čem si možná myslíte." }
+    ],
+    s: { c: 4521, r: 15670, l: 9823, d: 6712, h: 2134, x: 8901 },
+    cat: "manipulace"
+  }
+];
+
+/* -----------------------------------------------
+   IN-MEMORY STATE (reset on page reload)
+----------------------------------------------- */
+const state = {};
+POSTS.forEach(p => {
+  state[p.id] = {
+    like: false, dislike: false, heart: false, hate: false, repost: false,
+    commentOpen: false, userComments: []
+  };
+});
+
+/* -----------------------------------------------
+   HELPERS
+----------------------------------------------- */
+function esc(s) {
+  return String(s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+function escText(s) {
+  return esc(s).replace(/\n/g, '<br>');
+}
+function fmt(n) {
+  if (n >= 1000000) return (n / 1000000).toFixed(1).replace('.0', '') + 'M';
+  if (n >= 1000) return (n / 1000).toFixed(1).replace('.0', '') + 'K';
+  return String(n);
+}
+
+/* -----------------------------------------------
+   RENDER
+----------------------------------------------- */
+function renderMedia(p) {
+  if (!p.media) return '';
+  const { type, src, videoId, thumb, label } = p.media;
+  if (type === 'image') {
+    return `<div class="post-media">
+      <img src="${esc(src)}" alt="Obrázek k příspěvku" loading="lazy">
+    </div>`;
+  }
+  if (type === 'video') {
+    return `<div class="post-video-wrap" id="vid-${p.id}" data-vid="${esc(videoId)}">
+      <img src="${esc(thumb)}" alt="Náhled videa" loading="lazy">
+      <div class="play-btn"><div class="play-arrow"></div></div>
+      ${label ? `<div class="video-label">${esc(label)}</div>` : ''}
+    </div>`;
+  }
+  return '';
+}
+
+function renderComment(c) {
+  return `<div class="comment-item">
+    <div class="c-av" style="background:${esc(c.color)}">${esc(c.name.slice(0, 2).toUpperCase())}</div>
+    <div>
+      <div class="c-name">${esc(c.name)}</div>
+      <div class="c-text">${escText(c.text)}</div>
+    </div>
+  </div>`;
+}
+
+function renderPost(p) {
+  const s = p.s;
+  const badge = p.badge
+    ? `<span class="post-badge" title="Ověřený účet">✓</span>` : '';
+  return `
+  <article class="post" id="post-${p.id}" data-cat="${esc(p.cat)}">
+    <div class="post-body">
+      <div class="av-wrap">
+        <div class="av" style="background:${esc(p.color)}">${esc(p.init)}</div>
+      </div>
+      <div class="post-content">
+        <div class="post-meta">
+          <span class="post-name">${esc(p.name)}</span>${badge}
+          <span class="post-handle">@${esc(p.handle)}</span>
+          <span class="post-sep">·</span>
+          <span class="post-time">${esc(p.time)}</span>
+          <button class="post-more" title="Více možností">···</button>
+        </div>
+        <div class="post-text">${escText(p.text)}</div>
+        ${renderMedia(p)}
+        <div class="post-actions" data-id="${p.id}">
+          <button class="act comment" data-action="comment" data-id="${p.id}" title="Komentáře">
+            <span class="act-icon">💬</span>
+            <span class="act-count" id="cnt-c-${p.id}">${fmt(s.c)}</span>
+          </button>
+          <button class="act repost" data-action="repost" data-id="${p.id}" title="Repostovat">
+            <span class="act-icon">🔁</span>
+            <span class="act-count" id="cnt-r-${p.id}">${fmt(s.r)}</span>
+          </button>
+          <button class="act like" data-action="like" data-id="${p.id}" title="Líbí se mi">
+            <span class="act-icon">👍</span>
+            <span class="act-count" id="cnt-l-${p.id}">${fmt(s.l)}</span>
+          </button>
+          <button class="act dislike" data-action="dislike" data-id="${p.id}" title="Nelíbí se mi">
+            <span class="act-icon">👎</span>
+            <span class="act-count" id="cnt-d-${p.id}">${fmt(s.d)}</span>
+          </button>
+          <button class="act heart" data-action="heart" data-id="${p.id}" title="Srdíčko">
+            <span class="act-icon">❤️</span>
+            <span class="act-count" id="cnt-h-${p.id}">${fmt(s.h)}</span>
+          </button>
+          <button class="act hate" data-action="hate" data-id="${p.id}" title="Nenávidím">
+            <span class="act-icon">🤬</span>
+            <span class="act-count" id="cnt-x-${p.id}">${fmt(s.x)}</span>
+          </button>
+        </div>
+        <div class="comments-wrap" id="comments-${p.id}">
+          <div class="new-comment-row">
+            <div class="my-av">Já</div>
+            <div class="comment-input-wrap">
+              <textarea
+                class="comment-input"
+                id="cinput-${p.id}"
+                placeholder="Přidat komentář..."
+                rows="1"
+                data-pid="${p.id}"
+              ></textarea>
+              <button class="comment-send" data-action="send-comment" data-id="${p.id}">Odeslat</button>
+            </div>
+          </div>
+          <div class="comment-list" id="clist-${p.id}">
+            ${p.comments.map(renderComment).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>`;
+}
+
+/* -----------------------------------------------
+   INIT FEED
+----------------------------------------------- */
+try {
+  document.getElementById('feed').innerHTML = POSTS.map(renderPost).join('');
+} catch (err) {
+  document.getElementById('feed').innerHTML =
+    '<div style="padding:30px;color:#dc2626;font-size:14px">Chyba pri renderovani: ' +
+    err.message + '</div>';
+  console.error('THis render error:', err);
+}
+
+/* -----------------------------------------------
+   EVENT HANDLING -- delegation on #feed
+----------------------------------------------- */
+document.getElementById('feed').addEventListener('click', function (e) {
+  // Video play
+  const videoWrap = e.target.closest('.post-video-wrap');
+  if (videoWrap) {
+    const vid = videoWrap.dataset.vid;
+    if (vid) {
+      videoWrap.innerHTML = `<iframe
+        src="https://www.youtube.com/embed/${encodeURIComponent(vid)}?autoplay=1"
+        allow="autoplay; fullscreen"
+        allowfullscreen
+      ></iframe>`;
+    }
+    return;
+  }
+
+  // Action buttons
+  const btn = e.target.closest('[data-action]');
+  if (!btn) return;
+
+  const action = btn.dataset.action;
+  const id = parseInt(btn.dataset.id, 10);
+  if (!id) return;
+
+  const st = state[id];
+  const post = POSTS.find(p => p.id === id);
+  if (!st || !post) return;
+
+  if (action === 'comment') {
+    st.commentOpen = !st.commentOpen;
+    const wrap = document.getElementById('comments-' + id);
+    wrap.classList.toggle('open', st.commentOpen);
+    btn.classList.toggle('on', st.commentOpen);
+    if (st.commentOpen) {
+      const inp = document.getElementById('cinput-' + id);
+      if (inp) inp.focus();
+    }
+    return;
+  }
+
+  if (action === 'send-comment') {
+    const inp = document.getElementById('cinput-' + id);
+    const text = (inp ? inp.value : '').trim();
+    if (!text) return;
+
+    const clist = document.getElementById('clist-' + id);
+    const div = document.createElement('div');
+    div.innerHTML = renderComment({ name: 'Já', color: '#94a3b8', text });
+    clist.insertBefore(div.firstElementChild, clist.firstChild);
+    inp.value = '';
+    inp.style.height = 'auto';
+
+    // Update comment count
+    post.s.c += 1;
+    document.getElementById('cnt-c-' + id).textContent = fmt(post.s.c);
+    return;
+  }
+
+  // Toggle reactions
+  const KEY = { like: 'l', dislike: 'd', heart: 'h', hate: 'x', repost: 'r' };
+  const key = KEY[action];
+  if (!key) return;
+
+  const wasOn = st[action];
+  st[action] = !wasOn;
+  btn.classList.toggle('on', st[action]);
+  post.s[key] += st[action] ? 1 : -1;
+  document.getElementById(`cnt-${key}-${id}`).textContent = fmt(post.s[key]);
+});
+
+/* -----------------------------------------------
+   TEXTAREA AUTO-RESIZE
+----------------------------------------------- */
+document.getElementById('feed').addEventListener('input', function (e) {
+  if (e.target.classList.contains('comment-input')) {
+    const el = e.target;
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+  }
+});
+</script>
+</body>
+</html>
