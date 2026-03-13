@@ -232,11 +232,11 @@
 </div>
 
 <script>
-/* ═══════════════════════════════════════════════════
-   DATA — 20 příspěvků (kategorie jsou skryté, pro učitele)
-   Kategorie: manipulace | polopravda | AI generované |
-              neutrální | legrační | přínosné
-═══════════════════════════════════════════════════ */
+/* ---------------------------------------------------
+   DATA -- 20 prispevku (kategorie skryte, pro ucitele)
+   Kategorie: manipulace | polopravda | AI generovane |
+              neutralni | legracni | prinosne
+--------------------------------------------------- */
 const POSTS = [
   {
     id: 1,
@@ -510,9 +510,9 @@ const POSTS = [
   }
 ];
 
-/* ═══════════════════════════════════════
+/* -----------------------------------------------
    IN-MEMORY STATE (reset on page reload)
-═══════════════════════════════════════ */
+----------------------------------------------- */
 const state = {};
 POSTS.forEach(p => {
   state[p.id] = {
@@ -521,9 +521,9 @@ POSTS.forEach(p => {
   };
 });
 
-/* ═══════════════════════════════════════
+/* -----------------------------------------------
    HELPERS
-═══════════════════════════════════════ */
+----------------------------------------------- */
 function esc(s) {
   return String(s)
     .replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -538,9 +538,9 @@ function fmt(n) {
   return String(n);
 }
 
-/* ═══════════════════════════════════════
+/* -----------------------------------------------
    RENDER
-═══════════════════════════════════════ */
+----------------------------------------------- */
 function renderMedia(p) {
   if (!p.media) return '';
   const { type, src, videoId, thumb, label } = p.media;
@@ -638,14 +638,21 @@ function renderPost(p) {
   </article>`;
 }
 
-/* ═══════════════════════════════════════
+/* -----------------------------------------------
    INIT FEED
-═══════════════════════════════════════ */
-document.getElementById('feed').innerHTML = POSTS.map(renderPost).join('');
+----------------------------------------------- */
+try {
+  document.getElementById('feed').innerHTML = POSTS.map(renderPost).join('');
+} catch (err) {
+  document.getElementById('feed').innerHTML =
+    '<div style="padding:30px;color:#dc2626;font-size:14px">Chyba pri renderovani: ' +
+    err.message + '</div>';
+  console.error('THis render error:', err);
+}
 
-/* ═══════════════════════════════════════
-   EVENT HANDLING — delegation on #feed
-═══════════════════════════════════════ */
+/* -----------------------------------------------
+   EVENT HANDLING -- delegation on #feed
+----------------------------------------------- */
 document.getElementById('feed').addEventListener('click', function (e) {
   // Video play
   const videoWrap = e.target.closest('.post-video-wrap');
@@ -715,9 +722,9 @@ document.getElementById('feed').addEventListener('click', function (e) {
   document.getElementById(`cnt-${key}-${id}`).textContent = fmt(post.s[key]);
 });
 
-/* ═══════════════════════════════════════
+/* -----------------------------------------------
    TEXTAREA AUTO-RESIZE
-═══════════════════════════════════════ */
+----------------------------------------------- */
 document.getElementById('feed').addEventListener('input', function (e) {
   if (e.target.classList.contains('comment-input')) {
     const el = e.target;
