@@ -123,17 +123,36 @@
     .post-video-wrap iframe {
       width: 100%; height: 100%; border: none; display: block;
     }
-    .post-tiktok-wrap {
-      overflow: hidden;
-      margin-bottom: 14px;
-      height: 500px;
-      position: relative;
+    /* ── Native video player ── */
+    .post-native-video {
+      position: relative; margin-bottom: 14px;
+      background: #000; border-radius: 12px; overflow: hidden;
+      cursor: pointer;
     }
-    .post-tiktok-wrap iframe {
-      width: 100%; height: 760px;
-      border: none; display: block;
-      position: absolute; top: -70px; left: 0;
+    .post-native-video video {
+      width: 100%; display: block; max-height: 560px; object-fit: contain;
     }
+    .video-overlay {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.25); transition: background 0.2s;
+    }
+    .video-overlay.hidden { display: none; }
+    .video-play-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: rgba(0,0,0,0.6);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .video-play-icon svg { margin-left: 5px; }
+    .video-mute-btn {
+      position: absolute; bottom: 12px; right: 12px;
+      background: rgba(0,0,0,0.55); border: none; border-radius: 50%;
+      width: 36px; height: 36px; cursor: pointer; color: #fff;
+      display: none; align-items: center; justify-content: center;
+      font-size: 16px; transition: background 0.15s;
+    }
+    .video-mute-btn.visible { display: flex; }
+    .video-mute-btn:hover { background: rgba(0,0,0,0.8); }
     .play-btn {
       position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
@@ -350,7 +369,7 @@ const POSTS = [
     name: "carlhoos_", handle: "carlhoos_", init: "",
     badge: false, time: "2 dny", points: 3,
     text: "POWERFUL VIDEO: Why We Need to Stop Plastic Pollution in Our Oceans FOR GOOD | Oceana",
-    media: { type: "tiktok", videoId: "7594989971971362061" },
+    media: { type: "mp4", src: "dance.mp4" },
     comments: [],
     s: { c: 0, l: 0, h: 0, x: 0 },
     cat: "pravda"
@@ -401,11 +420,17 @@ function renderMedia(p) {
       <div class="play-btn"><div class="play-arrow"></div></div>
     </div>`;
   }
-  if (type === 'tiktok') {
-    return `<div class="post-tiktok-wrap">
-      <iframe src="https://www.tiktok.com/embed/v2/${esc(videoId)}"
-        allow="fullscreen" allowfullscreen
-        sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+  if (type === 'mp4') {
+    return `<div class="post-native-video" id="nvid-${p.id}">
+      <video loop muted preload="none" playsinline>
+        <source src="${esc(src)}" type="video/mp4">
+      </video>
+      <div class="video-overlay">
+        <div class="video-play-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+      </div>
+      <button class="video-mute-btn" title="Zvuk">🔇</button>
     </div>`;
   }
   return '';
@@ -484,6 +509,40 @@ function renderPost(p) {
 const feedEl = document.getElementById('feed');
 feedEl.innerHTML = POSTS.map(renderPost).join('');
 feedEl.appendChild(noResults);
+
+// ── Native video player controls ──
+feedEl.addEventListener('click', function (e) {
+  const muteBtn = e.target.closest('.video-mute-btn');
+  if (muteBtn) {
+    const wrap = muteBtn.closest('.post-native-video');
+    const video = wrap.querySelector('video');
+    video.muted = !video.muted;
+    muteBtn.textContent = video.muted ? '🔇' : '🔊';
+    return;
+  }
+  const overlay = e.target.closest('.video-overlay');
+  if (overlay) {
+    const wrap = overlay.closest('.post-native-video');
+    const video = wrap.querySelector('video');
+    const muteB = wrap.querySelector('.video-mute-btn');
+    video.play();
+    overlay.classList.add('hidden');
+    muteB.classList.add('visible');
+    return;
+  }
+  const nvid = e.target.closest('.post-native-video');
+  if (nvid && !e.target.closest('.video-overlay') && !e.target.closest('.video-mute-btn')) {
+    const video = nvid.querySelector('video');
+    const overlay = nvid.querySelector('.video-overlay');
+    if (video.paused) {
+      video.play();
+      overlay.classList.add('hidden');
+    } else {
+      video.pause();
+      overlay.classList.remove('hidden');
+    }
+  }
+});
 
 feedEl.addEventListener('keydown', function (e) {
   if (e.key !== 'Enter') return;
