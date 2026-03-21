@@ -518,7 +518,7 @@ function renderPost(p) {
       </div>
       <span class="post-points">${fmtPoints(p.points)}</span>
       ${p.question ? `<div class="post-question-wrap">
-        <button class="post-question-btn" aria-label="Otázka k zamyšlení" onclick="toggleQuestion(this)">
+        <button class="post-question-btn" aria-label="Otázka k zamyšlení" onclick="toggleQuestion(this); event.stopPropagation();">
           <img src="Question.svg" alt="?">
         </button>
         <div class="post-question-tooltip">${esc(p.question)}</div>
@@ -570,9 +570,7 @@ feedEl.appendChild(noResults);
 // ── Question toggle ──
 function toggleQuestion(btn) {
   const wrap = btn.closest('.post-question-wrap');
-  const isOpen = wrap.classList.contains('open');
-  document.querySelectorAll('.post-question-wrap.open').forEach(w => w.classList.remove('open'));
-  if (!isOpen) wrap.classList.add('open');
+  wrap.classList.toggle('open');
 }
 document.addEventListener('click', function(e) {
   if (!e.target.closest('.post-question-wrap')) {
