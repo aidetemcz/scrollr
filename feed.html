@@ -23,7 +23,7 @@
       border-bottom: 1px solid #e5e5e5;
     }
     .topbar-inner {
-      width: min(530px, 100%); margin: 0 auto; padding: 0 20px;
+      width: 530px; max-width: 100%; margin: 0 auto; padding: 0 20px;
       height: 60px; display: flex; align-items: center; gap: 16px;
     }
     .logo-img {
@@ -44,7 +44,7 @@
       color: #888; pointer-events: none; display: flex;
     }
     .topbar-right {
-      display: flex; align-items: center; gap: 12px; margin-left: auto;
+      display: flex; align-items: center; gap: 12px; flex-shrink: 0;
     }
     .hamburger-btn {
       background: none; border: none; cursor: pointer;
