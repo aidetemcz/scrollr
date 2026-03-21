@@ -3,99 +3,152 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>THis – Truth Hunters</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <title>Scrollr</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root { --yellow: #FFE600; }
+
     body {
-      background: #cbe5f0;
+      background: var(--yellow);
       min-height: 100vh;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Poppins', sans-serif;
+      align-items: stretch;
       overflow: hidden;
     }
 
-    .container {
-      text-align: center;
-      padding: 20px;
-      max-width: 580px;
-      width: 100%;
+    /* ── Side panels ── */
+    .side {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ── Center white panel ── */
+    .center {
+      width: 420px;
+      background: #fff;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      padding: 60px 40px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
     }
 
-    /* ── Logo image ── */
-    .logo-img {
+    /* ── Logo ── */
+    .logo {
       width: 100%;
-      max-width: 480px;
-      display: block;
-      margin: 0 auto 20px;
+      max-width: 300px;
+      margin-bottom: 28px;
     }
 
-    /* ── Taglines ── */
-    .tagline-bold {
-      font-size: 21px;
-      font-weight: 900;
-      color: #1c2e38;
-      margin-bottom: 8px;
-      letter-spacing: 0.2px;
-    }
-    .tagline-sub {
-      font-size: 16px;
-      color: #3a5564;
-      font-weight: 400;
+    /* ── Tagline ── */
+    .tagline {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      color: #222;
+      margin-bottom: 100px;
+      letter-spacing: 0.01em;
     }
 
-    /* ── Go! button ── */
+    /* ── Go for it button ── */
     .go-btn {
       display: inline-block;
-      margin-top: 36px;
-      padding: 15px 68px;
-      background: #1c2e38;
-      color: #ffffff;
-      font-family: 'Poppins', sans-serif;
-      font-size: 32px;
-      letter-spacing: 2px;
+      padding: 16px 56px;
+      border: 2px solid #111;
       border-radius: 60px;
+      background: #fff;
+      color: #111;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 19px;
       text-decoration: none;
-      box-shadow: 0 5px 22px rgba(0,0,0,0.28);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 0 0 4px var(--yellow), 0 0 0 6px #111;
+      transition: transform 0.15s ease;
       user-select: none;
     }
-    .go-btn:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 10px 32px rgba(0,0,0,0.32);
-    }
-    .go-btn:active {
-      transform: translateY(1px) scale(0.97);
-      box-shadow: 0 3px 12px rgba(0,0,0,0.22);
+    .go-btn:hover { transform: translateY(-2px); }
+    .go-btn:active { transform: translateY(1px); }
+
+    /* ── Animated arrow streams ── */
+    .arrow-stream {
+      position: absolute;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: arrow-fall linear infinite;
     }
 
-    @media (max-width: 460px) {
-      .logo-img  { max-width: 320px; }
-      .tagline-bold { font-size: 18px; }
-      .go-btn    { font-size: 26px; padding: 13px 52px; }
+    .arrow-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 36px;
+    }
+
+    .arrow-shaft {
+      width: 1px;
+      height: 48px;
+      background: #111;
+    }
+
+    .arrow-tip {
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 8px solid #111;
+    }
+
+    @keyframes arrow-fall {
+      from { transform: translateY(-560px); }
+      to   { transform: translateY(100vh); }
+    }
+
+    @media (max-width: 520px) {
+      .side { display: none; }
+      .center { width: 100%; }
     }
   </style>
 </head>
 <body>
-<div class="container">
 
-  <!-- ══ LOGO IMAGE ══ -->
-  <img class="logo-img" src="geezy.png" alt="geezy or cheesy">
+<div class="side" id="side-l"></div>
 
-  <!-- ══ TAGLINES ══ -->
-  <p class="tagline-bold">Where Doge and Pepe hang out.</p>
-  <p class="tagline-sub">Rate the vibe. Geezy or Cheesy?</p>
-
-  <!-- ══ GO! BUTTON ══ -->
-  <a href="feed.html" class="go-btn">Go!</a>
-
+<div class="center">
+  <img class="logo" src="scrollr-logo.svg" alt="Scrollr">
+  <p class="tagline">You know what to do.</p>
+  <a href="feed.html" class="go-btn">Go for it</a>
 </div>
+
+<div class="side" id="side-r"></div>
+
+<script>
+function buildSide(container, cols) {
+  const UNITS = 7;
+  for (let c = 0; c < cols; c++) {
+    const pct = (c + 0.5) / cols * 100;
+    const stream = document.createElement('div');
+    stream.className = 'arrow-stream';
+    const dur  = (2.2 + c * 0.35).toFixed(2);
+    const del  = (-c * 0.65).toFixed(2);
+    stream.style.cssText = `left:${pct}%;animation-duration:${dur}s;animation-delay:${del}s`;
+    for (let u = 0; u < UNITS; u++) {
+      const unit = document.createElement('div');
+      unit.className = 'arrow-unit';
+      unit.innerHTML = '<div class="arrow-shaft"></div><div class="arrow-tip"></div>';
+      stream.appendChild(unit);
+    }
+    container.appendChild(stream);
+  }
+}
+
+buildSide(document.getElementById('side-l'), 4);
+buildSide(document.getElementById('side-r'), 4);
+</script>
 </body>
 </html>
