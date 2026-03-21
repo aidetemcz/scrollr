@@ -87,12 +87,13 @@
       margin-left: 1px;
     }
     .post-handle, .post-sep, .post-time { color: #888; font-size: 13.5px; }
-    .post-more {
-      margin-left: auto; background: none; border: none; cursor: pointer;
-      color: #888; font-size: 18px; line-height: 1; padding: 2px 6px;
-      border-radius: 50%; transition: background 0.15s;
+    .post-points {
+      margin-left: auto; flex-shrink: 0;
+      background: #111; color: #fff;
+      font-size: 13px; font-weight: 700;
+      padding: 5px 13px; border-radius: 20px;
+      white-space: nowrap;
     }
-    .post-more:hover { background: #f0f0f0; }
 
     .post-text {
       font-size: 15px; line-height: 1.6; margin-bottom: 14px;
@@ -263,7 +264,7 @@ const POSTS = [
   {
     id: 1,
     name: "Zdraví Online", handle: "zdravionline_cz", init: "ZO",
-    badge: false, time: "2 hod",
+    badge: false, time: "2 hod", points: 5,
     text: "NOVÁ STUDIE: Vědci z Harvardu prokázali, že pití 3 šálků kávy denně prodlužuje délku života až o 10 let! Studie sledovala 50 000 účastníků po dobu 20 let. Sdílejte, ať to ví všichni!",
     media: { type: "video", videoId: "Yomf5pBN8dY", thumb: "https://img.youtube.com/vi/Yomf5pBN8dY/hqdefault.jpg" },
     comments: [
@@ -276,7 +277,7 @@ const POSTS = [
   {
     id: 2,
     name: "Petra Nováková", handle: "petra.novakova", init: "PN",
-    badge: true, time: "4 hod",
+    badge: true, time: "4 hod", points: 1,
     text: "Tohle musím sdílet — aplikace Scrollr mi ukázala, že polovina obsahu, který jsem běžně sdílela, byly polopravdy nebo přímo dezinformace. Doporučuji všem!",
     media: null,
     comments: [
@@ -288,7 +289,7 @@ const POSTS = [
   {
     id: 3,
     name: "Politika CZ", handle: "politika_cz", init: "PC",
-    badge: false, time: "6 hod",
+    badge: false, time: "6 hod", points: 5,
     text: "POZOR: Vláda schválila tajný zákon, který umožňuje sledovat všechny vaše zprávy bez soudního příkazu! Média o tom mlčí, protože jsou pod kontrolou státu.",
     media: null,
     comments: [
@@ -302,7 +303,7 @@ const POSTS = [
   {
     id: 4,
     name: "ČT24", handle: "ct24", init: "ČT",
-    badge: true, time: "8 hod",
+    badge: true, time: "8 hod", points: 2,
     text: "Česká národní banka ponechala základní úrokovou sazbu beze změny na 3,75 %. Guvernér uvedl, že inflace zůstává pod kontrolou a ekonomika se vyvíjí podle očekávání.",
     media: null,
     comments: [],
@@ -312,7 +313,7 @@ const POSTS = [
   {
     id: 5,
     name: "Alternativní zprávy", handle: "alt_zpravy", init: "AZ",
-    badge: false, time: "12 hod",
+    badge: false, time: "12 hod", points: 4,
     text: "Lékaři vám to neřeknou: přírodní zázrak z Amazonie vyléčí cukrovku za 3 týdny! Farmaceutické firmy tuto informaci potlačují, protože by přišly o miliardy. Odkaz v BIO!",
     media: null,
     comments: [
@@ -324,7 +325,7 @@ const POSTS = [
   {
     id: 6,
     name: "Jakub Dvořák", handle: "jakub.dvorak", init: "JD",
-    badge: false, time: "1 den",
+    badge: false, time: "1 den", points: 1,
     text: "Dnes jsem si uvědomil, jak důležité je ověřovat si informace. Přečetl jsem si tři různé zdroje k jednomu tématu a každý psal něco jiného. Mediální gramotnost je základ.",
     media: null,
     comments: [
@@ -393,6 +394,12 @@ function renderComment(c) {
   </div>`;
 }
 
+function fmtPoints(n) {
+  if (n === 1) return '1 bod';
+  if (n <= 4) return n + ' body';
+  return n + ' bodů';
+}
+
 function renderPost(p) {
   const badge = p.badge ? `<span class="post-badge" title="Ověřený účet">✓</span>` : '';
   const s = p.s;
@@ -406,7 +413,7 @@ function renderPost(p) {
         <span class="post-sep">·</span>
         <span class="post-time">${esc(p.time)}</span>
       </div>
-      <button class="post-more">···</button>
+      <span class="post-points">${fmtPoints(p.points)}</span>
     </div>
     <div class="post-text">${escText(p.text)}</div>
     ${renderMedia(p)}
