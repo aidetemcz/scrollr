@@ -129,8 +129,8 @@ function buildSide(container, cols) {
   for (let c = 0; c < cols; c++) {
     const x = (c + 0.5) / cols * 100;
 
-    // 1 arrow per column, always starting from the top
-    const topPct    = -2 + rnd() * 6;        // -2 to 4% (always near top)
+    // 1 arrow per column — top always hidden above fold even when shifted down
+    const topPct    = -20 + rnd() * 8;       // -20 to -12% (never visible top)
     const heightVh  = Math.round(70 + rnd() * 30); // 70–100 vh
 
     const arrow = document.createElement('div');
