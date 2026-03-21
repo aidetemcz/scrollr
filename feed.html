@@ -56,6 +56,23 @@
       background: var(--yellow); flex-shrink: 0;
     }
 
+    /* ── TOPBAR MOBILE ── */
+    @media (max-width: 600px) {
+      .topbar { flex-direction: column; }
+      .topbar-inner {
+        display: flex; flex-wrap: wrap;
+        height: auto; padding: 12px 16px 0;
+        align-items: center; gap: 0;
+      }
+      .topbar-logo { flex: 1; }
+      .logo-img { height: 28px; }
+      .topbar-right { gap: 8px; }
+      .search-wrap {
+        width: 100%; order: 3;
+        padding: 10px 0 12px;
+      }
+    }
+
     /* ── FEED ── */
     #feed { max-width: 530px; margin: 0 auto; padding-bottom: 80px; }
 
@@ -279,7 +296,7 @@
 
 <header class="topbar">
   <div class="topbar-inner">
-    <a href="index.html"><img class="logo-img" src="scrollr-logo.svg" alt="Scrollr"></a>
+    <a href="index.html" class="topbar-logo"><img class="logo-img" src="scrollr-logo.svg" alt="Scrollr"></a>
     <div class="search-wrap">
       <input type="text" placeholder="">
       <span class="search-icon">
