@@ -73,26 +73,17 @@
     .go-btn:hover { transform: translateY(-2px); }
     .go-btn:active { transform: translateY(1px); }
 
-    /* ── Animated arrow streams ── */
-    .arrow-stream {
+    /* ── Individual arrows ── */
+    .arrow {
       position: absolute;
-      top: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      animation: arrow-fall linear infinite;
-    }
-
-    .arrow-unit {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-bottom: 36px;
+      transform: translateX(-50%);
     }
 
     .arrow-shaft {
       width: 1px;
-      height: 48px;
       background: #111;
     }
 
@@ -104,9 +95,18 @@
       border-top: 8px solid #111;
     }
 
-    @keyframes arrow-fall {
-      from { transform: translateY(-560px); }
-      to   { transform: translateY(100vh); }
+    @keyframes drift-up {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(-28px); }
+    }
+    @keyframes drift-down {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(28px); }
+    }
+    @keyframes drift-both {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      30%       { transform: translateX(-50%) translateY(-18px); }
+      70%       { transform: translateX(-50%) translateY(18px); }
     }
 
     @media (max-width: 520px) {
@@ -128,22 +128,35 @@
 <div class="side" id="side-r"></div>
 
 <script>
+const ANIMS = ['drift-up', 'drift-down', 'drift-both', null, null, null];
+
 function buildSide(container, cols) {
-  const UNITS = 7;
+  const seed = container.id === 'side-l' ? 13 : 71;
+  let r = seed;
+  function rnd() { r = (r * 1664525 + 1013904223) & 0xffffffff; return (r >>> 0) / 0xffffffff; }
+
   for (let c = 0; c < cols; c++) {
-    const pct = (c + 0.5) / cols * 100;
-    const stream = document.createElement('div');
-    stream.className = 'arrow-stream';
-    const dur  = (2.2 + c * 0.35).toFixed(2);
-    const del  = (-c * 0.65).toFixed(2);
-    stream.style.cssText = `left:${pct}%;animation-duration:${dur}s;animation-delay:${del}s`;
-    for (let u = 0; u < UNITS; u++) {
-      const unit = document.createElement('div');
-      unit.className = 'arrow-unit';
-      unit.innerHTML = '<div class="arrow-shaft"></div><div class="arrow-tip"></div>';
-      stream.appendChild(unit);
+    const x = (c + 0.5) / cols * 100;
+    const count = 2 + Math.floor(rnd() * 2); // 2–3 arrows per column
+    for (let i = 0; i < count; i++) {
+      const arrow = document.createElement('div');
+      arrow.className = 'arrow';
+
+      const shaftH = Math.round(30 + rnd() * 110); // 30–140 px
+      const topPct  = Math.round(5  + rnd() * 80);  // 5–85 %
+      const anim    = ANIMS[Math.floor(rnd() * ANIMS.length)];
+      const dur     = (4 + rnd() * 8).toFixed(1);   // 4–12 s
+      const delay   = -(rnd() * parseFloat(dur)).toFixed(1);
+
+      arrow.style.left = x + '%';
+      arrow.style.top  = topPct + '%';
+      if (anim) arrow.style.animation = `${anim} ${dur}s ${delay}s ease-in-out infinite`;
+
+      arrow.innerHTML =
+        `<div class="arrow-shaft" style="height:${shaftH}px"></div>` +
+        `<div class="arrow-tip"></div>`;
+      container.appendChild(arrow);
     }
-    container.appendChild(stream);
   }
 }
 
