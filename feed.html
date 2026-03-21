@@ -434,20 +434,6 @@ POSTS.forEach(p => {
   };
 });
 
-// ── Question toggle ──
-function closeAllTooltips() {
-  document.querySelectorAll('.post-question-wrap.open').forEach(w => w.classList.remove('open'));
-}
-document.querySelectorAll('.post-question-btn').forEach(btn => {
-  const wrap = btn.closest('.post-question-wrap');
-  btn.addEventListener('click', e => {
-    e.stopPropagation();
-    const isOpen = wrap.classList.contains('open');
-    closeAllTooltips();
-    if (!isOpen) wrap.classList.add('open');
-  });
-});
-document.addEventListener('click', closeAllTooltips);
 
 // ── Search ──
 const searchInput = document.querySelector('.search-wrap input');
@@ -580,6 +566,21 @@ function renderPost(p) {
 const feedEl = document.getElementById('feed');
 feedEl.innerHTML = POSTS.map(renderPost).join('');
 feedEl.appendChild(noResults);
+
+// ── Question toggle ──
+function closeAllTooltips() {
+  document.querySelectorAll('.post-question-wrap.open').forEach(w => w.classList.remove('open'));
+}
+document.querySelectorAll('.post-question-btn').forEach(btn => {
+  const wrap = btn.closest('.post-question-wrap');
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const isOpen = wrap.classList.contains('open');
+    closeAllTooltips();
+    if (!isOpen) wrap.classList.add('open');
+  });
+});
+document.addEventListener('click', closeAllTooltips);
 
 // ── Native video player controls ──
 feedEl.addEventListener('click', function (e) {
