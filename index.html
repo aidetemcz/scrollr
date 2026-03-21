@@ -106,7 +106,7 @@
 <script>
 // Occasional non-continuous movement: up, still, or down
 // OFFSETS in px: negative = up, 0 = still, positive = down
-const OFFSETS = [-120, -120, 0, 0, 0, 120, 120];
+const OFFSETS = [-80, -80, 0, 0, 0, 80, 80];
 
 function scheduleMove(el) {
   let current = 0;
@@ -129,30 +129,24 @@ function buildSide(container, cols) {
   for (let c = 0; c < cols; c++) {
     const x = (c + 0.5) / cols * 100;
 
-    // 2 arrows per column: one in top half, one in bottom half (no overlap)
-    const slots = [
-      5  + rnd() * 25,  // top slot: 5–30%
-      50 + rnd() * 30,  // bottom slot: 50–80%
-    ];
+    // 1 arrow per column — no intra-column overlap possible
+    // Start anywhere from -5% (slightly above fold) to 25%
+    const topPct    = -5 + rnd() * 30;       // -5 to 25%
+    const heightVh  = Math.round(50 + rnd() * 30); // 50–80 vh
 
-    for (let i = 0; i < slots.length; i++) {
-      const arrow = document.createElement('div');
-      arrow.className = 'arrow';
+    const arrow = document.createElement('div');
+    arrow.className = 'arrow';
+    arrow.style.left = x + '%';
+    arrow.style.top  = topPct + '%';
 
-      const heightVh = Math.round(30 + rnd() * 40); // 30–70 vh
+    const img = document.createElement('img');
+    img.src = 'Arrow.svg';
+    img.style.height = heightVh + 'vh';
+    img.style.width = 'auto';
+    arrow.appendChild(img);
+    container.appendChild(arrow);
 
-      arrow.style.left = x + '%';
-      arrow.style.top  = slots[i] + '%';
-
-      const img = document.createElement('img');
-      img.src = 'Arrow.svg';
-      img.style.height = heightVh + 'vh';
-      img.style.width = 'auto';
-      arrow.appendChild(img);
-      container.appendChild(arrow);
-
-      scheduleMove(arrow);
-    }
+    scheduleMove(arrow);
   }
 }
 
