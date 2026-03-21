@@ -129,7 +129,9 @@
       font-size: 15px; line-height: 1.6; color: #111;
       box-shadow: 3px 3px 0 0 #111;
     }
-    .post-question-wrap:hover .post-question-tooltip,
+    @media (hover: hover) {
+      .post-question-wrap:hover .post-question-tooltip { display: block; }
+    }
     .post-question-wrap.open .post-question-tooltip { display: block; }
 
     .post-text {
