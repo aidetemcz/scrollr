@@ -458,6 +458,26 @@ const feedEl = document.getElementById('feed');
 feedEl.innerHTML = POSTS.map(renderPost).join('');
 feedEl.appendChild(noResults);
 
+feedEl.addEventListener('keydown', function (e) {
+  if (e.key !== 'Enter') return;
+  const inp = e.target.closest('.comment-input');
+  if (!inp) return;
+  e.preventDefault();
+  const id = parseInt(inp.dataset.pid, 10);
+  const text = inp.value.trim();
+  if (!text) return;
+  const clist = document.getElementById('clist-' + id);
+  const div = document.createElement('div');
+  div.innerHTML = renderComment({ name: 'Já', text });
+  clist.insertBefore(div.firstElementChild, clist.firstChild);
+  inp.value = '';
+  const post = POSTS.find(p => p.id === id);
+  if (post) {
+    post.s.c += 1;
+    document.getElementById('cnt-c-' + id).textContent = fmt(post.s.c);
+  }
+});
+
 feedEl.addEventListener('click', function (e) {
   const videoWrap = e.target.closest('.post-video-wrap');
   if (videoWrap) {
