@@ -384,9 +384,8 @@ function renderMedia(p) {
 }
 
 function renderComment(c) {
-  const init = c.name.slice(0, 2).toUpperCase();
   return `<div class="comment-item">
-    <div class="c-av">${esc(init)}</div>
+    <div class="c-av"></div>
     <div class="c-bubble">
       <div class="c-name">${esc(c.name)}</div>
       <div class="c-text">${escText(c.text)}</div>
@@ -406,7 +405,7 @@ function renderPost(p) {
   return `
   <article class="post" id="post-${p.id}" data-cat="${esc(p.cat)}">
     <div class="post-header">
-      <div class="av">${esc(p.init)}</div>
+      <div class="av"></div>
       <div class="post-meta">
         <span class="post-name">${esc(p.name)}</span>${badge}
         <span class="post-handle">@${esc(p.handle)}</span>
@@ -437,7 +436,7 @@ function renderPost(p) {
     </div>
     <div class="comments-wrap" id="comments-${p.id}">
           <div class="new-comment-row">
-            <div class="my-av">Já</div>
+            <div class="my-av"></div>
             <div class="comment-input-row">
               <input class="comment-input" id="cinput-${p.id}" placeholder="Přidat komentář..." data-pid="${p.id}">
               <button class="comment-send" data-action="send-comment" data-id="${p.id}" title="Odeslat">
