@@ -272,6 +272,66 @@ const POSTS = [
     ],
     s: { c: 3, l: 15, h: 8, x: 17 },
     cat: "polopravda"
+  },
+  {
+    id: 2,
+    name: "Petra Nováková", handle: "petra.novakova", init: "PN",
+    badge: true, time: "4 hod",
+    text: "Tohle musím sdílet — aplikace Scrollr mi ukázala, že polovina obsahu, který jsem běžně sdílela, byly polopravdy nebo přímo dezinformace. Doporučuji všem!",
+    media: null,
+    comments: [
+      { name: "Tomáš K.", text: "Taky jsem si to stáhl, fakt super věc." }
+    ],
+    s: { c: 12, l: 204, h: 91, x: 3 },
+    cat: "pravda"
+  },
+  {
+    id: 3,
+    name: "Politika CZ", handle: "politika_cz", init: "PC",
+    badge: false, time: "6 hod",
+    text: "POZOR: Vláda schválila tajný zákon, který umožňuje sledovat všechny vaše zprávy bez soudního příkazu! Média o tom mlčí, protože jsou pod kontrolou státu.",
+    media: null,
+    comments: [
+      { name: "Jana M.", text: "Prosím vás, odkaz na zákon?" },
+      { name: "Martin77", text: "Tohle je hoax, nic takového neprošlo." },
+      { name: "Alena B.", text: "Sdílím, lidé musí vědět!" }
+    ],
+    s: { c: 87, l: 43, h: 12, x: 156 },
+    cat: "dezinformace"
+  },
+  {
+    id: 4,
+    name: "ČT24", handle: "ct24", init: "ČT",
+    badge: true, time: "8 hod",
+    text: "Česká národní banka ponechala základní úrokovou sazbu beze změny na 3,75 %. Guvernér uvedl, že inflace zůstává pod kontrolou a ekonomika se vyvíjí podle očekávání.",
+    media: null,
+    comments: [],
+    s: { c: 5, l: 312, h: 44, x: 9 },
+    cat: "pravda"
+  },
+  {
+    id: 5,
+    name: "Alternativní zprávy", handle: "alt_zpravy", init: "AZ",
+    badge: false, time: "12 hod",
+    text: "Lékaři vám to neřeknou: přírodní zázrak z Amazonie vyléčí cukrovku za 3 týdny! Farmaceutické firmy tuto informaci potlačují, protože by přišly o miliardy. Odkaz v BIO!",
+    media: null,
+    comments: [
+      { name: "MUDr. Pavel R.", text: "Jako lékař vás prosím: NEsledujte takovéto rady. Cukrovka vyžaduje odbornou léčbu." }
+    ],
+    s: { c: 34, l: 67, h: 21, x: 289 },
+    cat: "dezinformace"
+  },
+  {
+    id: 6,
+    name: "Jakub Dvořák", handle: "jakub.dvorak", init: "JD",
+    badge: false, time: "1 den",
+    text: "Dnes jsem si uvědomil, jak důležité je ověřovat si informace. Přečetl jsem si tři různé zdroje k jednomu tématu a každý psal něco jiného. Mediální gramotnost je základ.",
+    media: null,
+    comments: [
+      { name: "Petra Nováková", text: "Přesně tak! K tomu právě slouží Scrollr 👍" }
+    ],
+    s: { c: 7, l: 88, h: 55, x: 2 },
+    cat: "pravda"
   }
 ];
 
@@ -281,6 +341,30 @@ POSTS.forEach(p => {
     like: false, heart: false, hate: false,
     commentOpen: false, userComments: []
   };
+});
+
+// ── Search ──
+const searchInput = document.querySelector('.search-wrap input');
+const noResults = document.createElement('p');
+noResults.id = 'no-results';
+noResults.style.cssText = 'text-align:center;color:#888;padding:48px 0;display:none;';
+noResults.textContent = 'Žádné výsledky.';
+
+searchInput.addEventListener('input', function () {
+  const q = this.value.trim().toLowerCase();
+  const feed = document.getElementById('feed');
+  let visible = 0;
+  POSTS.forEach(p => {
+    const el = document.getElementById('post-' + p.id);
+    if (!el) return;
+    const match = !q ||
+      p.name.toLowerCase().includes(q) ||
+      p.handle.toLowerCase().includes(q) ||
+      p.text.toLowerCase().includes(q);
+    el.style.display = match ? '' : 'none';
+    if (match) visible++;
+  });
+  noResults.style.display = visible === 0 ? '' : 'none';
 });
 
 function renderMedia(p) {
@@ -363,9 +447,11 @@ function renderPost(p) {
   </article>`;
 }
 
-document.getElementById('feed').innerHTML = POSTS.map(renderPost).join('');
+const feedEl = document.getElementById('feed');
+feedEl.innerHTML = POSTS.map(renderPost).join('');
+feedEl.appendChild(noResults);
 
-document.getElementById('feed').addEventListener('click', function (e) {
+feedEl.addEventListener('click', function (e) {
   const videoWrap = e.target.closest('.post-video-wrap');
   if (videoWrap) {
     const vid = videoWrap.dataset.vid;
