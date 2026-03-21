@@ -94,6 +94,26 @@
       padding: 5px 13px; border-radius: 20px;
       white-space: nowrap;
     }
+    .post-question-wrap {
+      position: relative; flex-shrink: 0;
+    }
+    .post-question-btn {
+      display: flex; align-items: center; justify-content: center;
+      background: none; border: none; cursor: pointer; padding: 0;
+      width: 34px; height: 34px;
+    }
+    .post-question-btn img { width: 34px; height: 34px; display: block; }
+    .post-question-tooltip {
+      display: none;
+      position: absolute; top: calc(100% + 10px); right: 0;
+      background: var(--yellow); border: 2px solid #111;
+      border-radius: 14px; padding: 14px 16px;
+      width: 280px; z-index: 10;
+      font-size: 15px; line-height: 1.6; color: #111;
+      box-shadow: 3px 3px 0 0 #111;
+    }
+    .post-question-wrap:hover .post-question-tooltip,
+    .post-question-btn:focus + .post-question-tooltip { display: block; }
 
     .post-text {
       font-size: 15px; line-height: 1.6; margin-bottom: 14px;
@@ -298,6 +318,7 @@ const POSTS = [
     id: 7,
     name: "carlhoos_", handle: "carlhoos_", init: "",
     badge: false, time: "2 dny", points: 3,
+    question: "Co si myslíš — je obsah tohoto videa podložen fakty, nebo jde o emocionální apel bez důkazů?",
     text: "POWERFUL VIDEO: Why We Need to Stop Plastic Pollution in Our Oceans FOR GOOD | Oceana",
     media: { type: "mp4", src: "dance.mp4" },
     comments: [],
@@ -308,6 +329,7 @@ const POSTS = [
     id: 1,
     name: "Zdraví Online", handle: "zdravionline_cz", init: "ZO",
     badge: false, time: "2 hod", points: 5,
+    question: "Jak bys ověřil/a, zda tato studie skutečně existuje? Co by měl věrohodný příspěvek o vědecké studii obsahovat?",
     text: "NOVÁ STUDIE: Vědci z Harvardu prokázali, že pití 3 šálků kávy denně prodlužuje délku života až o 10 let! Studie sledovala 50 000 účastníků po dobu 20 let. Sdílejte, ať to ví všichni!",
     media: { type: "video", videoId: "Yomf5pBN8dY", thumb: "https://img.youtube.com/vi/Yomf5pBN8dY/hqdefault.jpg" },
     comments: [
@@ -321,6 +343,7 @@ const POSTS = [
     id: 2,
     name: "Petra Nováková", handle: "petra.novakova", init: "PN",
     badge: true, time: "4 hod", points: 1,
+    question: "Proč si myslíš, že Petra doporučuje Scrollr? Je to důvěryhodný zdroj informací?",
     text: "Tohle musím sdílet — aplikace Scrollr mi ukázala, že polovina obsahu, který jsem běžně sdílela, byly polopravdy nebo přímo dezinformace. Doporučuji všem!",
     media: null,
     comments: [
@@ -333,6 +356,7 @@ const POSTS = [
     id: 3,
     name: "Politika CZ", handle: "politika_cz", init: "PC",
     badge: false, time: "6 hod", points: 5,
+    question: "Jaké znaky dezinformace najdeš v tomto příspěvku? Proč je tvrzení o 'tajném zákonu' podezřelé?",
     text: "POZOR: Vláda schválila tajný zákon, který umožňuje sledovat všechny vaše zprávy bez soudního příkazu! Média o tom mlčí, protože jsou pod kontrolou státu.",
     media: null,
     comments: [
@@ -347,6 +371,7 @@ const POSTS = [
     id: 4,
     name: "ČT24", handle: "ct24", init: "ČT",
     badge: true, time: "8 hod", points: 2,
+    question: "Podle čeho poznáš, že jde o zpravodajský článek od ověřeného média? Co dělá tento příspěvek důvěryhodným?",
     text: "Česká národní banka ponechala základní úrokovou sazbu beze změny na 3,75 %. Guvernér uvedl, že inflace zůstává pod kontrolou a ekonomika se vyvíjí podle očekávání.",
     media: null,
     comments: [],
@@ -357,6 +382,7 @@ const POSTS = [
     id: 5,
     name: "Alternativní zprávy", handle: "alt_zpravy", init: "AZ",
     badge: false, time: "12 hod", points: 4,
+    question: "Jaké manipulativní techniky používá tento příspěvek? Proč je výraz 'lékaři vám to neřeknou' varovný signál?",
     text: "Lékaři vám to neřeknou: přírodní zázrak z Amazonie vyléčí cukrovku za 3 týdny! Farmaceutické firmy tuto informaci potlačují, protože by přišly o miliardy. Odkaz v BIO!",
     media: null,
     comments: [
@@ -369,6 +395,7 @@ const POSTS = [
     id: 6,
     name: "Jakub Dvořák", handle: "jakub.dvorak", init: "JD",
     badge: false, time: "1 den", points: 1,
+    question: "Souhlasíš s Jakubem? Jak ty sám/sama ověřuješ informace, které čteš online?",
     text: "Dnes jsem si uvědomil, jak důležité je ověřovat si informace. Přečetl jsem si tři různé zdroje k jednomu tématu a každý psal něco jiného. Mediální gramotnost je základ.",
     media: null,
     comments: [
@@ -469,6 +496,12 @@ function renderPost(p) {
         <span class="post-time">${esc(p.time)}</span>
       </div>
       <span class="post-points">${fmtPoints(p.points)}</span>
+      ${p.question ? `<div class="post-question-wrap">
+        <button class="post-question-btn" aria-label="Otázka k zamyšlení">
+          <img src="Question.svg" alt="?">
+        </button>
+        <div class="post-question-tooltip">${esc(p.question)}</div>
+      </div>` : ''}
     </div>
     <div class="post-text">${escText(p.text)}</div>
     ${renderMedia(p)}
