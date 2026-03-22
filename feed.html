@@ -229,6 +229,10 @@
       max-width: 320px; margin-left: auto; margin-right: auto;
       aspect-ratio: 9 / 16;
     }
+    .post-native-video.wide {
+      max-width: 100%; margin-left: 0; margin-right: 0;
+      aspect-ratio: 16 / 9;
+    }
     .post-native-video video {
       width: 100%; height: 100%; display: block; object-fit: cover;
       position: absolute; inset: 0;
@@ -434,7 +438,7 @@ const POSTS = [
     badge: false, time: "2026-01-05", points: 1,
     question: "Je tohle vytvořené pomocí generativní AI?",
     text: "#MemesAsw",
-    media: { type: "mp4", src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/videos/ai-baby.mp4" },
+    media: { type: "mp4", src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/videos/ai-baby.mp4", wide: true },
     comments: [
       { name: "rabuansyah_ramadani", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/rabuansyah-ramadani.jpg", photo: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/comments/ai-baby-comment.gif", text: "" },
       { name: "iriblgboss", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/iriblgboss.jpg", photo: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/comments/ai-baby-comment-4.gif", text: "" },
@@ -509,7 +513,8 @@ function renderMedia(p) {
     </div>`;
   }
   if (type === 'mp4') {
-    return `<div class="post-native-video" id="nvid-${p.id}">
+    const wideClass = p.media.wide ? ' wide' : '';
+    return `<div class="post-native-video${wideClass}" id="nvid-${p.id}">
       <video loop muted preload="metadata" playsinline>
         <source src="${esc(src)}" type="video/mp4">
       </video>
