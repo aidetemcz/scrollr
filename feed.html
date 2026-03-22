@@ -369,7 +369,7 @@
         <img src="Burger.svg" width="22" height="17" alt="Menu">
       </button>
       <div class="user-av-wrap">
-        <div class="user-av" style="background:none;overflow:hidden;padding:0;"><img src="avatars/me.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt=""></div>
+        <button id="user-av-btn" class="user-av" style="background:none;overflow:hidden;padding:0;border:none;cursor:pointer;"><img src="avatars/me.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt=""></button>
         <button class="bell-badge" id="bell-btn" aria-label="Pokyny ke hře"><img src="icons/ring-the-bell.svg" alt="bell"></button>
       </div>
     </div>
@@ -753,23 +753,26 @@ feedEl.addEventListener('click', function (e) {
   document.getElementById(`cnt-${key}-${id}`).textContent = fmt(post.s[key]);
 });
 
-// ── Welcome modal ──
-document.getElementById('bell-btn').addEventListener('click', function() {
-  document.getElementById('welcome-overlay').classList.add('open');
-});
-document.getElementById('welcome-close').addEventListener('click', function() {
-  document.getElementById('welcome-overlay').classList.remove('open');
-});
-document.getElementById('welcome-overlay').addEventListener('click', function(e) {
-  if (e.target === this) this.classList.remove('open');
-});
 </script>
 
 <div class="welcome-overlay" id="welcome-overlay" role="dialog" aria-modal="true">
   <div class="welcome-box">
-    <button class="welcome-close" id="welcome-close" aria-label="Zavřít">&#x2715;</button>
+    <button class="welcome-close" aria-label="Zavřít">&#x2715;</button>
     <p>Vítej v AI olympiádě ve hře Truth Hunters (Hledači pravdy)! Před sebou vidíš sociální síť Scrollr*. U každého postu je vidět, kolik za jeho analýzu získáte bodů. Pod černým kolečkem s otazníkem je otázka, na kterou hledáš odpověď. Vyřešit můžeš libovolný počet postů, zvol si dobrou strategii, abys měla/a co nejvíce bodů. Čím více bodů, tím náročnější úloha. Často musíš hledat i mimo Scrollr*. Tipy kde ověřovat zdroje najdeš tady: <a href="XXX" target="_blank">XXX</a></p>
   </div>
 </div>
+
+<script>
+// ── Welcome modal ──
+const welcomeOverlay = document.getElementById('welcome-overlay');
+function openWelcome() { welcomeOverlay.classList.add('open'); }
+function closeWelcome() { welcomeOverlay.classList.remove('open'); }
+document.getElementById('bell-btn').addEventListener('click', openWelcome);
+document.getElementById('user-av-btn').addEventListener('click', openWelcome);
+welcomeOverlay.addEventListener('click', function(e) {
+  if (e.target === this) closeWelcome();
+});
+welcomeOverlay.querySelector('.welcome-close').addEventListener('click', closeWelcome);
+</script>
 </body>
 </html>
