@@ -629,9 +629,10 @@ function renderPost(p) {
             </div>
           </div>
           <div class="comment-list" id="clist-${p.id}">
-            ${p.comments.map(renderComment).join('')}
+            ${p.comments.slice(0, 2).map(renderComment).join('')}
+            ${p.comments.length > 2 ? `<div class="hidden-comments" id="hclist-${p.id}" style="display:none;flex-direction:column;gap:14px;">${p.comments.slice(2).map(renderComment).join('')}</div>` : ''}
           </div>
-          ${p.comments.length > 2 ? `<div class="load-more">Načíst další komentáře</div>` : ''}
+          ${p.comments.length > 2 ? `<div class="load-more" data-action="load-more" data-id="${p.id}">Načíst další komentáře</div>` : ''}
         </div>
     </div>
   </article>`;
@@ -647,6 +648,14 @@ function toggleQuestion(btn) {
   wrap.classList.toggle('open');
 }
 document.addEventListener('click', function(e) {
+  const loadMore = e.target.closest('[data-action="load-more"]');
+  if (loadMore) {
+    const id = loadMore.dataset.id;
+    const hidden = document.getElementById('hclist-' + id);
+    if (hidden) { hidden.style.display = 'flex'; }
+    loadMore.remove();
+    return;
+  }
   if (!e.target.closest('.post-question-wrap')) {
     document.querySelectorAll('.post-question-wrap.open').forEach(w => w.classList.remove('open'));
   }
