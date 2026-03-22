@@ -207,6 +207,12 @@
       width: 100%; display: block; max-height: 420px;
       object-fit: cover;
     }
+    .post-gallery {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    }
+    .post-gallery img {
+      max-height: 300px;
+    }
     .post-video-wrap {
       border-radius: 12px; overflow: hidden;
       border: 1px solid #e5e5e5; margin-bottom: 14px;
@@ -480,6 +486,22 @@ const POSTS = [
     ],
     s: { c: 31, l: 2700, h: 512, x: 113 },
     cat: "pravda"
+  },
+  {
+    id: 12,
+    name: "hanadedkova_", handle: "hanadedkova_", init: "", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/hanadedkova.jpg",
+    badge: false, time: "2022-07-26", points: 2,
+    question: "Česká influencerka Hana Dědková na fotkách pózuje na chorvatské pláži. Zároveň ale ukazuje viditelně elektronickou cigaretu značky Hyla a balzám Bio Bronz. Asi víš, že tomuhle se říká product placement (Influencerka navíc v textu neupozornila, že se jedná o reklamu a to je trestné). Nasdílej do Tiny odkaz další příklad jiné skryté reklamy. Může být všeobecně známá. Nebo klidně něco, na co jsi narazil/a na sítích.",
+    text: "If life is a journey the beach is my destination - happiness comes in waves💗🌊🏖️☀️\n#beachsunset #beachphotography #oceanview #beachescape #sandybeach #beachlover #beachday #beachesofinstagram #beachlife #beachside",
+    media: { type: "gallery", srcs: [
+      "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/images/productplacement1.png",
+      "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/images/productplacement2.png"
+    ]},
+    comments: [
+      { name: "brianjavier89", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/LYSSI.jpeg", text: "🔥🔥\n. .  🌊🌊 . . 🌊🌊\n🌊 . . . . .🌊 . . . . 🌊\n. .  🌊 . . . . . . . 🌊\n. . . .   🌊 . . 🌊\n. . . . . . .  🌊" }
+    ],
+    s: { c: 57, l: 10200, h: 8, x: 13 },
+    cat: "reklama"
   }
 ];
 
@@ -521,6 +543,10 @@ function renderMedia(p) {
   const { type, src, videoId, thumb } = p.media;
   if (type === 'image') {
     return `<div class="post-media"><img src="${esc(src)}" alt="" loading="lazy"></div>`;
+  }
+  if (type === 'gallery') {
+    const imgs = p.media.srcs.map(s => `<img src="${esc(s)}" alt="" loading="lazy">`).join('');
+    return `<div class="post-media post-gallery">${imgs}</div>`;
   }
   if (type === 'video') {
     return `<div class="post-video-wrap" id="vid-${p.id}" data-vid="${esc(videoId)}">
