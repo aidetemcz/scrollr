@@ -438,7 +438,7 @@ const POSTS = [
     badge: false, time: "2026-01-05", points: 1,
     question: "Je tohle vytvořené pomocí generativní AI?",
     text: "#MemesAsw",
-    media: { type: "mp4", src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/videos/ai-baby.mp4", wide: true },
+    media: { type: "mp4", src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/videos/ai-baby.mp4", wide: true, thumb: "thumbnails/ai-baby-thumb.jpg" },
     comments: [
       { name: "rabuansyah_ramadani", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/rabuansyah-ramadani.jpg", photo: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/comments/ai-baby-comment.gif", text: "" },
       { name: "iriblgboss", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/iriblgboss.jpg", photo: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/comments/ai-baby-comment-4.gif", text: "" },
@@ -514,8 +514,9 @@ function renderMedia(p) {
   }
   if (type === 'mp4') {
     const wideClass = p.media.wide ? ' wide' : '';
+    const poster = p.media.thumb ? `poster="${esc(p.media.thumb)}"` : '';
     return `<div class="post-native-video${wideClass}" id="nvid-${p.id}">
-      <video loop muted preload="metadata" playsinline>
+      <video loop muted preload="metadata" playsinline ${poster}>
         <source src="${esc(src)}" type="video/mp4">
       </video>
       <div class="video-overlay">
