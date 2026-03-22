@@ -68,6 +68,36 @@
     }
     .bell-badge img { width: 100%; height: 100%; display: block; }
 
+    .bell-badge { cursor: pointer; pointer-events: auto; }
+
+    /* ── WELCOME MODAL ── */
+    .welcome-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.55);
+      align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .welcome-overlay.open { display: flex; }
+    .welcome-box {
+      background: var(--yellow);
+      border: 2.5px solid #111;
+      border-radius: 20px;
+      box-shadow: 5px 5px 0 0 #111;
+      padding: 32px 28px 28px;
+      max-width: 480px; width: 100%;
+      position: relative;
+      font-size: 15px; line-height: 1.7; color: #111;
+    }
+    .welcome-close {
+      position: absolute; top: 14px; right: 16px;
+      background: none; border: none; cursor: pointer;
+      font-size: 22px; line-height: 1; color: #111; padding: 2px 6px;
+    }
+    .welcome-close:hover { opacity: 0.6; }
+    .welcome-box p { margin: 0; }
+    .welcome-box a { color: #111; font-weight: 700; }
+
     @keyframes bell-idle {
       0%   { transform: rotate(0deg); }
       /* pause */
@@ -340,7 +370,7 @@
       </button>
       <div class="user-av-wrap">
         <div class="user-av" style="background:none;overflow:hidden;padding:0;"><img src="avatars/me.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt=""></div>
-        <span class="bell-badge"><img src="icons/ring-the-bell.svg" alt="bell"></span>
+        <button class="bell-badge" id="bell-btn" aria-label="Pokyny ke hře"><img src="icons/ring-the-bell.svg" alt="bell"></button>
       </div>
     </div>
   </div>
@@ -722,6 +752,24 @@ feedEl.addEventListener('click', function (e) {
   post.s[key] += st[action] ? 1 : -1;
   document.getElementById(`cnt-${key}-${id}`).textContent = fmt(post.s[key]);
 });
+
+// ── Welcome modal ──
+document.getElementById('bell-btn').addEventListener('click', function() {
+  document.getElementById('welcome-overlay').classList.add('open');
+});
+document.getElementById('welcome-close').addEventListener('click', function() {
+  document.getElementById('welcome-overlay').classList.remove('open');
+});
+document.getElementById('welcome-overlay').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
 </script>
+
+<div class="welcome-overlay" id="welcome-overlay" role="dialog" aria-modal="true">
+  <div class="welcome-box">
+    <button class="welcome-close" id="welcome-close" aria-label="Zavřít">&#x2715;</button>
+    <p>Vítej v AI olympiádě ve hře Truth Hunters (Hledači pravdy)! Před sebou vidíš sociální síť Scrollr*. U každého postu je vidět, kolik za jeho analýzu získáte bodů. Pod černým kolečkem s otazníkem je otázka, na kterou hledáš odpověď. Vyřešit můžeš libovolný počet postů, zvol si dobrou strategii, abys měla/a co nejvíce bodů. Čím více bodů, tím náročnější úloha. Často musíš hledat i mimo Scrollr*. Tipy kde ověřovat zdroje najdeš tady: <a href="XXX" target="_blank">XXX</a></p>
+  </div>
+</div>
 </body>
 </html>
