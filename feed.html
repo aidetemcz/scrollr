@@ -338,6 +338,8 @@
     }
     .c-name { font-weight: 700; font-size: 13px; margin-bottom: 2px; }
     .c-text { font-size: 14px; line-height: 1.45; color: #333; }
+    .c-photo { margin-top: 8px; border-radius: 10px; overflow: hidden; max-width: 220px; }
+    .c-photo img { width: 100%; display: block; }
 
     .load-more {
       text-align: center; padding: 12px 0 0;
@@ -403,8 +405,8 @@ const POSTS = [
     text: "Risas con Carlos Alberto y Katteyes en Scrollsr*\nDisfruta las divertidas situaciones de Carlos Alberto y Katteyes. ¡No te lo pierdas! #scrollr #carlosalberto #katteyes #viral\nKeywords: divertidas reacciones de Carlos Alberto en TikTok, Katteyes y Carlos Alberto juntas, risas familiares con Katteyes, tendencias de Scrollr* con Carlos Alberto, interacciones divertidas en TikTok",
     media: { type: "mp4", src: "https://truth-hunters.cz/videos/dance.mp4" },
     comments: [
-      { name: "NANDO🧃.", img: "https://truth-hunters.cz/comments/01comment.png", text: "Que le viste a Carol?" },
-      { name: "Gael bloqueado 🥹💞✨", img: "https://truth-hunters.cz/comments/01comment_2.png", text: "like por esta pareja ❤️🥰💅" },
+      { name: "NANDO🧃.", photo: "https://truth-hunters.cz/comments/01comment.png", text: "Que le viste a Carol?" },
+      { name: "Gael bloqueado 🥹💞✨", photo: "https://truth-hunters.cz/comments/01comment_2.png", text: "like por esta pareja ❤️🥰💅" },
       { name: "rosa_14", text: "yo viendo cómo estos 3 se cargan una cinturita de avista 👁️🫦👁️👀" }
     ],
     s: { c: 3, l: 2500000, h: 1900000, x: 2600000 },
@@ -556,11 +558,15 @@ function renderComment(c) {
   const av = c.img
     ? `<div class="c-av" style="background:none;overflow:hidden;padding:0;"><img src="${esc(c.img)}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt=""></div>`
     : `<div class="c-av"></div>`;
+  const photo = c.photo
+    ? `<div class="c-photo"><img src="${esc(c.photo)}" alt=""></div>`
+    : '';
   return `<div class="comment-item">
     ${av}
     <div class="c-bubble">
       <div class="c-name">${esc(c.name)}</div>
       <div class="c-text">${escText(c.text)}</div>
+      ${photo}
     </div>
   </div>`;
 }
