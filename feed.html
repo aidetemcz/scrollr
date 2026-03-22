@@ -337,12 +337,16 @@ const POSTS = [
   {
     id: 7,
     name: "carlhoos_", handle: "carlhoos_", init: "",
-    badge: false, time: "2 dny", points: 3,
-    question: "Co si myslíš — je obsah tohoto videa podložen fakty, nebo jde o emocionální apel bez důkazů?",
-    text: "POWERFUL VIDEO: Why We Need to Stop Plastic Pollution in Our Oceans FOR GOOD | Oceana",
+    badge: false, time: "1 hod", points: 1,
+    question: "Je toto video vygenerované pomocí AI?",
+    text: "Risas con Carlos Alberto y Katteyes en Scrollsr*\nDisfruta las divertidas situaciones de Carlos Alberto y Katteyes. ¡No te lo pierdas! #scrollr #carlosalberto #katteyes #viral\nKeywords: divertidas reacciones de Carlos Alberto en TikTok, Katteyes y Carlos Alberto juntas, risas familiares con Katteyes, tendencias de Scrollr* con Carlos Alberto, interacciones divertidas en TikTok",
     media: { type: "mp4", src: "https://truth-hunters.cz/videos/dance.mp4" },
-    comments: [],
-    s: { c: 0, l: 0, h: 0, x: 0 },
+    comments: [
+      { name: "NANDO🧃.", img: "https://truth-hunters.cz/comments/01comment.png", text: "Que le viste a Carol?" },
+      { name: "Gael bloqueado 🥹💞✨", img: "https://truth-hunters.cz/comments/01comment_2.png", text: "like por esta pareja ❤️🥰💅" },
+      { name: "rosa_14", text: "yo viendo cómo estos 3 se cargan una cinturita de avista 👁️🫦👁️👀" }
+    ],
+    s: { c: 3, l: 2500000, h: 1900000, x: 2600000 },
     cat: "pravda"
   },
   {
@@ -488,8 +492,11 @@ function renderMedia(p) {
 }
 
 function renderComment(c) {
+  const av = c.img
+    ? `<div class="c-av" style="background:none;overflow:hidden;padding:0;"><img src="${esc(c.img)}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt=""></div>`
+    : `<div class="c-av"></div>`;
   return `<div class="comment-item">
-    <div class="c-av"></div>
+    ${av}
     <div class="c-bubble">
       <div class="c-name">${esc(c.name)}</div>
       <div class="c-text">${escText(c.text)}</div>
