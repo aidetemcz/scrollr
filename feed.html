@@ -768,6 +768,7 @@ const welcomeOverlay = document.getElementById('welcome-overlay');
 function openWelcome() { welcomeOverlay.classList.add('open'); }
 function closeWelcome() { welcomeOverlay.classList.remove('open'); }
 document.getElementById('bell-btn').addEventListener('click', openWelcome);
+document.querySelector('.hamburger-btn').addEventListener('click', openWelcome);
 document.getElementById('user-av-btn').addEventListener('click', openWelcome);
 welcomeOverlay.addEventListener('click', function(e) {
   if (e.target === this) closeWelcome();
