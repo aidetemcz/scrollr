@@ -310,7 +310,7 @@
       <button class="hamburger-btn" aria-label="Menu">
         <img src="Burger.svg" width="22" height="17" alt="Menu">
       </button>
-      <div class="user-av" style="background:none;overflow:hidden;padding:0;"><img src="https://truth-hunters.cz/avatars/me.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt=""></div>
+      <div class="user-av" style="background:none;overflow:hidden;padding:0;"><img src="avatars/me.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt=""></div>
     </div>
   </div>
 </header>
@@ -553,7 +553,7 @@ function renderPost(p) {
     </div>
     <div class="comments-wrap" id="comments-${p.id}">
           <div class="new-comment-row">
-            <div class="my-av" style="background:none;overflow:hidden;padding:0;"><img src="https://truth-hunters.cz/avatars/me.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt=""></div>
+            <div class="my-av" style="background:none;overflow:hidden;padding:0;"><img src="avatars/me.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt=""></div>
             <div class="comment-input-row">
               <input class="comment-input" id="cinput-${p.id}" placeholder="Přidat komentář..." data-pid="${p.id}">
               <button class="comment-send" data-action="send-comment" data-id="${p.id}" title="Odeslat">
@@ -674,7 +674,7 @@ feedEl.addEventListener('click', function (e) {
     if (!text) return;
     const clist = document.getElementById('clist-' + id);
     const div = document.createElement('div');
-    div.innerHTML = renderComment({ name: 'Já', img: 'https://truth-hunters.cz/avatars/me.png', text });
+    div.innerHTML = renderComment({ name: 'Já', img: 'avatars/me.png', text });
     clist.insertBefore(div.firstElementChild, clist.firstChild);
     inp.value = '';
     post.s.c += 1;
