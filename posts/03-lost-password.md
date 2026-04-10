@@ -9,16 +9,15 @@ points: 3
 cat: pravda
 question: "Dokážeš zjistit, jaké má Lukas243 heslo do e-mailu? Pokud ano, zadej ho do Tiny!"
 text: "tyjo ztratil sem heslo do mailu mám ho schovaný tady v tom zipu ale neumim ho rozheslovat, pamatuju si jenom ze heslo do zipu je oblibena barva moji matky podle mě bez diakritiky… pls help"
-media:
-  type: 
-  src: 
 comments:
   - name: "tln.337"
     img: "avatars/tln337.jpeg"
     text: "jako fakt hazis svoje mailovy heslo na scrollr??"
   - name: "𝓐𝓜𝓩𝓐𝓡 ~"
     img: "avatars/amzar.jpeg"
-    text: "I'm so miss this sigma 😭 and who here from 2026"
+   media:
+   type: png
+   src: https://github.com/aidetemcz/scrollr/blob/claude/sunday-work-session-PE0Pw/comments/how-dumb-is-bro.jpg
   - name: "Vitinhoo💯midia"
     img: "avatars/vitinhoo.jpeg"
     text: "not Sigma…"
