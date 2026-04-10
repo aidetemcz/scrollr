@@ -9,7 +9,7 @@ points: 2
 cat: pravda
 question: "V jaké zemi byla @j0y.s0phie na dovolené? Jestli víš, dej nám vědět v Tiny."
 text: |
-  Bylo to tady s tebou nezapomenutelný. @rosalid ♥♥♥♥
+  Bylo to tady s tebou nezapomenutelný @babymonsterOOO ♥♥♥♥
   #love #travel #africa
 media:
   type: image
