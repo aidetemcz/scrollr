@@ -1,7 +1,7 @@
 ---
 id: 3
 name: Lukas243
-handle: "@lukas243"
+handle: "lukas243"
 img: "avatars/argenby.jpeg"
 badge: false
 time: "2026-03-11"
@@ -25,8 +25,8 @@ comments:
     img: "avatars/blood.jpeg"
     text: "bro"
 s:
-  c: 3500
-  l: 9500000
-  h: 557000
-  x: 62900
+  c: 4
+  l: 0
+  h: 0
+  x: 2
 ---
