@@ -1,21 +1,21 @@
 ---
 id: 3
-name: argenby
-handle: argenby
+name: Lukas243
+handle: @lukas243
 img: "avatars/argenby.jpeg"
 badge: false
-time: "2022-11-22"
-points: 2
+time: "2026-03-11"
+points: 3
 cat: pravda
-question: "Termín Sigma umí vysvětlit asi každý (6—7 to challenguje trochu víc). Jenže není sigma jako sigma. Jedna studie ukázala, že na TikToku je většina sigma postů hodně spojená s tím, že kluci jsou víc než holky. A my chceme vědět, jestli to tak vnímáš i ty. V Tiny tě čeká pár otázek."
-text: "#sigma #sigma #boy"
+question: "Dokážeš zjistit, jaké má Lukas243 heslo do e-mailu? Pokud ano, zadej ho do Tiny!"
+text: "tyjo ztratil sem heslo do mailu mám ho schovaný tady v tom zipu ale neumim ho rozheslovat, pamatuju si jenom ze heslo do zipu je oblibena barva moji matky podle mě bez diakritiky… pls help"
 media:
-  type: mp4
-  src: "videos/sigma.mp4"
+  type: 
+  src: 
 comments:
   - name: "tln.337"
     img: "avatars/tln337.jpeg"
-    text: "good😏sigma grindset 💪🐺"
+    text: "jako fakt hazis svoje mailovy heslo na scrollr??"
   - name: "𝓐𝓜𝓩𝓐𝓡 ~"
     img: "avatars/amzar.jpeg"
     text: "I'm so miss this sigma 😭 and who here from 2026"
