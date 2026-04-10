@@ -1,7 +1,7 @@
 ---
 id: 3
 name: Lukas243
-handle: @lukas243
+handle: "@lukas243"
 img: "avatars/argenby.jpeg"
 badge: false
 time: "2026-03-11"
@@ -15,9 +15,7 @@ comments:
     text: "jako fakt hazis svoje mailovy heslo na scrollr??"
   - name: "𝓐𝓜𝓩𝓐𝓡 ~"
     img: "avatars/amzar.jpeg"
-   media:
-   type: png
-   src: https://github.com/aidetemcz/scrollr/blob/claude/sunday-work-session-PE0Pw/comments/how-dumb-is-bro.jpg
+    text: ""
   - name: "Vitinhoo💯midia"
     img: "avatars/vitinhoo.jpeg"
     text: "not Sigma…"
