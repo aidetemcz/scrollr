@@ -8,7 +8,7 @@ time: "2026-03-11"
 points: 3
 cat: pravda
 question: "Dokážeš zjistit, jaké má Lukas243 heslo do e-mailu? Pokud ano, zadej ho do Tiny!"
-text: "tyjo ztratil sem heslo do mailu mám ho schovaný tady v tom zipu ale neumim ho rozheslovat. pamatuju si jenom ze heslo do zipu je oblibena barva moji matky podle mě bez diakritiky. pls help zip je tady: [https://truth-hunters.cz/files/heslo.zip](https://truth-hunters.cz/files/heslo.zip)"
+text: "tyjo ztratil sem heslo do mailu mám ho schovaný tady v tom zipu ale neumim ho rozheslovat. pamatuju si jenom ze heslo do zipu je oblibena barva moji matky podle mě bez diakritiky. pls help zip je tady: https://truth-hunters.cz/files/heslo.zip"
 comments:
   - name: "tln.337"
     img: "avatars/tln337.jpeg"
