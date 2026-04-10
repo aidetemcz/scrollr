@@ -14,7 +14,7 @@ text: |
   Keywords: divertidas reacciones de Carlos Alberto en Scrollr*, Katteyes y Carlos Alberto juntas, risas familiares con Katteyes, tendencias de Scrollr* con Carlos Alberto, interacciones divertidas en Scrollr*
 media:
   type: mp4
-  src: "https://truth-hunters.cz/videos/dance.mp4"
+  src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/videos/sigma.mp4"
 comments:
   - name: "NANDO🧃."
     img: "avatars/nando.jpg"
