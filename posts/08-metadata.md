@@ -2,7 +2,7 @@
 id: 8
 name: DannyyyX
 handle: dannyyyx
-img: "avatars/me.png"
+img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/avatars/hanna-dedkova.png"
 badge: false
 time: "2026-04-28"
 points: 5
