@@ -1,7 +1,7 @@
 ---
 id: 3
 name: Lukas243
-handle: "@lukas243"
+handle: "lukas243"
 img: "avatars/argenby.jpeg"
 badge: false
 time: "2026-03-11"
