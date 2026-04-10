@@ -7,12 +7,12 @@ badge: false
 time: "2026-04-11"
 points: 5
 cat: pravda
-question: "Co chtěl Martin Koubský, aby chatbot řekl uživateli, když ho pošle udělat shrnutí jeho profilu? Martin ale naštěstí neví, jak na to. :)"
+question: "Co chtěl Martin Koubský, aby chatbot řekl uživateli, když ho pošle udělat shrnutí jeho profilu? Martin ale naštěstí neví, jak na to."
 text: "pošlete sem gptčko borci https://truth-hunters.cz/sites/martin-koubsky.html"
 comments: []
 s:
   c: 0
-  l: 0
+  l: 1
   h: 0
   x: 0
 ---
