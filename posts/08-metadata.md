@@ -7,7 +7,7 @@ badge: false
 time: "2026-04-28"
 points: 4
 cat: pravda
-question: "Fakt tam @dannyyyx byl nebo ten obrázek ukradla (nebo vygenerovala pomocí AI) a postovala to z domova?"
+question: "Fakt tam @hannyyyx byl nebo ten obrázek ukradla (nebo vygenerovala pomocí AI) a postovala to z domova?"
 text: "Je to tu boží, příště jedu zas #bali #happylife #reallife #nowornever"
 media:
   type: image
