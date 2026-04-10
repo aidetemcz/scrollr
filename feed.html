@@ -434,6 +434,13 @@ function esc(s) {
 function escText(s) {
   return esc(s).replace(/\n/g, '<br>');
 }
+function linkifyText(s) {
+  return s.split(/(https?:\/\/[^\s]+)/g).map(part =>
+    /^https?:\/\//.test(part)
+      ? `<a href="${esc(part)}" target="_blank" rel="noopener noreferrer">${esc(part)}</a>`
+      : esc(part).replace(/\n/g, '<br>')
+  ).join('');
+}
 function fmt(n) {
   if (n >= 1000000) return (n / 1000000).toFixed(1).replace('.0', '') + 'M';
   if (n >= 1000) return (n / 1000).toFixed(1).replace('.0', '') + 'K';
@@ -546,7 +553,7 @@ function renderPost(p) {
         <div class="post-question-tooltip">${esc(p.question)}</div>
       </div>` : ''}
     </div>
-    <div class="post-text">${escText(p.text)}</div>
+    <div class="post-text">${linkifyText(p.text)}</div>
     ${renderMedia(p)}
     <div class="post-actions" data-id="${p.id}">
           <button class="act comment" data-action="comment" data-id="${p.id}">
