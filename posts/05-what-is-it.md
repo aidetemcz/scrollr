@@ -9,15 +9,15 @@ points: 2
 cat: pravda
 question: "V jaké zemi byla @j0y.s0phie na dovolené? Jestli víš, dej nám vědět v Tiny."
 text: |
-  Bylo to tady s tebou nezapomenutelný. @rosalid ♥♥♥♥
+  Bylo to tady s tebou nezapomenutelný @rosalid ♥♥♥♥
   #love #travel #africa
 media:
   type: image
   src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/images/image-joisophia.jpg"
 comments: []
 s:
-  c: 0
-  l: 0
-  h: 0
-  x: 0
+  c: 2
+  l: 53
+  h: 5
+  x: 11
 ---
