@@ -20,10 +20,10 @@ comments:
   - name: "Vitinhoo💯midia"
     img: "avatars/vitinhoo.jpeg"
     photo: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/comments/how-dumb-is-bro.jpg"
-    text: "not Sigma…"
+    text: ""
   - name: "୨୧ℬ𝓁ℴℴ𝒹.୨୧"
     img: "avatars/blood.jpeg"
-    text: "just chill bro real sigma would never pull that on a girl"
+    text: "bro"
 s:
   c: 3500
   l: 9500000
