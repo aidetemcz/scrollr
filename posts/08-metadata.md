@@ -1,24 +1,21 @@
 ---
 id: 8
-name: placeholder_user
-handle: placeholder_user
+name: DannyyyX
+handle: dannyyyx
 img: "avatars/me.png"
 badge: false
-time: "2026-01-01"
-points: 1
+time: "2026-04-28"
+points: 5
 cat: pravda
-question: "Zde bude otázka pro post 08."
-text: "Zde bude text postu 08. #placeholder"
+question: "Fakt tam @dannyyyx byl nebo ten obrázek ukradl (nebo vygeneroval pomocí AI) a postoval to z domova?"
+text: "Je to tu boží, příště jedu zas  #bali #happylife #reallife #nowornever"
 media:
-  type: mp4
-  src: "https://truth-hunters.cz/videos/dance.mp4"
-comments:
-  - name: "user1"
-    img: "avatars/me.png"
-    text: "Zde bude komentář."
+  type: image
+  src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/images/bali.jpg"
+comments: []
 s:
-  c: 100
-  l: 1000
-  h: 500
-  x: 200
+  c: 0
+  l: 0
+  h: 0
+  x: 0
 ---
