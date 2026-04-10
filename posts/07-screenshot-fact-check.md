@@ -1,24 +1,21 @@
 ---
 id: 7
-name: placeholder_user
-handle: placeholder_user
-img: "avatars/me.png"
+name: clima_fighteX
+handle: clima_fighteX64
+img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/avatars/clima-fightex.png"
 badge: false
-time: "2026-01-01"
-points: 1
+time: "2026-03-10"
+points: 3
 cat: pravda
-question: "Zde bude otázka pro post 07."
-text: "Zde bude text postu 07. #placeholder"
+question: "Je tenhle tweet na x.com fake nebo ne?"
+text: "vk shift rulezz‼️‼️‼️‼️"
 media:
-  type: mp4
-  src: "https://truth-hunters.cz/videos/dance.mp4"
-comments:
-  - name: "user1"
-    img: "avatars/me.png"
-    text: "Zde bude komentář."
+  type: image
+  src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/images/xcom.png"
+comments: []
 s:
-  c: 100
-  l: 1000
-  h: 500
-  x: 200
+  c: 0
+  l: 0
+  h: 0
+  x: 0
 ---
