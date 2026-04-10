@@ -8,7 +8,7 @@ time: "2026-04-28"
 points: 4
 cat: pravda
 question: "Fakt tam @hannyyyx byl nebo ten obrázek ukradla (nebo vygenerovala pomocí AI) a postovala to z domova?"
-text: "Je to tu boží, příště jedu zas #bali #happylife #reallife #nowornever"
+text: "Now or never, právě teď. Právě teď a tady. Už nikdy nechci zpátky z #bali #happylife #reallife #nowornever"
 media:
   type: image
   src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/images/bali.jpg"
