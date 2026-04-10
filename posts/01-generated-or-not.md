@@ -9,7 +9,7 @@ points: 1
 cat: pravda
 question: "Otázka na uvítanou! 🤗 Bylo tohle video vytvořené pomocí generativní AI? Zvol v appce Tiny buď ano nebo ne."
 text: |
-  Risas con Carlos Alberto y Katteyes en Scrollsr*
+  Risas! con Carlos Alberto y Katteyes en Scrollsr*
   Disfruta las divertidas situaciones de Carlos Alberto y Katteyes. ¡No te lo pierdas! #scrollr #carlosalberto #katteyes #viral
   Keywords: divertidas reacciones de Carlos Alberto en TikTok, Katteyes y Carlos Alberto juntas, risas familiares con Katteyes, tendencias de Scrollr* con Carlos Alberto, interacciones divertidas en TikTok
 media:
