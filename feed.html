@@ -599,9 +599,15 @@ function parseFrontmatter(content) {
 
 async function init() {
   const index = await fetch('posts/index.json').then(r => r.json());
-  POSTS = await Promise.all(
-    index.map(f => fetch('posts/' + f).then(r => r.text()).then(parseFrontmatter))
+  const results = await Promise.all(
+    index.map(f =>
+      fetch('posts/' + f).then(r => r.text()).then(parseFrontmatter).catch(err => {
+        console.warn('Skipping post ' + f + ':', err.message);
+        return null;
+      })
+    )
   );
+  POSTS = results.filter(p => p !== null);
   POSTS.forEach(p => {
     state[p.id] = { like: false, heart: false, hate: false, commentOpen: false, userComments: [] };
   });
