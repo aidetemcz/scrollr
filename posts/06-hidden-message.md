@@ -1,5 +1,5 @@
 ---
-id: 12
+id: 6
 name: hanadedkova_
 handle: hanadedkova_
 img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/hanadedkova.jpg"
