@@ -1,0 +1,34 @@
+---
+id: 8
+name: shadowbrain.ai
+handle: ShadowBrain
+img: "avatars/shadow-brain.jpeg"
+badge: false
+time: "2025-05-16"
+points: 2
+cat: pravda
+question: "Tralalero Tralalá! Tung Tung Tung něco… Bombardino Crocodilo + kapučíno. Italian Brainrot trendoval sítě v roce 2025. Málokdo ale ví, že postava Tung Tung Tung Sahur odkazuje na reálnou tradici z konkrétní země. V jaké zemi se tato tradice praktikuje a co při ní lidé dělají? Kvíz tě čeká v naší appce Tiny."
+text: "Tung Tung Tung sells luxury bags #italianbrainrot #aiart #aistory #tungtungtungsahur #tralalerotralala"
+media:
+  type: mp4
+  src: "videos/italian-brainrot.mp4"
+comments:
+  - name: "Ubi"
+    img: "avatars/ubi.jpeg"
+    text: "What's the shark's problem"
+  - name: "matzixx_†"
+    img: "avatars/matzixx_.png"
+    text: "What did bro ask chat gpt"
+  - name: "Baldwin IV"
+    img: "avatars/baldwin-iv.jpeg"
+    photo: "comments/Baldwin-IV.jpeg"
+    text: "Me watching the whole video"
+  - name: "M∅ńč3"
+    img: "avatars/monc3.jpeg"
+    text: "SAHUR COLLECTION😭😭😭😭"
+s:
+  c: 57000
+  l: 1900000
+  h: 1600000
+  x: 1700000
+---

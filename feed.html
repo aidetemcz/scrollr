@@ -397,6 +397,7 @@
       .act { padding: 5px 8px; font-size: 13px; }
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
 </head>
 <body>
 
@@ -439,112 +440,8 @@ function fmt(n) {
   return String(n);
 }
 
-const POSTS = [
-  {
-    id: 7,
-    name: "carlhoos_", handle: "carlhoos_", init: "", img: "https://truth-hunters.cz/avatars/carlhoos.png",
-    badge: false, time: "2026-03-18", points: 1,
-    question: "Otázka na uvítanou! 🤗 Bylo tohle video vytvořené pomocí generativní AI? Zvol v appce Tiny buď ano nebo ne.",
-    text: "Risas con Carlos Alberto y Katteyes en Scrollsr*\nDisfruta las divertidas situaciones de Carlos Alberto y Katteyes. ¡No te lo pierdas! #scrollr #carlosalberto #katteyes #viral\nKeywords: divertidas reacciones de Carlos Alberto en TikTok, Katteyes y Carlos Alberto juntas, risas familiares con Katteyes, tendencias de Scrollr* con Carlos Alberto, interacciones divertidas en TikTok",
-    media: { type: "mp4", src: "https://truth-hunters.cz/videos/dance.mp4" },
-    comments: [
-      { name: "NANDO🧃.", img: "avatars/nando.jpg", photo: "https://truth-hunters.cz/comments/01comment.png", text: "Que le viste a Carol?" },
-      { name: "Gael bloqueado 🥹💞✨", img: "avatars/gael-bloqueado.jpg", photo: "https://truth-hunters.cz/comments/01comment_2.png", text: "like por esta pareja ❤️🥰💅" },
-      { name: "rosa_14", img: "avatars/rosa-14.jpg", text: "yo viendo cómo estos 3 se cargan una cinturita de avista 👁️🫦👁️👀" }
-    ],
-    s: { c: 8700, l: 2500000, h: 1900000, x: 2600000 },
-    cat: "pravda"
-  },
-  {
-    id: 8,
-    name: "shadowbrain.ai", handle: "ShadowBrain", init: "", img: "avatars/shadow-brain.jpeg",
-    badge: false, time: "2025-05-16", points: 2,
-    question: "Tralalero Tralalá! Tung Tung Tung něco… Bombardino Crocodilo + kapučíno. Italian Brainrot trendoval sítě v roce 2025. Málokdo ale ví, že postava Tung Tung Tung Sahur odkazuje na reálnou tradici z konkrétní země. V jaké zemi se tato tradice praktikuje a co při ní lidé dělají? Kvíz tě čeká v naší appce Tiny.",
-    text: "Tung Tung Tung sells luxury bags #italianbrainrot #aiart #aistory #tungtungtungsahur #tralalerotralala",
-    media: { type: "mp4", src: "videos/italian-brainrot.mp4" },
-    comments: [
-      { name: "Ubi", img: "avatars/ubi.jpeg", text: "What's the shark's problem" },
-      { name: "matzixx_†", img: "avatars/matzixx_.png", text: "What did bro ask chat gpt" },
-      { name: "Baldwin IV", img: "avatars/baldwin-iv.jpeg", photo: "comments/Baldwin-IV.jpeg", text: "Me watching the whole video" },
-      { name: "M∅ńč3", img: "avatars/monc3.jpeg", text: "SAHUR COLLECTION😭😭😭😭" }
-    ],
-    s: { c: 57000, l: 1900000, h: 1600000, x: 1700000 },
-    cat: "pravda"
-  },
-  {
-    id: 9,
-    name: "argenby", handle: "argenby", init: "", img: "avatars/argenby.jpeg",
-    badge: false, time: "2022-11-22", points: 2,
-    question: "Termín Sigma umí vysvětlit asi každý (6—7 to challenguje trochu víc). Jenže není sigma jako sigma. Jedna studie ukázala, že na TikToku je většina sigma postů hodně spojená s tím, že kluci jsou víc než holky. A my chceme vědět, jestli to tak vnímáš i ty. V Tiny tě čeká pár otázek.",
-    text: "#sigma #sigma #boy",
-    media: { type: "mp4", src: "videos/sigma.mp4" },
-    comments: [
-      { name: "tln.337", img: "avatars/tln337.jpeg", text: "good😏sigma grindset 💪🐺" },
-      { name: "𝓐𝓜𝓩𝓐𝓡 ~", img: "avatars/amzar.jpeg", text: "I'm so miss this sigma 😭 and who here from 2026" },
-      { name: "Vitinhoo💯midia", img: "avatars/vitinhoo.jpeg", text: "not Sigma…" },
-      { name: "୨୧ℬ𝓁ℴℴ𝒹.୨୧", img: "avatars/blood.jpeg", text: "just chill bro real sigma would never pull that on a girl" }
-    ],
-    s: { c: 3500, l: 9500000, h: 557000, x: 62900 },
-    cat: "pravda"
-  },
-  {
-    id: 10,
-    name: "memes.asw", handle: "memesasw", init: "", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/memesasw.jpg",
-    badge: false, time: "2026-01-05", points: 1,
-    question: "Odhaduje se, že v roce 2025 proběhlo internetem 8 milionů deep fakes. To už je celkem číslo, co? 🤯Jak je na tom tohle mimino? Je tohle další úspěšný AI slop? Easy question. 😎 Ale navíc nám musíš v Tiny vysvětlit, co to je deep fake.",
-    text: "#MemesAsw",
-    media: { type: "mp4", src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/videos/ai-baby.mp4", wide: true, thumb: "thumbnails/ai-baby-thumb.jpg" },
-    comments: [
-      { name: "rabuansyah_ramadani", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/rabuansyah-ramadani.jpg", photo: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/comments/ai-baby-comment.gif", text: "" },
-      { name: "iriblgboss", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/iriblgboss.jpg", photo: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/comments/ai-baby-comment-4.gif", text: "" },
-      { name: "sanprmt._", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/sanprmt.jpg", photo: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/comments/ai-baby-comment-3.gif", text: "" },
-      { name: "ddyysttt", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/ddyysttt.jpg", photo: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/comments/ai-baby-comment-2.gif", text: "" },
-      { name: "bimsseno825", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/bimsseno825.jpg", photo: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/comments/ai-baby-coment3.gif", text: "" }
-    ],
-    s: { c: 176000, l: 7400, h: 1500, x: 2700 },
-    cat: "pravda"
-  },
-  {
-    id: 11,
-    name: "lilyjadewool", handle: "lilyjadewooldrage", init: "", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/lilyjadewool.jpeg",
-    badge: false, time: "2025-01-13", points: 3,
-    question: "Influencerka ve videu propaguje tzv. Carnivore Diet (jí tedy jen živočišnou stravu). Navíc staví na vzhledu těla, který není pro většinu lidí dosažitelný, životní spokojenost. 🙄 Nikdy nebylo vědecky prokázáno, že je Carnivor dieta vhodná. Naopak — zdravotnické organizaci ji nedoporučují, hlavně mladým lidem. Ale na TikToku je to obrovský trend. Zjisti si o Carnivore Diet nějaké informace. V Tiny tě čekají otázky.",
-    text: "Another highly requested video. #carnivore #diet #WhatIEatInADay #dreambody #thatgirl \nHere's what I eat in a random day. REAL FOOD, REAL PROTEIN. \n#carniverediet #wiead #naturalbeauty #glowingskin #ancestralhealing #nutrition #naturalhealing #healthy #holistichealth #modelling #ab #workoutmotivation #naturally #model #modelsdiet #modeldiet",
-    media: { type: "mp4", src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/videos/thinspiration.mp4" },
-    comments: [
-      { name: "𝒔𝒊𝒆𝒏𝒏𝒂⁷", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/sienna.jpeg", text: "u are so helpful me and my mum have just finished reading your e book 💞" },
-      { name: "lilyjadewool", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/lilyjadewool.jpeg", text: "My FREE ebook on the guide to starting the traditional human diet is in my Instagram bio. Get it now as the first 100 are free🥰" },
-      { name: "gabriella! 😇💗", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/gabriella.jpeg", text: "I need this, ur so inspiring 😻" },
-      { name: "LYSSI⭐️", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/LYSSI.jpeg", text: "Need to look like this 😍" }
-    ],
-    s: { c: 31, l: 2700, h: 512, x: 113 },
-    cat: "pravda"
-  },
-  {
-    id: 12,
-    name: "hanadedkova_", handle: "hanadedkova_", init: "", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/hanadedkova.jpg",
-    badge: false, time: "2022-07-26", points: 2,
-    question: "Česká influencerka Hana Dědková na fotkách pózuje na chorvatské pláži. Zároveň ale ukazuje viditelně elektronickou cigaretu značky Hyla a balzám Bio Bronz. Asi víš, že tomuhle se říká product placement (Influencerka navíc v textu neupozornila, že se jedná o reklamu a to je trestné). Nasdílej do Tiny odkaz na další příklad jiné skryté reklamy. Může být všeobecně známá. Nebo klidně něco, na co jsi narazil/a na sítích.",
-    text: "If life is a journey the beach is my destination - happiness comes in waves💗🌊🏖️☀️\n#beachsunset #beachphotography #oceanview #beachescape #sandybeach #beachlover #beachday #beachesofinstagram #beachlife #beachside",
-    media: { type: "gallery", srcs: [
-      "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/images/productplacement1.png",
-      "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/images/productplacement2.png"
-    ]},
-    comments: [
-      { name: "brianjavier89", img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/review-new-design-513Rq/avatars/LYSSI.jpeg", text: "🔥🔥\n. .  🌊🌊 . . 🌊🌊\n🌊 . . . . .🌊 . . . . 🌊\n. .  🌊 . . . . . . . 🌊\n. . . .   🌊 . . 🌊\n. . . . . . .  🌊" }
-    ],
-    s: { c: 57, l: 10200, h: 8, x: 13 },
-    cat: "reklama"
-  }
-];
-
-const state = {};
-POSTS.forEach(p => {
-  state[p.id] = {
-    like: false, heart: false, hate: false,
-    commentOpen: false, userComments: []
-  };
-});
+let POSTS = [];
+let state = {};
 
 
 // ── Search ──
@@ -690,8 +587,28 @@ function renderPost(p) {
 }
 
 const feedEl = document.getElementById('feed');
-feedEl.innerHTML = POSTS.map(renderPost).join('');
-feedEl.appendChild(noResults);
+
+// ── Load posts from markdown files ──
+function parseFrontmatter(content) {
+  const match = content.match(/^---\n([\s\S]*?)\n---/);
+  if (!match) throw new Error('Missing frontmatter in post file');
+  const data = jsyaml.load(match[1]);
+  if (typeof data.text === 'string') data.text = data.text.trimEnd();
+  return data;
+}
+
+async function init() {
+  const index = await fetch('posts/index.json').then(r => r.json());
+  POSTS = await Promise.all(
+    index.map(f => fetch('posts/' + f).then(r => r.text()).then(parseFrontmatter))
+  );
+  POSTS.forEach(p => {
+    state[p.id] = { like: false, heart: false, hate: false, commentOpen: false, userComments: [] };
+  });
+  feedEl.innerHTML = POSTS.map(renderPost).join('');
+  feedEl.appendChild(noResults);
+}
+init();
 
 // ── Question toggle ──
 function toggleQuestion(btn) {
