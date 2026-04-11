@@ -25,7 +25,7 @@ comments:
     text: "Nature's way stronger than people."
 s:
   c: 2
-  l: 4200
-  h: 1800
-  x: 310
+  l: 2
+  h: 0
+  x: 18
 ---
