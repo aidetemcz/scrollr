@@ -12,7 +12,7 @@ text: |
   Vyhraj nový iPhone 17 ve tvé oblíbené barvě! Přejdi na stránku slosování a vytoč si svou výhru! https://truth-hunters.cz/sites/iwant.html
 media:
   type: image
-  src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/images/iphone.webp"
+  src: "https://github.com/aidetemcz/scrollr/blob/claude/sunday-work-session-PE0Pw/images/vyhraj-iphone.png"
 comments:
   - name: "SUCCESSIFY"
     img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/avatars/successify.jpeg"
