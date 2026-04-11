@@ -7,9 +7,17 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --pink: #E8197A;
+      --pink-light: #FF4FA0;
+      --pink-bg: #FFF0F6;
+      --pink-border: #FFB3D5;
+      --dark: #1a1a1a;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-      background: #f5f5f7;
+      background: #fff;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -19,177 +27,186 @@
     /* ── Header ── */
     header {
       width: 100%;
-      background: #1d1d1f;
-      padding: 14px 28px;
+      background: #fff;
+      border-bottom: 1px solid #f0e0e8;
+      padding: 12px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
     }
 
-    .brand {
-      font-size: 24px;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 38px;
+      width: 38px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .logo-text {
+      font-size: 22px;
       font-weight: 800;
-      color: #fff;
+      color: var(--dark);
       letter-spacing: -0.04em;
     }
 
-    .brand em { color: #f5c518; font-style: normal; }
+    .logo-text em { color: var(--pink); font-style: normal; }
 
     .header-links {
       display: flex;
-      gap: 20px;
+      gap: 22px;
     }
 
     .header-links a {
-      color: #aaa;
+      color: #999;
       text-decoration: none;
       font-size: 14px;
+      font-weight: 500;
     }
 
-    .header-links a:hover { color: #fff; }
+    .header-links a:hover { color: var(--pink); }
 
     /* ── Hero ── */
     .hero {
       width: 100%;
-      max-width: 900px;
+      max-width: 860px;
       display: flex;
       align-items: center;
-      gap: 40px;
-      padding: 52px 32px 40px;
+      gap: 48px;
+      padding: 56px 32px 44px;
     }
 
     .hero-text { flex: 1; }
 
     .hero-badge {
       display: inline-block;
-      background: #f5c518;
-      color: #1d1d1f;
+      background: var(--pink-bg);
+      color: var(--pink);
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      padding: 4px 12px;
+      padding: 5px 14px;
       border-radius: 20px;
-      margin-bottom: 14px;
+      border: 1px solid var(--pink-border);
+      margin-bottom: 16px;
     }
 
     .hero-text h1 {
-      font-size: clamp(28px, 4vw, 44px);
+      font-size: clamp(30px, 4vw, 48px);
       font-weight: 800;
-      color: #1d1d1f;
+      color: var(--dark);
       letter-spacing: -0.04em;
-      line-height: 1.1;
-      margin-bottom: 14px;
+      line-height: 1.08;
+      margin-bottom: 16px;
     }
 
     .hero-text h1 em {
       font-style: normal;
-      color: #f5c518;
-      -webkit-text-stroke: 1px #1d1d1f;
+      color: var(--pink);
     }
 
     .hero-text p {
       font-size: 16px;
-      color: #555;
-      line-height: 1.55;
-      max-width: 400px;
+      color: #666;
+      line-height: 1.6;
+      max-width: 380px;
     }
 
     .hero-img {
       flex: 0 0 auto;
-      width: 260px;
+      width: 240px;
     }
 
     .hero-img img {
       width: 100%;
-      border-radius: 16px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+      border-radius: 20px;
+      box-shadow: 0 16px 48px rgba(232,25,122,0.18);
     }
 
     /* ── Wheel section ── */
     .wheel-section {
       width: 100%;
-      background: #1d1d1f;
+      background: linear-gradient(160deg, var(--pink) 0%, #C4006A 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 52px 24px 56px;
-      gap: 28px;
+      padding: 56px 24px 60px;
+      gap: 32px;
     }
 
     .wheel-section h2 {
       color: #fff;
-      font-size: 26px;
-      font-weight: 700;
+      font-size: 28px;
+      font-weight: 800;
       letter-spacing: -0.03em;
+      text-align: center;
     }
 
-    .wheel-section h2 span { color: #f5c518; }
+    .wheel-section h2 span {
+      color: #FFE0F0;
+    }
 
     .wheel-wrapper {
       position: relative;
-      width: 320px;
-      height: 320px;
+      width: 420px;
+      height: 420px;
     }
 
-    /* Pointer arrow */
+    /* Pointer */
     .wheel-wrapper::before {
       content: '';
       position: absolute;
-      top: -18px;
+      top: -20px;
       left: 50%;
       transform: translateX(-50%);
       width: 0;
       height: 0;
-      border-left: 14px solid transparent;
-      border-right: 14px solid transparent;
-      border-top: 28px solid #f5c518;
+      border-left: 16px solid transparent;
+      border-right: 16px solid transparent;
+      border-top: 30px solid #fff;
       z-index: 10;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
     }
 
     #wheelCanvas {
       border-radius: 50%;
-      box-shadow: 0 0 0 6px #2d2d2f, 0 8px 40px rgba(0,0,0,0.5);
+      box-shadow: 0 0 0 8px rgba(255,255,255,0.2), 0 12px 48px rgba(0,0,0,0.3);
     }
 
     .spin-btn {
-      padding: 18px 60px;
+      padding: 18px 68px;
       font-size: 20px;
       font-weight: 800;
-      background: #f5c518;
-      color: #1d1d1f;
+      background: #fff;
+      color: var(--pink);
       border: none;
       border-radius: 50px;
       cursor: pointer;
       letter-spacing: -0.02em;
-      box-shadow: 0 4px 20px rgba(245,197,24,0.4);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
       transition: transform 0.15s, box-shadow 0.15s;
     }
 
-    .spin-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(245,197,24,0.55); }
+    .spin-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
     .spin-btn:active { transform: translateY(0); }
-    .spin-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+    .spin-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; box-shadow: none; }
 
-    .prizes-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .prize-chip {
-      background: #2d2d2f;
-      color: #aaa;
-      border-radius: 20px;
-      padding: 6px 14px;
-      font-size: 13px;
-    }
-
-    .prize-chip.win {
-      background: #f5c518;
-      color: #1d1d1f;
-      font-weight: 700;
+    /* ── Confetti canvas ── */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 200;
     }
 
     /* ── Overlay + modal ── */
@@ -197,7 +214,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.65);
       z-index: 100;
       align-items: center;
       justify-content: center;
@@ -224,20 +241,20 @@
       to   { transform: scale(1);   opacity: 1; }
     }
 
-    .modal-icon { font-size: 52px; margin-bottom: 10px; line-height: 1; }
+    .modal-icon { font-size: 54px; margin-bottom: 10px; line-height: 1; }
 
     .modal h2 {
-      font-size: 26px;
+      font-size: 27px;
       font-weight: 800;
       letter-spacing: -0.04em;
+      color: var(--dark);
       margin-bottom: 6px;
-      color: #1d1d1f;
     }
 
     .prize-pill {
       display: inline-block;
-      background: #1d1d1f;
-      color: #f5c518;
+      background: var(--pink);
+      color: #fff;
       font-size: 17px;
       font-weight: 700;
       border-radius: 10px;
@@ -247,14 +264,14 @@
 
     .modal .sub {
       font-size: 14px;
-      color: #777;
+      color: #888;
       margin-bottom: 22px;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     .divider {
       height: 1px;
-      background: #eee;
+      background: #f0e0e8;
       margin: 0 0 20px;
     }
 
@@ -263,10 +280,10 @@
 
     .form-group label {
       display: block;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
-      color: #555;
-      letter-spacing: 0.04em;
+      color: #777;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       margin-bottom: 5px;
     }
@@ -274,64 +291,121 @@
     .form-group input {
       width: 100%;
       padding: 12px 14px;
-      border: 1.5px solid #ddd;
+      border: 1.5px solid #e8d0dc;
       border-radius: 10px;
       font-size: 15px;
       font-family: inherit;
       outline: none;
-      transition: border-color 0.15s;
-      color: #1d1d1f;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      color: var(--dark);
     }
 
-    .form-group input:focus { border-color: #f5c518; box-shadow: 0 0 0 3px rgba(245,197,24,0.15); }
+    .form-group input:focus {
+      border-color: var(--pink);
+      box-shadow: 0 0 0 3px rgba(232,25,122,0.12);
+    }
+
+    .form-group input.error {
+      border-color: #e53935;
+      box-shadow: 0 0 0 3px rgba(229,57,53,0.1);
+    }
+
+    .field-error {
+      font-size: 12px;
+      color: #e53935;
+      margin-top: 4px;
+      text-align: left;
+      display: none;
+    }
 
     .submit-btn {
       width: 100%;
       padding: 15px;
       font-size: 16px;
       font-weight: 800;
-      background: #1d1d1f;
+      background: var(--pink);
       color: #fff;
       border: none;
       border-radius: 12px;
       cursor: pointer;
       margin-top: 10px;
       letter-spacing: -0.02em;
-      transition: background 0.15s;
+      transition: background 0.15s, transform 0.1s;
     }
 
-    .submit-btn:hover { background: #333; }
+    .submit-btn:hover { background: var(--pink-light); transform: translateY(-1px); }
 
-    /* ── Confetti canvas ── */
-    #confetti-canvas {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 200;
+    /* ── Password reveal ── */
+    .password-reveal {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .password-reveal.active { display: flex; }
+
+    .password-reveal .pw-icon { font-size: 52px; }
+
+    .password-reveal h2 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+    }
+
+    .password-reveal .thankyou-text {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .password-reveal .pw-label {
+      font-size: 12px;
+      color: #aaa;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .password-reveal .pw-box {
+      background: var(--pink);
+      color: #fff;
+      border-radius: 12px;
+      padding: 14px 32px;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
     }
 
     /* ── Footer ── */
     footer {
       width: 100%;
-      padding: 28px 24px;
+      padding: 24px;
       font-size: 12px;
-      color: #aaa;
+      color: #bbb;
       text-align: center;
-      border-top: 1px solid #e8e8e8;
+      border-top: 1px solid #f0e0e8;
       margin-top: auto;
     }
 
     /* ── Responsive ── */
     @media (max-width: 640px) {
       .hero { flex-direction: column-reverse; padding: 32px 20px 28px; gap: 24px; }
-      .hero-img { width: 200px; }
+      .hero-img { width: 180px; }
+      .wheel-wrapper { width: 300px; height: 300px; }
     }
   </style>
 </head>
 <body>
 
+<!-- Header -->
 <header>
-  <div class="brand">i<em>Want</em></div>
+  <a class="logo" href="#">
+    <img src="https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/avatars/iwant.jpg" alt="iWant">
+    <span class="logo-text">i<em>Want</em></span>
+  </a>
   <nav class="header-links">
     <a href="#">Produkty</a>
     <a href="#">Akce</a>
@@ -342,12 +416,12 @@
 <!-- Hero -->
 <div class="hero">
   <div class="hero-text">
-    <div class="hero-badge">Limitovaná akce</div>
+    <div class="hero-badge">✨ Limitovaná akce</div>
     <h1>Vyhraj<br><em>iPhone 17</em><br>zdarma!</h1>
-    <p>Každý zákazník iWant má právo na jedno zatočení kolem štěstí. Vytoč si svou výhru ještě dnes — zásoby jsou omezené!</p>
+    <p>Točením kola štěstí máš šanci vyhrát iPhone 17 ve své oblíbené barvě! Každý točí jen jednou!</p>
   </div>
   <div class="hero-img">
-    <img src="https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/images/vyhraj-iphone.png" alt="Vyhraj iPhone 17">
+    <img src="https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/images/vyhraj-iphone.png" alt="iPhone 17">
   </div>
 </div>
 
@@ -355,15 +429,9 @@
 <div class="wheel-section">
   <h2>Zatoč a <span>vyhraj!</span></h2>
   <div class="wheel-wrapper">
-    <canvas id="wheelCanvas" width="320" height="320"></canvas>
+    <canvas id="wheelCanvas" width="420" height="420"></canvas>
   </div>
   <button class="spin-btn" id="spinBtn">Točit kolem!</button>
-  <div class="prizes-row">
-    <span class="prize-chip win">🏆 iPhone 17</span>
-    <span class="prize-chip">Kryt na iPhone 17</span>
-    <span class="prize-chip">Poukaz na vyčištění</span>
-    <span class="prize-chip">Bez výhry</span>
-  </div>
 </div>
 
 <canvas id="confetti-canvas"></canvas>
@@ -371,30 +439,53 @@
 <!-- Modal -->
 <div class="overlay" id="overlay">
   <div class="modal">
-    <div class="modal-icon">🎉</div>
-    <h2>Gratulujeme!</h2>
-    <div class="prize-pill">📱 iPhone 17</div>
-    <p class="sub">Skvělá zpráva! Abychom ti výhru mohli zaslat, potřebujeme tvé kontaktní údaje.</p>
-    <div class="divider"></div>
-    <form id="dataForm">
-      <div class="form-group">
-        <label>Jméno a příjmení</label>
-        <input type="text" name="name" placeholder="Jana Nováková" required>
-      </div>
-      <div class="form-group">
-        <label>Telefonní číslo</label>
-        <input type="tel" name="phone" placeholder="+420 777 123 456" required>
-      </div>
-      <div class="form-group">
-        <label>Bydliště</label>
-        <input type="text" name="address" placeholder="Dlouhá 12, Praha 1, 110 00" required>
-      </div>
-      <div class="form-group">
-        <label>Datum narození</label>
-        <input type="date" name="dob" required>
-      </div>
-      <button type="submit" class="submit-btn">Odeslat</button>
-    </form>
+
+    <!-- Win form -->
+    <div id="winView">
+      <div class="modal-icon">🎉</div>
+      <h2>Gratulujeme!</h2>
+      <div class="prize-pill">📱 iPhone 17</div>
+      <p class="sub">Abychom ti výhru mohli zaslat, potřebujeme tvé kontaktní údaje.</p>
+      <div class="divider"></div>
+      <form id="dataForm" novalidate>
+        <div class="form-group">
+          <label>Jméno a příjmení</label>
+          <input type="text" id="f-name" placeholder="Jana Nováková">
+          <div class="field-error" id="err-name">Zadej jméno a příjmení (dvě slova).</div>
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="text" id="f-email" placeholder="jana@example.com">
+          <div class="field-error" id="err-email">Zadej platnou e-mailovou adresu.</div>
+        </div>
+        <div class="form-group">
+          <label>Telefonní číslo</label>
+          <input type="text" id="f-phone" placeholder="777 123 456">
+          <div class="field-error" id="err-phone">Zadej 9místné telefonní číslo.</div>
+        </div>
+        <div class="form-group">
+          <label>Bydliště</label>
+          <input type="text" id="f-address" placeholder="Dlouhá 12, Praha 1, 110 00">
+          <div class="field-error" id="err-address">Toto pole je povinné.</div>
+        </div>
+        <div class="form-group">
+          <label>Datum narození</label>
+          <input type="date" id="f-dob">
+          <div class="field-error" id="err-dob">Zadej datum narození.</div>
+        </div>
+        <button type="submit" class="submit-btn">Odeslat</button>
+      </form>
+    </div>
+
+    <!-- Thank-you + password -->
+    <div class="password-reveal" id="passwordView">
+      <div class="pw-icon">🎁</div>
+      <h2>Děkujeme za tvé údaje!</h2>
+      <p class="thankyou-text">Výhru ti zašleme do 14 dní.</p>
+      <div class="pw-label">Tvoje heslo pro Tiny:</div>
+      <div class="pw-box">KOLO2026</div>
+    </div>
+
   </div>
 </div>
 
@@ -403,27 +494,28 @@
 </footer>
 
 <script>
-// ── Wheel ──
-const canvas  = document.getElementById('wheelCanvas');
-const ctx     = canvas.getContext('2d');
-const SIZE    = 320;
-const CX = SIZE / 2, CY = SIZE / 2, R = SIZE / 2 - 6;
+// ── Wheel setup ──
+const canvas = document.getElementById('wheelCanvas');
+const ctx    = canvas.getContext('2d');
+const SIZE   = 420;
+const CX = SIZE / 2, CY = SIZE / 2, R = SIZE / 2 - 8;
 
 const SEGMENTS = [
-  { label: 'iPhone 17',           color: '#f5c518', text: '#1d1d1f', winner: true  },
-  { label: 'Kryt na iPhone 17',   color: '#e8e8ed', text: '#444',    winner: false },
-  { label: 'iPhone 17',           color: '#f5c518', text: '#1d1d1f', winner: true  },
-  { label: 'Bez výhry',           color: '#48484a', text: '#fff',    winner: false },
-  { label: 'iPhone 17',           color: '#f5c518', text: '#1d1d1f', winner: true  },
-  { label: 'Poukaz na vyčištění', color: '#e8e8ed', text: '#444',    winner: false },
-  { label: 'iPhone 17',           color: '#f5c518', text: '#1d1d1f', winner: true  },
-  { label: 'Bez výhry',           color: '#48484a', text: '#fff',    winner: false },
+  { label: 'iPhone 17',           color: '#E8197A', text: '#fff',    winner: true  },
+  { label: 'Kryt na iPhone 17',   color: '#FFE0EF', text: '#C4006A', winner: false },
+  { label: 'iPhone 17',           color: '#E8197A', text: '#fff',    winner: true  },
+  { label: 'Bez výhry',           color: '#f0f0f0', text: '#888',    winner: false },
+  { label: 'iPhone 17',           color: '#E8197A', text: '#fff',    winner: true  },
+  { label: 'Poukaz na vyčištění', color: '#FFE0EF', text: '#C4006A', winner: false },
+  { label: 'iPhone 17',           color: '#E8197A', text: '#fff',    winner: true  },
+  { label: 'Bez výhry',           color: '#f0f0f0', text: '#888',    winner: false },
 ];
 
 const NUM = SEGMENTS.length;
 const ARC = (2 * Math.PI) / NUM;
 
-let currentRotation = -Math.PI / 2 - ARC / 2 + 0.01; // start with iPhone 17 at top (off by tiny bit so it looks natural)
+// Start with the iPhone 17 segment just slightly before top so it looks natural
+let currentRotation = -Math.PI / 2 - ARC / 2 + 0.02;
 
 function drawWheel(rot) {
   ctx.clearRect(0, 0, SIZE, SIZE);
@@ -439,7 +531,7 @@ function drawWheel(rot) {
     ctx.fillStyle = seg.color;
     ctx.fill();
     ctx.strokeStyle = '#fff';
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 2.5;
     ctx.stroke();
 
     ctx.save();
@@ -447,34 +539,38 @@ function drawWheel(rot) {
     ctx.rotate(start + ARC / 2);
     ctx.textAlign = 'right';
     ctx.fillStyle = seg.text;
-    const fontSize = seg.label.length > 12 ? 10 : seg.label.length > 8 ? 11 : 13;
-    ctx.font = `700 ${fontSize}px -apple-system, sans-serif`;
-    ctx.fillText(seg.label, R - 8, 4);
+    const len = seg.label.length;
+    const fs  = len > 14 ? 9 : len > 9 ? 11 : 13;
+    ctx.font = `700 ${fs}px -apple-system, sans-serif`;
+    ctx.fillText(seg.label, R - 10, 4);
     ctx.restore();
   });
 
   // Centre hub
   ctx.beginPath();
-  ctx.arc(CX, CY, 20, 0, Math.PI * 2);
-  ctx.fillStyle = '#1d1d1f';
+  ctx.arc(CX, CY, 22, 0, Math.PI * 2);
+  ctx.fillStyle = '#fff';
   ctx.fill();
-  ctx.strokeStyle = '#f5c518';
+  ctx.strokeStyle = '#E8197A';
   ctx.lineWidth = 3;
   ctx.stroke();
 }
 
 drawWheel(currentRotation);
 
-// ── Spin — always lands on segment 0 (iPhone 17) ──
+// ── Spin — always lands on a winning (iPhone 17) segment ──
 document.getElementById('spinBtn').addEventListener('click', function () {
   this.disabled = true;
 
-  // Target: segment 0 centre aligned with top pointer (at -π/2)
-  // Segment 0 centre angle = rotation + 0*ARC + ARC/2
-  // We want: rotation + ARC/2 ≡ -π/2  →  rotation ≡ -π/2 - ARC/2
-  const targetBase = -Math.PI / 2 - ARC / 2;
-  const fullSpins  = 6 + Math.floor(Math.random() * 4);
-  const totalDelta = fullSpins * 2 * Math.PI + (targetBase - (currentRotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+  // Segment 0 is iPhone 17. Its centre angle = rot + ARC/2
+  // We want that to equal -π/2 (top, where pointer is)
+  // → rot ≡ -π/2 - ARC/2  (mod 2π)
+  const targetBase   = -Math.PI / 2 - ARC / 2;
+  const curNorm      = ((currentRotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+  const targetNorm   = ((targetBase     % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+  const shortDelta   = ((targetNorm - curNorm) + 2 * Math.PI) % (2 * Math.PI);
+  const fullSpins    = 6 + Math.floor(Math.random() * 4);
+  const totalDelta   = fullSpins * 2 * Math.PI + shortDelta;
 
   const startRot  = currentRotation;
   const duration  = 4200 + Math.random() * 600;
@@ -482,7 +578,7 @@ document.getElementById('spinBtn').addEventListener('click', function () {
 
   function easeOut(t) { return 1 - Math.pow(1 - t, 4); }
 
-  function animate(now) {
+  (function animate(now) {
     const t = Math.min((now - startTime) / duration, 1);
     currentRotation = startRot + totalDelta * easeOut(t);
     drawWheel(currentRotation);
@@ -491,23 +587,70 @@ document.getElementById('spinBtn').addEventListener('click', function () {
       currentRotation = currentRotation % (2 * Math.PI);
       setTimeout(showModal, 500);
     }
-  }
-
-  requestAnimationFrame(animate);
+  })(performance.now());
 });
 
-// ── Modal ──
 function showModal() {
   document.getElementById('overlay').classList.add('active');
   launchConfetti();
 }
 
-// ── Form ──
+// ── Validation ──
+function validateName(v) {
+  return v.trim().split(/\s+/).length >= 2 && v.trim().length >= 3;
+}
+
+function validateEmail(v) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+}
+
+function validatePhone(v) {
+  return /^\d{9}$/.test(v.trim().replace(/[\s\-]/g, ''));
+}
+
+function showErr(id, msg, show) {
+  const el = document.getElementById(id);
+  el.textContent = msg || el.textContent;
+  el.style.display = show ? 'block' : 'none';
+}
+
+function markInput(id, hasErr) {
+  const el = document.getElementById(id);
+  if (hasErr) el.classList.add('error');
+  else el.classList.remove('error');
+}
+
 document.getElementById('dataForm').addEventListener('submit', function (e) {
   e.preventDefault();
-  // The form doesn't send data anywhere — this is a demo scam page.
-  // In a real attack, data would be sent to a remote server.
-  alert('Vaše výhra bude doručena do 14 pracovních dnů. Děkujeme!');
+
+  const name    = document.getElementById('f-name').value;
+  const email   = document.getElementById('f-email').value;
+  const phone   = document.getElementById('f-phone').value;
+  const address = document.getElementById('f-address').value.trim();
+  const dob     = document.getElementById('f-dob').value;
+
+  const nameOk    = validateName(name);
+  const emailOk   = validateEmail(email);
+  const phoneOk   = validatePhone(phone);
+  const addressOk = address.length > 2;
+  const dobOk     = dob.length > 0;
+
+  markInput('f-name',    !nameOk);
+  markInput('f-email',   !emailOk);
+  markInput('f-phone',   !phoneOk);
+  markInput('f-address', !addressOk);
+  markInput('f-dob',     !dobOk);
+
+  showErr('err-name',    null, !nameOk);
+  showErr('err-email',   null, !emailOk);
+  showErr('err-phone',   null, !phoneOk);
+  showErr('err-address', null, !addressOk);
+  showErr('err-dob',     null, !dobOk);
+
+  if (nameOk && emailOk && phoneOk && addressOk && dobOk) {
+    document.getElementById('winView').style.display = 'none';
+    document.getElementById('passwordView').classList.add('active');
+  }
 });
 
 // ── Confetti ──
@@ -517,41 +660,36 @@ function launchConfetti() {
   c.width  = window.innerWidth;
   c.height = window.innerHeight;
 
-  const COLORS = ['#f5c518','#ff6b6b','#4ecdc4','#45b7d1','#96ceb4','#fff','#ff9ff3'];
-  const pieces = Array.from({ length: 150 }, () => ({
+  const COLORS = ['#E8197A','#FF4FA0','#FFB3D5','#fff','#FF69B4','#C4006A','#FFE0EF'];
+  const pieces = Array.from({ length: 160 }, () => ({
     x:   Math.random() * c.width,
-    y:   -20 - Math.random() * 300,
-    w:   7  + Math.random() * 9,
-    h:   4  + Math.random() * 6,
+    y:   -20 - Math.random() * 320,
+    w:   7 + Math.random() * 9,
+    h:   4 + Math.random() * 6,
     col: COLORS[Math.floor(Math.random() * COLORS.length)],
     rot: Math.random() * Math.PI * 2,
     vx:  (Math.random() - 0.5) * 4,
     vy:  2.5 + Math.random() * 4,
     vr:  (Math.random() - 0.5) * 0.25,
-    va:  0,
   }));
 
   let frame = 0;
-  function draw() {
+  (function draw() {
     cx.clearRect(0, 0, c.width, c.height);
     pieces.forEach(p => {
       cx.save();
-      cx.globalAlpha = Math.max(0, 1 - frame / 220);
+      cx.globalAlpha = Math.max(0, 1 - frame / 200);
       cx.translate(p.x, p.y);
       cx.rotate(p.rot);
       cx.fillStyle = p.col;
       cx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
       cx.restore();
-      p.x   += p.vx;
-      p.y   += p.vy;
-      p.rot += p.vr;
-      p.vy  += 0.06;
+      p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.vy += 0.06;
     });
     frame++;
     if (frame < 240) requestAnimationFrame(draw);
     else cx.clearRect(0, 0, c.width, c.height);
-  }
-  draw();
+  })();
 }
 </script>
 </body>
