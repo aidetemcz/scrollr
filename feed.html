@@ -572,7 +572,7 @@ function renderPost(p) {
         <button class="post-question-btn" aria-label="Otázka k zamyšlení" onclick="toggleQuestion(this); event.stopPropagation();">
           <img src="Question.svg" alt="?">
         </button>
-        <div class="post-question-tooltip">${esc(p.question)}</div>
+        <div class="post-question-tooltip">${linkifyText(p.question)}</div>
       </div>` : ''}
     </div>
     <div class="post-text">${linkifyText(p.text)}</div>
