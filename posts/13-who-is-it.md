@@ -18,7 +18,7 @@ comments:
     text: "no idea…"
 s:
   c: 1
-  l: 890
-  h: 410
-  x: 55
+  l: 5
+  h: 0
+  x: 1
 ---
