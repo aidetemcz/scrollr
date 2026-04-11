@@ -1,24 +1,24 @@
 ---
 id: 10
-name: placeholder_user
-handle: placeholder_user
-img: "avatars/me.png"
+name: vaclav_n
+handle: vaclav-n
+img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/avatars/vaclav-n.png"
 badge: false
-time: "2026-01-01"
-points: 1
+time: "2026-04-27"
+points: 2
 cat: pravda
-question: "Zde bude otázka pro post 10."
-text: "Zde bude text postu 10. #placeholder"
+question: "Na fotce uživatel @vaclav-n varuje před výbuchem chemičky Synthos v Kralupech nad Vltavou. Je to pravda? A pokud ne, co vidíme na fotce? A kdy se to stalo?"
+text: "TVL právě se děje! V Kralupech bouchla chemička Synthos!! Připravte se na evakuaci!!!"
 media:
-  type: mp4
-  src: "https://truth-hunters.cz/videos/dance.mp4"
+  type: image
+  src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/images/vybuch.jpg"
 comments:
-  - name: "user1"
-    img: "avatars/me.png"
-    text: "Zde bude komentář."
+  - name: "jiří_veselý"
+    img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/avatars/jiri-vesely.png"
+    text: "Ukrajinská agrese!"
 s:
-  c: 100
-  l: 1000
-  h: 500
-  x: 200
+  c: 1
+  l: 0
+  h: 0
+  x: 0
 ---
