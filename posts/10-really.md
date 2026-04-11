@@ -7,7 +7,7 @@ badge: false
 time: "2026-04-27"
 points: 2
 cat: pravda
-question: "Na fotce uživatel @vaclav-n varuje před výbuchem chemičky Synthos v Kralupech nad Vltavou. Je to pravda? A pokud ne, co vidíme na fotce? A kdy se to stalo?"
+question: "Uživatel @vaclav-n varuje před výbuchem chemičky Synthos v Kralupech nad Vltavou. Je to pravda? A pokud ne, co vidíme na fotce? A kdy se to stalo?"
 text: "Právě se děje! V Kralupech bouchla chemička Synthos!! Připravte se na evakuaci!!!"
 media:
   type: image
