@@ -1,18 +1,31 @@
 ---
 id: 12
-name: placeholder_user
-handle: placeholder_user
-img: "avatars/me.png"
+name: Alessandra Litvinchuk
+handle: alessandra999
+img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/avatars/alessandra999.jpeg"
 badge: false
-time: "2026-01-01"
-points: 1
+time: "2026-01-27"
+points: 3
 cat: pravda
-question: "Zde bude otázka pro post 12."
-text: "Zde bude text postu 12. #placeholder"
-comments: []
+question: "Myslíš si, že jsou některé z těch fotek vytvořené pomocí generativní AI? Řekni nám to v Tiny."
+text: "All these people got lost in the jungle."
+media:
+  type: gallery
+  srcs:
+    - "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/images/fake-or-real-01.png"
+    - "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/images/fake-or-real-02.png"
+    - "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/images/fake-or-real-03.png"
+    - "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/images/fake-or-real-04.png"
+comments:
+  - name: "Soph"
+    img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/avatars/soph.png"
+    text: "Did anyone even look for them? They were never found?"
+  - name: "Livra"
+    img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/avatars/livra.jpeg"
+    text: "Nature's way stronger than people."
 s:
-  c: 0
-  l: 0
-  h: 0
-  x: 0
+  c: 2
+  l: 4200
+  h: 1800
+  x: 310
 ---
