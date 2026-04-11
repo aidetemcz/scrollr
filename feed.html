@@ -686,7 +686,7 @@ feedEl.addEventListener('keydown', function (e) {
   if (!text) return;
   const clist = document.getElementById('clist-' + id);
   const div = document.createElement('div');
-  div.innerHTML = renderComment({ name: 'Já', text });
+  div.innerHTML = renderComment({ name: 'Já', img: 'avatars/me.png', text });
   clist.insertBefore(div.firstElementChild, clist.firstChild);
   inp.value = '';
   const post = POSTS.find(p => p.id === id);
