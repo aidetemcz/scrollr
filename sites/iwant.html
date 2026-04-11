@@ -61,19 +61,67 @@
 
     .logo-text em { color: var(--pink); font-style: normal; }
 
-    .header-links {
-      display: flex;
-      gap: 22px;
+    /* ── Contact dropdown ── */
+    .contact-wrap {
+      position: relative;
     }
 
-    .header-links a {
+    .contact-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
       color: #999;
-      text-decoration: none;
       font-size: 14px;
       font-weight: 500;
+      font-family: inherit;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
-    .header-links a:hover { color: var(--pink); }
+    .contact-btn:hover { color: var(--pink); }
+
+    .contact-btn::after {
+      content: '▾';
+      font-size: 11px;
+    }
+
+    .contact-dropdown {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: calc(100% + 10px);
+      background: #fff;
+      border: 1px solid #f0e0e8;
+      border-radius: 12px;
+      padding: 16px 20px;
+      min-width: 200px;
+      box-shadow: 0 8px 24px rgba(232,25,122,0.12);
+      z-index: 100;
+      white-space: nowrap;
+    }
+
+    .contact-dropdown.open { display: block; }
+
+    .contact-dropdown .co-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .contact-dropdown .co-email {
+      font-size: 13px;
+      color: #888;
+    }
+
+    .contact-dropdown .co-email a {
+      color: var(--pink);
+      text-decoration: none;
+    }
+
+    .contact-dropdown .co-email a:hover { text-decoration: underline; }
 
     /* ── Hero ── */
     .hero {
@@ -406,18 +454,19 @@
     <img src="https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/avatars/iwant.jpg" alt="iWant">
     <span class="logo-text">i<em>Want</em></span>
   </a>
-  <nav class="header-links">
-    <a href="#">Produkty</a>
-    <a href="#">Akce</a>
-    <a href="#">Kontakt</a>
-  </nav>
+  <div class="contact-wrap">
+    <button class="contact-btn" id="contactBtn">Kontakt</button>
+    <div class="contact-dropdown" id="contactDropdown">
+      <div class="co-name">iWant s.r.o.</div>
+      <div class="co-email">E-mail: <a href="mailto:hello@iwant.cz">hello@iwant.cz</a></div>
+    </div>
+  </div>
 </header>
 
 <!-- Hero -->
 <div class="hero">
   <div class="hero-text">
-    <div class="hero-badge">✨ Limitovaná akce</div>
-    <h1>Vyhraj<br><em>iPhone 17</em><br>zdarma!</h1>
+<h1>Vyhraj<br><em>iPhone 17</em><br>zdarma!</h1>
     <p>Točením kola štěstí máš šanci vyhrát iPhone 17 ve své oblíbené barvě! Každý točí jen jednou!</p>
   </div>
   <div class="hero-img">
@@ -691,6 +740,19 @@ function launchConfetti() {
     else cx.clearRect(0, 0, c.width, c.height);
   })();
 }
+
+// ── Contact dropdown ──
+const contactBtn      = document.getElementById('contactBtn');
+const contactDropdown = document.getElementById('contactDropdown');
+
+contactBtn.addEventListener('click', function (e) {
+  e.stopPropagation();
+  contactDropdown.classList.toggle('open');
+});
+
+document.addEventListener('click', function () {
+  contactDropdown.classList.remove('open');
+});
 </script>
 </body>
 </html>
