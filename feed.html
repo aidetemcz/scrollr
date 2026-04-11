@@ -255,6 +255,11 @@
       width: 100%; display: block; max-height: 420px;
       object-fit: cover;
     }
+    .post-media.full img {
+      max-height: none;
+      object-fit: contain;
+    }
+    }
     .post-gallery {
       display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
     }
@@ -494,7 +499,8 @@ function renderMedia(p) {
   if (!p.media) return '';
   const { type, src, videoId, thumb } = p.media;
   if (type === 'image') {
-    return `<div class="post-media"><img src="${esc(src)}" alt="" loading="lazy"></div>`;
+    const fullClass = p.media.full ? ' full' : '';
+    return `<div class="post-media${fullClass}"><img src="${esc(src)}" alt="" loading="lazy"></div>`;
   }
   if (type === 'gallery') {
     const imgs = p.media.srcs.map(s => `<img src="${esc(s)}" alt="" loading="lazy">`).join('');
