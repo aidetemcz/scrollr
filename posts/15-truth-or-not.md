@@ -8,7 +8,8 @@ time: "2026-01-01"
 points: 3
 cat: pravda
 question: "Je to pravda? Nebo není? Ověřit to můžeš v nástroji https://trends.google.com/explore."
-text: "Docela mě překvapilo, že na Google v roce 2025 bylo v České republice slovo „kočka" vyhledávané víc, než slovo „pes\"."
+text: |
+  Docela mě překvapilo, že na Google v roce 2025 bylo v České republice slovo „kočka" vyhledávané víc, než slovo „pes".
 media:
   type: image
   src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/images/kocka-pes.jpg"
