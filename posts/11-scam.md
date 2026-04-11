@@ -7,7 +7,7 @@ badge: false
 time: "2026-04-10"
 points: 5
 cat: pravda
-question: "Jeden by řekl, že to je scam. Jak moc věříš nám, tvůrcům AI olympiády? Vytoč na stránce iWant výhru a zadej požadované údaje. Tím získáš heslo, které zadáš do Tiny. Uvidíme, jak to pak bude s těmi pěti body."
+question: "Jeden by řekl, že to je scam. Jak moc věříš nám, tvůrcům AI olympiády? Vytoč na stránce iWant výhru a zadej požadované údaje. Tím získáš heslo, které zadáš do Tiny. Uvidíme, jak to bude s těmi pěti body."
 text: |
   Vyhraj nový iPhone 17 ve tvé oblíbené barvě! Přejdi na stránku slosování a vytoč si svou výhru! https://truth-hunters.cz/sites/iwant.html
 media:
