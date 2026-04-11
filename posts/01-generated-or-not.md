@@ -2,7 +2,7 @@
 id: 1
 name: carlhoos_
 handle: carlhoos_
-img: "https://truth-hunters.cz/avatars/carlhoos.png"
+img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/avatars/carlhoos.png"
 badge: false
 time: "2026-03-18"
 points: 1
