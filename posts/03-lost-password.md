@@ -2,7 +2,7 @@
 id: 3
 name: Lukas243
 handle: "lukas243"
-img: "avatars/argenby.jpeg"
+img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/avatars/argenby2.jpeg"
 badge: false
 time: "2026-03-11"
 points: 4
