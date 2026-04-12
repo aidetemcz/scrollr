@@ -317,6 +317,21 @@
     }
     .video-mute-btn.visible { display: flex; }
     .video-mute-btn:hover { background: rgba(0,0,0,0.8); }
+    .video-expand-btn {
+      position: absolute; top: 10px; right: 10px;
+      background: rgba(0,0,0,0.55); border: none; border-radius: 50%;
+      width: 34px; height: 34px; cursor: pointer; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; transition: background 0.15s; z-index: 5;
+    }
+    .video-expand-btn:hover { background: rgba(0,0,0,0.85); }
+    /* Lightbox video */
+    .lightbox video {
+      max-width: 92vw; max-height: 92vh;
+      border-radius: 8px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+      outline: none;
+    }
     .play-btn {
       position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
@@ -526,6 +541,7 @@ function renderMedia(p) {
         </div>
       </div>
       <button class="video-mute-btn" title="Zvuk">🔇</button>
+      <button class="video-expand-btn" data-action="expand-video" title="Fullscreen">⛶</button>
     </div>`;
   }
   return '';
@@ -784,6 +800,7 @@ feedEl.addEventListener('click', function (e) {
   <button class="lightbox-close" id="lightbox-close" aria-label="Zavřít">&#x2715;</button>
   <button class="lightbox-prev hidden" id="lightbox-prev" aria-label="Předchozí">&#8249;</button>
   <img id="lightbox-img" src="" alt="">
+  <video id="lightbox-video" controls playsinline style="display:none"></video>
   <button class="lightbox-next hidden" id="lightbox-next" aria-label="Další">&#8250;</button>
 </div>
 
@@ -814,11 +831,12 @@ welcomeOverlay.querySelector('.welcome-close').addEventListener('click', closeWe
 <script>
 // ── Lightbox ──
 (function () {
-  const lb = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lightbox-img');
+  const lb      = document.getElementById('lightbox');
+  const lbImg   = document.getElementById('lightbox-img');
+  const lbVid   = document.getElementById('lightbox-video');
   const lbClose = document.getElementById('lightbox-close');
-  const lbPrev = document.getElementById('lightbox-prev');
-  const lbNext = document.getElementById('lightbox-next');
+  const lbPrev  = document.getElementById('lightbox-prev');
+  const lbNext  = document.getElementById('lightbox-next');
 
   let gallery = [];
   let idx = 0;
@@ -827,8 +845,23 @@ welcomeOverlay.querySelector('.welcome-close').addEventListener('click', closeWe
     gallery = srcs;
     idx = i;
     lbImg.src = gallery[idx];
+    lbImg.style.display = '';
+    lbVid.style.display = 'none';
+    lbVid.pause();
     lbPrev.classList.toggle('hidden', gallery.length <= 1);
     lbNext.classList.toggle('hidden', gallery.length <= 1);
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function showVideo(src) {
+    lbImg.style.display = 'none';
+    lbImg.src = '';
+    lbVid.style.display = '';
+    lbVid.src = src;
+    lbVid.play();
+    lbPrev.classList.add('hidden');
+    lbNext.classList.add('hidden');
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -837,6 +870,10 @@ welcomeOverlay.querySelector('.welcome-close').addEventListener('click', closeWe
     lb.classList.remove('open');
     document.body.style.overflow = '';
     lbImg.src = '';
+    lbVid.pause();
+    lbVid.src = '';
+    lbImg.style.display = '';
+    lbVid.style.display = 'none';
   }
 
   function step(dir) {
@@ -858,12 +895,24 @@ welcomeOverlay.querySelector('.welcome-close').addEventListener('click', closeWe
   });
 
   document.getElementById('feed').addEventListener('click', function (e) {
+    // Image lightbox
     const img = e.target.closest('.post-media img, .post-gallery img');
-    if (!img) return;
-    const wrap = img.closest('.post-media');
-    const allImgs = wrap ? Array.from(wrap.querySelectorAll('img')) : [img];
-    const srcs = allImgs.map(i => i.src);
-    show(srcs, allImgs.indexOf(img));
+    if (img) {
+      const wrap = img.closest('.post-media');
+      const allImgs = wrap ? Array.from(wrap.querySelectorAll('img')) : [img];
+      const srcs = allImgs.map(i => i.src);
+      show(srcs, allImgs.indexOf(img));
+      return;
+    }
+    // Video expand button
+    const expandBtn = e.target.closest('.video-expand-btn');
+    if (expandBtn) {
+      e.stopPropagation();
+      const wrap = expandBtn.closest('.post-native-video');
+      const video = wrap ? wrap.querySelector('video source') : null;
+      if (video) showVideo(video.src);
+      return;
+    }
   });
 })();
 </script>
