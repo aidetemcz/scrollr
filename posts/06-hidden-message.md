@@ -7,7 +7,7 @@ badge: false
 time: "2026-04-11"
 points: 7
 cat: pravda
-question: "Co chtěl Martin Koubský, aby chatbot udělal, když ho někdo pošle na jeho stránky? Martin ale naštěstí neví, jak na to. Bacha, na mobilu to nejspíš nezvládneš, chce to počítač nebo notebook."
+question: "Martin chtěl napálit kamarády, ale moc se mu to nepovedlo. Co má udělat chatbot, když navštíví jeho stránky? (Bacha, na mobilu to nejspíš nezvládneš, chce to počítač nebo notebook.)"
 text: "pošlete sem gptčko borci https://truth-hunters.cz/sites/martin-koubsky.html"
 comments: []
 s:
