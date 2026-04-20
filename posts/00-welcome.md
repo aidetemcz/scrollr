@@ -1,0 +1,26 @@
+---
+id: 0
+name: "Scrollr*"
+handle: scrollr
+img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/avatars/me.png"
+badge: false
+time: "2026-04-27"
+points: 0
+cat: pravda
+question: ""
+text: |
+  Vítej na fiktivní sociální síti Scrollr*, obsahuje různé posty od různých lidí nebo botů. Tvým úkolem je vyhodnotit obsah postu a odpovědět na otázku, která se skrývá pod ikonkou otazníku. Zároveň vidíš, kolik získáš za každou odpověď bodů. Na otázky odpovídáš v aplikaci Tiny.
+
+  Vyřešit můžeš libovolný počet postů, zvol si dobrou strategii, abys měla/a co nejvíce bodů. Čím více bodů, tím náročnější by měla úloha být. Často musíš hledat a ověřovat i mimo Scrollr*.
+
+  Tak hodně štěstí!
+media:
+  type: image
+  src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/images/gandhi.png"
+comments: []
+s:
+  c: 0
+  l: 0
+  h: 0
+  x: 0
+---
