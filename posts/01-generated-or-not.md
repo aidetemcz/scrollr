@@ -16,15 +16,15 @@ media:
   src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/videos/dance.mp4"
 comments:
   - name: "NANDO🧃."
-    img: "avatars/nando.jpg"
+    img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/avatars/nando.jpg"
     photo: "https://truth-hunters.cz/comments/01comment.png"
     text: "Que le viste a Carol?"
   - name: "Gael bloqueado 🥹💞✨"
-    img: "avatars/gael-bloqueado.jpg"
+    img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/avatars/gael-bloqueado.jpg"
     photo: "https://truth-hunters.cz/comments/01comment_2.png"
     text: "like por esta pareja ❤️🥰💅"
   - name: "rosa_14"
-    img: "avatars/rosa-14.jpg"
+    img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/avatars/rosa-14.jpg"
     text: "yo viendo cómo estos 3 se cargan una cinturita de avista 👁️🫦👁️👀"
 s:
   c: 8700

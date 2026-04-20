@@ -539,7 +539,7 @@ function renderMedia(p) {
     const wideClass = p.media.wide ? ' wide' : '';
     const poster = p.media.thumb ? `poster="${esc(p.media.thumb)}"` : '';
     return `<div class="post-native-video${wideClass}" id="nvid-${p.id}">
-      <video loop muted preload="metadata" playsinline ${poster}>
+      <video loop muted preload="metadata" playsinline crossorigin="anonymous" ${poster}>
         <source src="${esc(src)}" type="video/mp4">
       </video>
       <div class="video-overlay">
@@ -709,18 +709,22 @@ feedEl.addEventListener('click', function (e) {
     const wrap = overlay.closest('.post-native-video');
     const video = wrap.querySelector('video');
     const muteB = wrap.querySelector('.video-mute-btn');
-    video.play();
-    overlay.classList.add('hidden');
-    muteB.classList.add('visible');
+    video.play().then(() => {
+      overlay.classList.add('hidden');
+      muteB.classList.add('visible');
+    }).catch(() => {
+      // autoplay blocked — overlay stays visible
+    });
     return;
   }
   const nvid = e.target.closest('.post-native-video');
-  if (nvid && !e.target.closest('.video-overlay') && !e.target.closest('.video-mute-btn')) {
+  if (nvid && !e.target.closest('.video-overlay') && !e.target.closest('.video-mute-btn') && !e.target.closest('.video-expand-btn')) {
     const video = nvid.querySelector('video');
     const overlay = nvid.querySelector('.video-overlay');
     if (video.paused) {
-      video.play();
-      overlay.classList.add('hidden');
+      video.play().then(() => {
+        overlay.classList.add('hidden');
+      }).catch(() => {});
     } else {
       video.pause();
       overlay.classList.remove('hidden');
