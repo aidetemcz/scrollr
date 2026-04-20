@@ -7,7 +7,7 @@ badge: false
 time: "2026-03-10"
 points: 3
 cat: pravda
-question: "Je tenhle tweet ze sítě x.com fake nebo ne? Odpovědět můžeš v Tiny."
+question: "Sdílel někdy Václav Klaus tenhle tweet na síti x.com nebo ne? Odpovědět můžeš v Tiny."
 text: "vk shift rulezz‼️‼️‼️‼️"
 media:
   type: image
