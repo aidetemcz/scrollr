@@ -7,7 +7,7 @@ badge: false
 time: "2026-01-27"
 points: 3
 cat: pravda
-question: "Myslíš si, že jsou některé z těch fotek vytvořené pomocí generativní AI? Řekni nám to v Tiny."
+question: "Jsou některé z těch fotek vytvořené pomocí generativní AI? Řekni nám to v Tiny."
 text: "All these people got lost in the jungle."
 media:
   type: gallery
