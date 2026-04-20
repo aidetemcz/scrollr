@@ -10,6 +10,7 @@ cat: pravda
 question: ""
 text: |
   Vítej na fiktivní sociální síti Scrollr*, obsahuje různé posty od různých lidí nebo botů. Tvým úkolem je vyhodnotit obsah postu a odpovědět na otázku, která se skrývá pod ikonkou otazníku. Zároveň vidíš, kolik získáš za každou odpověď bodů. Na otázky odpovídáš v aplikaci Tiny.
+  https://student.tiny.school/
 
   Vyřešit můžeš libovolný počet postů, zvol si dobrou strategii, abys měla/a co nejvíce bodů. Čím více bodů, tím náročnější by měla úloha být. Často musíš hledat a ověřovat i mimo Scrollr*.
 
