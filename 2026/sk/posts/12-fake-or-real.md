@@ -1,0 +1,31 @@
+---
+id: 12
+name: Alessandra Litvinchuk
+handle: alessandra999
+img: "avatars/alessandra999.jpeg"
+badge: false
+time: "2026-01-27"
+points: 3
+cat: pravda
+question: "Sú niektoré z týchto fotiek vytvorené pomocou generatívnej AI? Povedz nám to v Tiny."
+text: "All these people got lost in the jungle."
+media:
+  type: gallery
+  srcs:
+    - "images/fake-or-real-01.png"
+    - "images/fake-or-real-02.png"
+    - "images/fake-or-real-03.png"
+    - "images/fake-or-real-04.png"
+comments:
+  - name: "Soph"
+    img: "avatars/soph.png"
+    text: "Did anyone even look for them? They were never found?"
+  - name: "Livra"
+    img: "avatars/livra.jpeg"
+    text: "Nature's way stronger than people."
+s:
+  c: 2
+  l: 2
+  h: 0
+  x: 18
+---

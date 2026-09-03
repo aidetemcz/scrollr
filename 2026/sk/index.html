@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="sk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="shared/icons/favicon.jpg">
+  <link rel="icon" href="../../shared/icons/favicon.jpg">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVLPR98SN6"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -11,7 +11,7 @@
     gtag('js', new Date());
     gtag('config', 'G-MVLPR98SN6');
   </script>
-  <title>Truth Hunters – Scrollr*</title>
+  <title>Scrollr</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -97,16 +97,6 @@
       .side { display: none; }
       .center { width: 100%; }
     }
-
-    .tagline { margin-bottom: 36px; }
-    .sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-      font-size: 14px; color: #777; margin-bottom: 40px; text-align: center; }
-    .editions { display: flex; flex-direction: column; gap: 26px; align-items: center; }
-    .go-btn { min-width: 300px; text-align: center; }
-    .go-btn small { display: block; font-size: 13px; color: #666; margin-top: 2px; }
-    .archive { margin-top: 56px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-      font-size: 13px; color: #888; text-align: center; }
-    .archive a { color: #555; }
   </style>
 </head>
 <body>
@@ -114,16 +104,9 @@
 <div class="side" id="side-l"></div>
 
 <div class="center">
-  <img class="logo" src="shared/icons/scrollr-logo.svg" alt="Scrollr">
-  <p class="tagline">Truth Hunters</p>
-  <p class="sub">Hledači pravdy · Hľadači pravdy</p>
-  <div class="editions">
-    <a href="2026/cz/" class="go-btn">🇨🇿 AI olympiáda 2026<small>česká verze</small></a>
-    <a href="2026/sk/" class="go-btn">🇸🇰 AI olympiáda 2026<small>slovenská verzia</small></a>
-  </div>
-  <p class="archive">
-    <!-- Starší ročníky sem přidávejte jako další odkazy, např. <a href="2025/cz/">2025 (CZ)</a>. -->
-  </p>
+  <img class="logo" src="../../shared/icons/scrollr-logo.svg" alt="Scrollr">
+  <p class="tagline">Never. Rozmýšľaj.</p>
+  <a href="feed.html" class="go-btn">Tak dobre.</a>
 </div>
 
 <div class="side" id="side-r"></div>
@@ -164,7 +147,7 @@ function buildSide(container, cols) {
     arrow.style.top  = topPct + '%';
 
     const img = document.createElement('img');
-    img.src = 'shared/icons/arrow.svg';
+    img.src = '../../shared/icons/arrow.svg';
     img.style.height = heightVh + 'vh';
     img.style.width = 'auto';
     arrow.appendChild(img);
