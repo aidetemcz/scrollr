@@ -1,0 +1,34 @@
+---
+id: 1
+name: carlhoos_
+handle: carlhoos_
+img: "avatars/carlhoos.png"
+badge: false
+time: "2026-03-18"
+points: 1
+cat: pravda
+question: "Otázka na uvítanou! 🤗 Bylo tohle video vytvořené pomocí generativní AI? Zvol v appce Tiny buď ano, částečně nebo ne."
+text: |
+  Text: Risas con Carlos Alberto y Katteyes en Scrollr*
+  Disfruta las divertidas situaciones de Carlos Alberto y Katteyes. ¡No te lo pierdas! #scrollr #carlosalberto #katteyes #viral
+media:
+  type: mp4
+  src: "videos/dance.mp4"
+comments:
+  - name: "NANDO🧃."
+    img: "avatars/nando.jpg"
+    photo: "comments/01comment.png"
+    text: "Que le viste a Carol?"
+  - name: "Gael bloqueado 🥹💞✨"
+    img: "avatars/gael-bloqueado.jpg"
+    photo: "comments/01comment_2.png"
+    text: "like por esta pareja ❤️🥰💅"
+  - name: "rosa_14"
+    img: "avatars/rosa-14.jpg"
+    text: "yo viendo cómo estos 3 se cargan una cinturita de avista 👁️🫦👁️👀"
+s:
+  c: 8700
+  l: 2500000
+  h: 1900000
+  x: 2600000
+---

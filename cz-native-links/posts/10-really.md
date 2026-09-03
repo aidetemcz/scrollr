@@ -1,0 +1,24 @@
+---
+id: 10
+name: vaclav_n
+handle: vaclav-n
+img: "avatars/vaclav-n.png"
+badge: false
+time: "2026-04-27"
+points: 2
+cat: pravda
+question: "Uživatel @vaclav-n varuje před výbuchem chemičky Synthos v Kralupech nad Vltavou. Je to pravda? A pokud ne, co vidíme na fotce? A kdy se to stalo?"
+text: "Právě se děje! V Kralupech bouchla chemička Synthos!! Připravte se na evakuaci!!!"
+media:
+  type: image
+  src: "images/vybuch.jpg"
+comments:
+  - name: "jiří_veselý"
+    img: "avatars/jiri-vesely.png"
+    text: "Ukrajinská agrese!"
+s:
+  c: 1
+  l: 3
+  h: 0
+  x: 1
+---

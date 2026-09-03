@@ -69,6 +69,26 @@ Settings → Pages → Deploy from a branch, větev `main`, složka `/ (root)`. 
 GitHub Pages má měkký limit 100 GB přenesených dat měsíčně, na den soutěže proto použijte
 hosting níže.
 
+## Samostatná kopie české edice pro nahrání na hosting (`cz-native-links/`)
+
+Složka `cz-native-links/` je česká edice 2026 bez závislosti na `shared/` v nadřazené složce:
+jádro je zkopírované dovnitř (`cz-native-links/shared/`) a cesty jsou přepsané tak, aby složka
+fungovala sama o sobě. Nahrajte její **obsah** do `www/cz/` na hostingu, výsledná adresa je
+`https://truth-hunters.cz/cz/`. Odkazy v postech se doplní automaticky
+(`https://truth-hunters.cz/cz/files/heslo.zip` atd.).
+
+Je to generovaná kopie. Při změně v `2026/cz/` nebo `shared/` ji vytvořte znovu:
+
+```
+rm -rf cz-native-links && cp -r 2026/cz cz-native-links && cp -r shared cz-native-links/shared
+sed -i 's#\.\./\.\./shared/#shared/#g' cz-native-links/index.html cz-native-links/feed.html
+sed -i "s#window.SCROLLR_UI = {#window.SCROLLR_SHARED = 'shared/';\nwindow.SCROLLR_UI = {#" cz-native-links/feed.html
+sed -i 's#\.\./\.\./\.\./shared/#../shared/#g' cz-native-links/sites/*.html
+```
+
+Bit.ly odkaz pro quest 11 musí v tomto uspořádání mířit na
+`https://truth-hunters.cz/cz/sites/iwant.html`.
+
 ## Nasazení na Webglobe (truth-hunters.cz)
 
 Hosting je Nginx bez `.htaccess`, pro statické soubory není potřeba nic nastavovat.

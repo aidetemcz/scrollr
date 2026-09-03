@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="shared/icons/favicon.jpg">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVLPR98SN6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MVLPR98SN6');
+  </script>
+  <title>Scrollr</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root { --yellow: #FFE600; }
+
+    body {
+      background: var(--yellow);
+      min-height: 100vh;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+    }
+
+    /* ── Side panels ── */
+    .side {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ── Center white panel ── */
+    .center {
+      width: 530px;
+      background: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 40px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Logo ── */
+    .logo {
+      width: 100%;
+      max-width: 133px;
+      margin-bottom: 28px;
+    }
+
+    /* ── Tagline ── */
+    .tagline {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 28px;
+      color: #222;
+      margin-bottom: 100px;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── Go for it button ── */
+    .go-btn {
+      display: inline-block;
+      padding: 14px 47px;
+      border: 2px solid #111;
+      border-radius: 60px;
+      background: #fff;
+      color: #111;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      text-decoration: none;
+      box-shadow: 4px 7px 0 4px var(--yellow), 4px 7px 0 6px #111;
+      transition: transform 0.15s ease;
+      user-select: none;
+    }
+    .go-btn:hover { transform: translateY(-2px); }
+    .go-btn:active { transform: translateY(1px); }
+
+    /* ── Individual arrows ── */
+    .arrow {
+      position: absolute;
+      transform: translateX(-50%) translateY(0);
+      display: block;
+      transition: transform 1.8s cubic-bezier(0.45, 0, 0.55, 1);
+    }
+    .arrow img {
+      display: block;
+      width: auto;
+    }
+
+    @media (max-width: 520px) {
+      .side { display: none; }
+      .center { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="side" id="side-l"></div>
+
+<div class="center">
+  <img class="logo" src="shared/icons/scrollr-logo.svg" alt="Scrollr">
+  <p class="tagline">Nevěř. Přemýšlej.</p>
+  <a href="feed.html" class="go-btn">Tak jo.</a>
+</div>
+
+<div class="side" id="side-r"></div>
+
+<script>
+// Occasional non-continuous movement: up, still, or down
+// OFFSETS in px: negative = up, 0 = still, positive = down
+const OFFSETS = [-80, -80, 0, 0, 0, 80, 80];
+
+function scheduleMove(el) {
+  let current = 0;
+  function step() {
+    const next = OFFSETS[Math.floor(Math.random() * OFFSETS.length)];
+    current = next;
+    el.style.transform = `translateX(-50%) translateY(${current}px)`;
+    // Wait for transition (1.8s) + random pause (1–5s) before next move
+    setTimeout(step, 1800 + 1000 + Math.random() * 4000);
+  }
+  // Stagger initial triggers so all arrows don't move together
+  setTimeout(step, Math.random() * 6000);
+}
+
+function buildSide(container, cols) {
+  const seed = container.id === 'side-l' ? 13 : 71;
+  let r = seed;
+  function rnd() { r = (r * 1664525 + 1013904223) & 0xffffffff; return (r >>> 0) / 0xffffffff; }
+
+  for (let c = 0; c < cols; c++) {
+    const x = (c + 0.5) / cols * 100;
+
+    // 1 arrow per column — top always hidden above fold even when shifted down
+    const topPct    = -20 + rnd() * 8;       // -20 to -12% (never visible top)
+    const heightVh  = Math.round(70 + rnd() * 30); // 70–100 vh
+
+    const arrow = document.createElement('div');
+    arrow.className = 'arrow';
+    arrow.style.left = x + '%';
+    arrow.style.top  = topPct + '%';
+
+    const img = document.createElement('img');
+    img.src = 'shared/icons/arrow.svg';
+    img.style.height = heightVh + 'vh';
+    img.style.width = 'auto';
+    arrow.appendChild(img);
+    container.appendChild(arrow);
+
+    scheduleMove(arrow);
+  }
+}
+
+buildSide(document.getElementById('side-l'), 3);
+buildSide(document.getElementById('side-r'), 3);
+</script>
+</body>
+</html>
