@@ -86,8 +86,11 @@ sed -i "s#window.SCROLLR_UI = {#window.SCROLLR_SHARED = 'shared/';\nwindow.SCROL
 sed -i 's#\.\./\.\./\.\./shared/#../shared/#g' cz-native-links/sites/*.html
 ```
 
-Bit.ly odkaz pro quest 11 musí v tomto uspořádání mířit na
-`https://truth-hunters.cz/cz/sites/iwant.html`.
+Ke složce `cz/` patří na hostingu ještě obsah složky `vps-root/`, který se nahraje přímo do
+`www/`: přesměrování starých adres (`/sites/iwant.html`, `/sites/martin-koubsky.html`,
+`/feed.html`) na `/cz/…`, kopie `/files/heslo.zip` a zástupný `index.html`, který posílá na `cz/`.
+Díky tomu dál funguje stávající bit.ly odkaz pro quest 11 (`truth-hunters.cz/sites/iwant.html`).
+Zástupný `index.html` můžete nahradit vlastní úvodní stránkou.
 
 ## Nasazení na Webglobe (truth-hunters.cz)
 
