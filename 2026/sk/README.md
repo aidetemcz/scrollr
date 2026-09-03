@@ -21,8 +21,8 @@ Zásady adaptácie:
 
 | # | Čo | Kde |
 |---|----|-----|
-| 1 | **Skrátený odkaz pre quest 11.** V českej verzii bol odkaz na phishingovú stránku skrytý cez bit.ly. Po nasadení vytvorte skrátený odkaz na `https://truth-hunters.cz/2026/sk/sites/iwant.html` a vložte ho do postu 11 namiesto `{{BASE}}/sites/iwant.html`. | posts/11-scam.md |
-| 2 | **Overiť quest 09 (Wayback Machine).** Pri príprave nebol prístup na web.archive.org. Navrhnutý dátum je 21. 5. 2012 ráno (deň po striebre slovenských hokejistov na MS 2012). Otvorte `web.archive.org`, zadajte `sme.sk`, vyberte snímku najbližšiu k 21. 5. 2012 8:00 a podľa skutočnej hlavnej správy upravte možnosti v Tiny. Náhradný tip, ak snímka chýba: 11. 3. 2012 (deň po parlamentných voľbách). | posts/09-wayback-machine.md |
+| 1 | **Skrátený odkaz pre quest 11.** V českej verzii bol odkaz na phishingovú stránku skrytý cez bit.ly. Po nasadení vytvorte skrátený odkaz na `https://truth-hunters.cz/2026/sk/sites/iwant.html` a vložte ho do postu 11 namiesto `{{BASE}}/sites/iwant.html`. | posts/11-scam.txt |
+| 2 | **Overiť quest 09 (Wayback Machine).** Pri príprave nebol prístup na web.archive.org. Navrhnutý dátum je 21. 5. 2012 ráno (deň po striebre slovenských hokejistov na MS 2012). Otvorte `web.archive.org`, zadajte `sme.sk`, vyberte snímku najbližšiu k 21. 5. 2012 8:00 a podľa skutočnej hlavnej správy upravte možnosti v Tiny. Náhradný tip, ak snímka chýba: 11. 3. 2012 (deň po parlamentných voľbách). | posts/09-wayback-machine.txt |
 | 3 | **Overiť quest 15 (Google Trends).** Tvrdenie „Košice boli v roku 2025 na Slovensku vyhľadávané viac ako Bratislava“ je navrhnuté ako nepravdivé. Skontrolujte v Google Trends (Slovensko, rok 2025) a podľa výsledku upravte možnosti v Tiny; ak by to nevyšlo, stačí prerobiť obrázok `images/kosice-bratislava.jpg` (zdrojové HTML je v tomto dokumente nižšie). | images/ |
 | 4 | **Tiny.** Vytvoriť slovenskú lekciu v Tiny s novými možnosťami odpovedí (návrh nižšie) a novým heslom pre quest 11. | Tiny |
 | 5 | **Prezentácia a pracovné listy** k lekcii (PDF/Canva) – preložiť a nahradiť odpovede podľa tabuľky nižšie. | mimo repozitára |

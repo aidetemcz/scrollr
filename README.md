@@ -10,14 +10,14 @@ Fiktivní sociální síť pro aktivitu **Truth Hunters (Hledači pravdy)** z AI
 index.html            rozcestník ročníků a zemí (truth-hunters.cz)
 shared/               společné jádro pro všechny edice
   scrollr.css         styly feedu
-  scrollr.js          logika feedu (načítá posts/*.md, komentáře, lightbox, uvítací okno)
+  scrollr.js          logika feedu (načítá posts/*.txt, komentáře, lightbox, uvítací okno)
   vendor/js-yaml      parser YAML hlavičky postů (hostovaný lokálně, žádné CDN)
   icons/, *.svg       ikony
 2026/cz/              česká edice 2026
 2026/sk/              slovenská edice 2026 (README.md = klíč odpovědí a TODO)
   index.html          úvodní stránka („Nevěř. Přemýšlej.“)
   feed.html           kostra feedu + texty rozhraní v daném jazyce
-  posts/              jednotlivé questy (markdown s YAML hlavičkou) + index.json (pořadí)
+  posts/              jednotlivé questy (YAML hlavička, přípona .txt, protože hosting blokuje .md) + index.json (pořadí)
   avatars/ images/ videos/ comments/ thumbnails/   média postů
   files/heslo.zip     zaheslovaný ZIP pro quest 03
   sites/              podvodné stránky (phishing iWant, prompt injection)
