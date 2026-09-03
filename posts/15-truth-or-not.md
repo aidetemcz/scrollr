@@ -7,11 +7,11 @@ badge: false
 time: "2026-01-01"
 points: 3
 cat: pravda
-question: "Je to pravda? Nebo není? Ověřit to můžeš v nástroji https://trends.google.com/explore"
+question: "Je to pravda? Alebo nie? Overiť to môžeš v nástroji https://trends.google.com/explore"
 text: ""
 media:
   type: image
-  src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/images/kocka-pes.jpg"
+  src: "images/kosice-bratislava.jpg"
 comments: []
 s:
   c: 0

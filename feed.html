@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="sk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -459,7 +459,7 @@
       </button>
       <div class="user-av-wrap">
         <button id="user-av-btn" class="user-av" style="background:none;overflow:hidden;padding:0;border:none;cursor:pointer;"><img src="avatars/me.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt=""></button>
-        <button class="bell-badge" id="bell-btn" aria-label="Pokyny ke hře"><img src="icons/ring-the-bell.svg" alt="bell"></button>
+        <button class="bell-badge" id="bell-btn" aria-label="Pokyny k hre"><img src="icons/ring-the-bell.svg" alt="bell"></button>
       </div>
     </div>
   </div>
@@ -499,7 +499,7 @@ const searchInput = document.querySelector('.search-wrap input');
 const noResults = document.createElement('p');
 noResults.id = 'no-results';
 noResults.style.cssText = 'text-align:center;color:#888;padding:48px 0;display:none;';
-noResults.textContent = 'Žádné výsledky.';
+noResults.textContent = 'Žiadne výsledky.';
 
 searchInput.addEventListener('input', function () {
   const q = this.value.trim().toLowerCase();
@@ -573,12 +573,12 @@ function renderComment(c) {
 
 function fmtPoints(n) {
   if (n === 1) return '1 bod';
-  if (n <= 4) return n + ' body';
-  return n + ' bodů';
+  if (n >= 2 && n <= 4) return n + ' body';
+  return n + ' bodov';
 }
 
 function renderPost(p) {
-  const badge = p.badge ? `<span class="post-badge" title="Ověřený účet">✓</span>` : '';
+  const badge = p.badge ? `<span class="post-badge" title="Overený účet">✓</span>` : '';
   const s = p.s;
   return `
   <article class="post" id="post-${p.id}" data-cat="${esc(p.cat)}">
@@ -599,7 +599,7 @@ function renderPost(p) {
         <span class="post-points">${fmtPoints(p.points)}</span>
       </div>
       ${p.question ? `<div class="post-question-wrap">
-        <button class="post-question-btn" aria-label="Otázka k zamyšlení" onclick="toggleQuestion(this); event.stopPropagation();">
+        <button class="post-question-btn" aria-label="Otázka na zamyslenie" onclick="toggleQuestion(this); event.stopPropagation();">
           <img src="Question.svg" alt="?">
         </button>
         <div class="post-question-tooltip">${linkifyText(p.question)}</div>
@@ -629,8 +629,8 @@ function renderPost(p) {
           <div class="new-comment-row">
             <div class="my-av" style="background:none;overflow:hidden;padding:0;"><img src="avatars/me.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt=""></div>
             <div class="comment-input-row">
-              <input class="comment-input" id="cinput-${p.id}" placeholder="Přidat komentář..." data-pid="${p.id}">
-              <button class="comment-send" data-action="send-comment" data-id="${p.id}" title="Odeslat">
+              <input class="comment-input" id="cinput-${p.id}" placeholder="Pridať komentár..." data-pid="${p.id}">
+              <button class="comment-send" data-action="send-comment" data-id="${p.id}" title="Odoslať">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
               </button>
             </div>
@@ -639,7 +639,7 @@ function renderPost(p) {
             ${p.comments.slice(0, 2).map(renderComment).join('')}
             ${p.comments.length > 2 ? `<div class="hidden-comments" id="hclist-${p.id}" style="display:none;flex-direction:column;gap:14px;">${p.comments.slice(2).map(renderComment).join('')}</div>` : ''}
           </div>
-          ${p.comments.length > 2 ? `<div class="load-more" data-action="load-more" data-id="${p.id}">Načíst další komentáře</div>` : ''}
+          ${p.comments.length > 2 ? `<div class="load-more" data-action="load-more" data-id="${p.id}">Načítať ďalšie komentáre</div>` : ''}
         </div>
     </div>
   </article>`;
@@ -742,7 +742,7 @@ feedEl.addEventListener('keydown', function (e) {
   if (!text) return;
   const clist = document.getElementById('clist-' + id);
   const div = document.createElement('div');
-  div.innerHTML = renderComment({ name: 'Já', img: 'avatars/me.png', text });
+  div.innerHTML = renderComment({ name: 'Ja', img: 'avatars/me.png', text });
   clist.insertBefore(div.firstElementChild, clist.firstChild);
   inp.value = '';
   const post = POSTS.find(p => p.id === id);
@@ -787,7 +787,7 @@ feedEl.addEventListener('click', function (e) {
     if (!text) return;
     const clist = document.getElementById('clist-' + id);
     const div = document.createElement('div');
-    div.innerHTML = renderComment({ name: 'Já', img: 'avatars/me.png', text });
+    div.innerHTML = renderComment({ name: 'Ja', img: 'avatars/me.png', text });
     clist.insertBefore(div.firstElementChild, clist.firstChild);
     inp.value = '';
     post.s.c += 1;
@@ -808,20 +808,20 @@ feedEl.addEventListener('click', function (e) {
 </script>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
-  <button class="lightbox-close" id="lightbox-close" aria-label="Zavřít">&#x2715;</button>
-  <button class="lightbox-prev hidden" id="lightbox-prev" aria-label="Předchozí">&#8249;</button>
+  <button class="lightbox-close" id="lightbox-close" aria-label="Zavrieť">&#x2715;</button>
+  <button class="lightbox-prev hidden" id="lightbox-prev" aria-label="Predchádzajúci">&#8249;</button>
   <img id="lightbox-img" src="" alt="">
   <video id="lightbox-video" controls playsinline style="display:none"></video>
-  <button class="lightbox-next hidden" id="lightbox-next" aria-label="Další">&#8250;</button>
+  <button class="lightbox-next hidden" id="lightbox-next" aria-label="Ďalší">&#8250;</button>
 </div>
 
 <div class="welcome-overlay" id="welcome-overlay" role="dialog" aria-modal="true">
   <div class="welcome-box">
-    <button class="welcome-close" aria-label="Zavřít">&#x2715;</button>
-    <h1 style="margin:0 0 10px 0;font-size:18px;line-height:1.4;">Vítej v AI olympiádě ve hře Truth Hunters (Hledači pravdy)!</h1>
-    <p>Před sebou vidíš fiktivní sociální síť Scrollr*, která obsahuje různé posty od různých lidí nebo botů. Tvým úkolem je vyhodnotit obsah postu a odpovědět na otázku, která se skrývá pod ikonkou otazníku. Zároveň vidíš, kolik získáš za každou odpověď bodů. Na otázky odpovídáš v aplikaci Tiny.</p>
-    <p>Vyřešit můžeš libovolný počet postů, zvol si dobrou strategii, abys měla/a co nejvíce bodů. Čím více bodů, tím náročnější by měla úloha být. Často musíš hledat a ověřovat i mimo Scrollr*.</p>
-    <p>Tak hodně štěstí!</p>
+    <button class="welcome-close" aria-label="Zavrieť">&#x2715;</button>
+    <h1 style="margin:0 0 10px 0;font-size:18px;line-height:1.4;">Vitaj v AI olympiáde v hre Truth Hunters (Hľadači pravdy)!</h1>
+    <p>Pred sebou vidíš fiktívnu sociálnu sieť Scrollr*, ktorá obsahuje rôzne posty od rôznych ľudí alebo botov. Tvojou úlohou je vyhodnotiť obsah postu a odpovedať na otázku, ktorá sa skrýva pod ikonkou otáznika. Zároveň vidíš, koľko bodov získaš za každú odpoveď. Na otázky odpovedáš v aplikácii Tiny.</p>
+    <p>Vyriešiť môžeš ľubovoľný počet postov. Zvoľ si dobrú stratégiu, aby si mal/a čo najviac bodov. Čím viac bodov, tým náročnejšia by mala úloha byť. Často musíš hľadať a overovať aj mimo Scrollr*.</p>
+    <p>Tak veľa šťastia!</p>
   </div>
 </div>
 

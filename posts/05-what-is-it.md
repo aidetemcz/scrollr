@@ -7,9 +7,9 @@ badge: false
 time: "2026-04-10"
 points: 2
 cat: pravda
-question: "V jaké zemi byla @j0y.s0phie na dovolené? Jestli víš, dej nám vědět v Tiny."
+question: "V ktorom meste bola @j0y.s0phie na dovolenke a koľko takýchto skalných kostolov tam celkovo je? Ak vieš, daj nám vedieť v Tiny."
 text: |
-  Bylo to tady s tebou nezapomenutelný @babymonsterOOO ♥♥♥♥
+  Bolo to tu s tebou nezabudnuteľné @babymonsterOOO ♥♥♥♥
   #love #travel #africa
 media:
   type: image

@@ -7,7 +7,7 @@ badge: false
 time: "2025-05-16"
 points: 2
 cat: pravda
-question: "Tralalero Tralalá! Tung Tung Tung něco… Bombardino Crocodilo + kapučíno. Italian Brainrot trendoval sítě v roce 2025. Málokdo ale ví, že postava Tung Tung Tung Sahur odkazuje na reálnou tradici z konkrétní země. V jaké zemi se tato tradice praktikuje a co při ní lidé dělají? Kvíz tě čeká v naší appce Tiny."
+question: "Tralalero Tralalá! Tung Tung Tung niečo… Bombardino Crocodilo + kapučíno. Italian Brainrot v roku 2025 ovládol sociálne siete. Málokto ale vie, že postava Tung Tung Tung Sahur odkazuje na skutočnú tradíciu z konkrétnej krajiny. Ako sa volá jedlo, na ktoré pri tejto tradícii ľudia budia susedov, a na aký nástroj pritom tradične búchajú? Kvíz ťa čaká v našej appke Tiny."
 text: "Tung Tung Tung sells luxury bags #italianbrainrot #aiart #aistory #tungtungtungsahur #tralalerotralala"
 media:
   type: mp4

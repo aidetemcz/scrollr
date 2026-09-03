@@ -7,7 +7,7 @@ badge: false
 time: "2026-03-18"
 points: 1
 cat: pravda
-question: "Otázka na uvítanou! 🤗 Bylo tohle video vytvořené pomocí generativní AI? Zvol v appce Tiny buď ano, částečně nebo ne."
+question: "Otázka na privítanie! 🤗 Bolo toto video vytvorené pomocou generatívnej AI? V appke Tiny zvoľ buď áno, čiastočne alebo nie."
 text: |
   Text: Risas con Carlos Alberto y Katteyes en Scrollr*
   Disfruta las divertidas situaciones de Carlos Alberto y Katteyes. ¡No te lo pierdas! #scrollr #carlosalberto #katteyes #viral

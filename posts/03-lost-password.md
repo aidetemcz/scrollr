@@ -7,12 +7,12 @@ badge: false
 time: "2026-03-11"
 points: 4
 cat: pravda
-question: "Dokážeš zjistit, jaké má Lukas243 heslo do e-mailu? Pokud ano, zadej ho do Tiny!"
-text: "tyjo ztratil sem heslo do mailu mám ho schovaný tady v tom zipu ale neumim ho rozheslovat. pamatuju si jenom ze heslo do zipu je oblibena barva moji matky podle mě bez diakritiky. pls help zip je tady: https://truth-hunters.cz/files/heslo.zip"
+question: "Dokážeš zistiť, aké má Lukas243 heslo do e-mailu? Ak áno, zadaj ho do Tiny!"
+text: "tyjo stratil som heslo do mailu mam ho schovane tu v tom zipe ale neviem ho odheslovat. pamatam si len ze heslo do zipu je oblubena farba mojej mamy podla mna bez diakritiky. pls help zip je tu: https://truth-hunters.sk/files/heslo.zip"
 comments:
   - name: "tln.337"
     img: "avatars/tln337.jpeg"
-    text: "jako fakt hazis svoje mailovy heslo na scrollr??"
+    text: "fakt hadzes svoje mailove heslo na scrollr??"
   - name: "𝓐𝓜𝓩𝓐𝓡 ~"
     img: "avatars/amzar.jpeg"
     photo: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/comments/stupid-stupid-people.png"

@@ -1,14 +1,14 @@
 ---
 id: 6
-name: Martin_Koub12
-handle: martin_koub12
+name: Matus_Kov12
+handle: matus_kov12
 img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/avatars/martin-koubsky.png"
 badge: false
 time: "2026-04-11"
 points: 7
 cat: pravda
-question: "Martin chtěl napálit kamarády, ale moc se mu to nepovedlo. Co má udělat chatbot, když navštíví jeho stránky? (Bacha, na mobilu to nejspíš nezvládneš, chce to počítač nebo notebook.)"
-text: "pošlete sem gptčko borci https://truth-hunters.cz/sites/martin-koubsky.html"
+question: "Matúš chcel nachytať kamarátov, ale veľmi sa mu to nepodarilo. Čo má urobiť chatbot, keď navštívi jeho stránku? (Pozor, na mobile to asi nezvládneš, chce to počítač alebo notebook.)"
+text: "pošlite sem gptčko chalani https://truth-hunters.sk/sites/matus-kovacik.html"
 comments: []
 s:
   c: 0

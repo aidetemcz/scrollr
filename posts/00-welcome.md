@@ -9,12 +9,12 @@ points: 0
 cat: pravda
 question: ""
 text: |
-  Vítej na fiktivní sociální síti Scrollr*, obsahuje různé posty od různých lidí nebo botů. Tvým úkolem je vyhodnotit obsah postu a odpovědět na otázku, která se skrývá pod ikonkou otazníku. Zároveň vidíš, kolik získáš za každou odpověď bodů. Na otázky odpovídáš v aplikaci Tiny.
+  Vitaj na fiktívnej sociálnej sieti Scrollr*. Nájdeš tu rôzne posty od rôznych ľudí alebo botov. Tvojou úlohou je vyhodnotiť obsah postu a odpovedať na otázku, ktorá sa skrýva pod ikonkou otáznika. Zároveň vidíš, koľko bodov získaš za každú odpoveď. Na otázky odpovedáš v aplikácii Tiny.
   https://student.tiny.school/
 
-  Vyřešit můžeš libovolný počet postů, zvol si dobrou strategii, abys měla/a co nejvíce bodů. Čím více bodů, tím náročnější by měla úloha být. Často musíš hledat a ověřovat i mimo Scrollr*.
+  Vyriešiť môžeš ľubovoľný počet postov. Zvoľ si dobrú stratégiu, aby si mal/a čo najviac bodov. Čím viac bodov, tým náročnejšia by mala úloha byť. Často musíš hľadať a overovať aj mimo Scrollr*.
 
-  Tak hodně štěstí!
+  Tak veľa šťastia!
 media:
   type: image
   src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/images/gandhi.png"

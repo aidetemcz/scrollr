@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="sk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -463,7 +463,7 @@
     <button class="contact-btn" id="contactBtn">Kontakt</button>
     <div class="contact-dropdown" id="contactDropdown">
       <div class="co-name">iWant s.r.o.</div>
-      <div class="co-email">E-mail: <a href="mailto:hello@iwant.cz">hello@iwant.cz</a></div>
+      <div class="co-email">E-mail: <a href="mailto:hello@iwant.sk">hello@iwant.sk</a></div>
     </div>
   </div>
 </header>
@@ -471,8 +471,8 @@
 <!-- Hero -->
 <div class="hero">
   <div class="hero-text">
-<h1>Vyhraj<br><em>iPhone 17</em><br>zdarma!</h1>
-    <p>Točením kola štěstí máš šanci vyhrát iPhone 17 ve své oblíbené barvě! Každý točí jen jednou!</p>
+<h1>Vyhraj<br><em>iPhone 17</em><br>zadarmo!</h1>
+    <p>Točením kolesa šťastia máš šancu vyhrať iPhone 17 vo svojej obľúbenej farbe! Každý točí len raz!</p>
   </div>
   <div class="hero-img">
     <img src="https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/images/iphone.webp" alt="iPhone 17">
@@ -485,7 +485,7 @@
   <div class="wheel-wrapper">
     <canvas id="wheelCanvas" width="420" height="420"></canvas>
   </div>
-  <button class="spin-btn" id="spinBtn">Točit kolem!</button>
+  <button class="spin-btn" id="spinBtn">Točiť kolesom!</button>
 </div>
 
 <canvas id="confetti-canvas"></canvas>
@@ -499,52 +499,52 @@
       <div class="modal-icon">🎉</div>
       <h2>Gratulujeme!</h2>
       <div class="prize-pill">📱 iPhone 17</div>
-      <p class="sub">Abychom ti výhru mohli zaslat, potřebujeme tvé kontaktní údaje.</p>
+      <p class="sub">Aby sme ti výhru mohli poslať, potrebujeme tvoje kontaktné údaje.</p>
       <div class="divider"></div>
       <form id="dataForm" novalidate>
         <div class="form-group">
-          <label>Jméno a příjmení</label>
-          <input type="text" id="f-name" placeholder="Jana Nováková">
-          <div class="field-error" id="err-name">Zadej jméno a příjmení (dvě slova).</div>
+          <label>Meno a priezvisko</label>
+          <input type="text" id="f-name" placeholder="Jana Kováčová">
+          <div class="field-error" id="err-name">Zadaj meno a priezvisko (dve slová).</div>
         </div>
         <div class="form-group">
           <label>E-mail</label>
           <input type="text" id="f-email" placeholder="jana@example.com">
-          <div class="field-error" id="err-email">Zadej platnou e-mailovou adresu.</div>
+          <div class="field-error" id="err-email">Zadaj platnú e-mailovú adresu.</div>
         </div>
         <div class="form-group">
-          <label>Telefonní číslo</label>
-          <input type="text" id="f-phone" placeholder="777 123 456">
-          <div class="field-error" id="err-phone">Zadej 9místné telefonní číslo.</div>
+          <label>Telefónne číslo</label>
+          <input type="text" id="f-phone" placeholder="0905 123 456">
+          <div class="field-error" id="err-phone">Zadaj platné telefónne číslo (napr. 0905 123 456).</div>
         </div>
         <div class="form-group">
-          <label>Bydliště</label>
-          <input type="text" id="f-address" placeholder="Dlouhá 12, Praha 1, 110 00">
+          <label>Bydlisko</label>
+          <input type="text" id="f-address" placeholder="Dlhá 12, Bratislava, 811 01">
           <div class="field-error" id="err-address">Toto pole je povinné.</div>
         </div>
         <div class="form-group">
-          <label>Datum narození</label>
+          <label>Dátum narodenia</label>
           <input type="date" id="f-dob">
-          <div class="field-error" id="err-dob">Zadej datum narození.</div>
+          <div class="field-error" id="err-dob">Zadaj dátum narodenia.</div>
         </div>
-        <button type="submit" class="submit-btn">Odeslat</button>
+        <button type="submit" class="submit-btn">Odoslať</button>
       </form>
     </div>
 
     <!-- Thank-you + password -->
     <div class="password-reveal" id="passwordView">
       <div class="pw-icon">🎁</div>
-      <h2>Děkujeme za tvé údaje!</h2>
-      <p class="thankyou-text">Výhru ti zašleme do 14 dní.</p>
-      <div class="pw-label">Tvoje heslo pro Tiny:</div>
-      <div class="pw-box">KOLO2026</div>
+      <h2>Ďakujeme za tvoje údaje!</h2>
+      <p class="thankyou-text">Výhru ti pošleme do 14 dní.</p>
+      <div class="pw-label">Tvoje heslo pre Tiny:</div>
+      <div class="pw-box">KOLESO2026</div>
     </div>
 
   </div>
 </div>
 
 <footer>
-  © 2026 iWant Store — Akce platí do vyprodání zásob. Výsledky slosování jsou konečné.
+  © 2026 iWant Store — Akcia platí do vypredania zásob. Výsledky žrebovania sú konečné.
 </footer>
 
 <script>
@@ -560,7 +560,7 @@ const SEGMENTS = [
   { label: 'iPhone 17',           color: '#E8197A', text: '#fff',    winner: true  },
   { label: 'Bez výhry',           color: '#f0f0f0', text: '#888',    winner: false },
   { label: 'iPhone 17',           color: '#E8197A', text: '#fff',    winner: true  },
-  { label: 'Poukaz na vyčištění', color: '#FFE0EF', text: '#C4006A', winner: false },
+  { label: 'Poukaz na čistenie',   color: '#FFE0EF', text: '#C4006A', winner: false },
   { label: 'iPhone 17',           color: '#E8197A', text: '#fff',    winner: true  },
   { label: 'Bez výhry',           color: '#f0f0f0', text: '#888',    winner: false },
 ];
@@ -659,7 +659,7 @@ function validateEmail(v) {
 }
 
 function validatePhone(v) {
-  return /^\d{9}$/.test(v.trim().replace(/[\s\-]/g, ''));
+  return /^(\+421|00421|0)?\d{9}$/.test(v.trim().replace(/[\s\-]/g, ''));
 }
 
 function showErr(id, msg, show) {
