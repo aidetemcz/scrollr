@@ -17,7 +17,7 @@ text: |
   Tak hodně štěstí!
 media:
   type: image
-  src: "images/gandhi.png"
+  src: "images/gandhi.jpg"
 comments: []
 s:
   c: 0
