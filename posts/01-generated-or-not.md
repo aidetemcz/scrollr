@@ -13,7 +13,7 @@ text: |
   Disfruta las divertidas situaciones de Carlos Alberto y Katteyes. ¡No te lo pierdas! #scrollr #carlosalberto #katteyes #viral
 media:
   type: mp4
-  src: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/videos/dance.mp4"
+  src: "videos/dance.mp4"
 comments:
   - name: "NANDO🧃."
     img: "https://raw.githubusercontent.com/aidetemcz/scrollr/claude/sunday-work-session-PE0Pw/avatars/nando.jpg"
