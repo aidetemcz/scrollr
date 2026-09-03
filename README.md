@@ -61,6 +61,14 @@ npx http-server -p 8080 .
 # http://localhost:8080/2026/cz/
 ```
 
+## Dočasné nasazení na GitHub Pages
+
+Settings → Pages → Deploy from a branch, větev `main`, složka `/ (root)`. Web běží na
+`https://aidetemcz.github.io/scrollr/`; cesta `/scrollr/` je dána názvem repozitáře a pole
+„Custom domain“ slouží jen pro skutečnou doménu (např. `truth-hunters.cz`), ne pro změnu cesty.
+GitHub Pages má měkký limit 100 GB přenesených dat měsíčně, na den soutěže proto použijte
+hosting níže.
+
 ## Nasazení na Webglobe (truth-hunters.cz)
 
 Hosting je Nginx bez `.htaccess`, pro statické soubory není potřeba nic nastavovat.
