@@ -198,17 +198,43 @@ function parseFrontmatter(content) {
   return data;
 }
 
+function showLoadError(lines) {
+  feedEl.innerHTML = `<div style="background:#fff;padding:24px 20px;font-size:14px;line-height:1.6;color:#111;">
+    <strong>Feed se nepodařilo načíst.</strong><br>${lines.map(esc).join('<br>')}</div>`;
+}
+async function fetchOk(url) {
+  const r = await fetch(url, { cache: 'no-cache' });
+  if (!r.ok) throw new Error(url + ' → HTTP ' + r.status);
+  return r;
+}
 async function init() {
-  const index = await fetch('posts/index.json').then(r => r.json());
+  if (typeof jsyaml === 'undefined') {
+    showLoadError(['Nenačetl se ' + SHARED + 'vendor/js-yaml.min.js (chybí soubor nebo ho server nevydal).']);
+    return;
+  }
+  let index;
+  try {
+    index = await fetchOk('posts/index.json').then(r => r.json());
+  } catch (err) {
+    showLoadError(['posts/index.json: ' + err.message]);
+    return;
+  }
+  const failed = [];
   const results = await Promise.all(
     index.map(f =>
-      fetch('posts/' + f).then(r => r.text()).then(parseFrontmatter).catch(err => {
+      fetchOk('posts/' + f).then(r => r.text()).then(parseFrontmatter).catch(err => {
         console.warn('Skipping post ' + f + ':', err.message);
+        failed.push(f + ': ' + err.message);
         return null;
       })
     )
   );
   POSTS = results.filter(p => p !== null);
+  if (POSTS.length === 0) {
+    showLoadError(['Žádný post se nenačetl.'].concat(failed));
+    return;
+  }
+  if (failed.length) console.warn('Some posts failed to load:', failed);
   POSTS.forEach(p => {
     state[p.id] = { like: false, heart: false, hate: false, commentOpen: false, userComments: [] };
   });
