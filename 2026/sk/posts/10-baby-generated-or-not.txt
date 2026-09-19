@@ -7,7 +7,7 @@ badge: false
 time: "2026-01-05"
 points: 1
 cat: pravda
-question: "Odhaduje sa, že v roku 2025 prebehlo internetom 8 miliónov deepfakes. To už je celkom číslo, čo? 🤯 Ako je na tom toto bábätko? Je to ďalší úspešný AI slop?"
+question: "Odhaduje sa, že v roku 2025 prebehlo internetom 8 miliónov deepfakes. To už je celkom číslo, čo? 🤯 Ako je na tom toto bábätko? Je to ďalší AI generovaný slop, alebo je to real?"
 text: "#MemesAsw"
 media:
   type: mp4

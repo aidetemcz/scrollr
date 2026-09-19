@@ -7,7 +7,7 @@ badge: false
 time: "2026-04-10"
 points: 2
 cat: pravda
-question: "V ktorom meste bola @j0y.s0phie na dovolenke a koľko takýchto skalných kostolov tam celkovo je? Ak vieš, daj nám vedieť v Tiny."
+question: "V ktorom meste bola @j0y.s0phie na dovolenke a koľko takýchto skalných kostolov tam celkovo je?"
 text: |
   Bolo to tu s tebou nezabudnuteľné @babymonsterOOO ♥♥♥♥
   #love #travel #africa

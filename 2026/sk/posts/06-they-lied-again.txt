@@ -7,7 +7,7 @@ badge: false
 time: "2025-08-12"
 points: 2
 cat: pravda
-question: "Kedy bola zverejnená nahrávka s týmto tvrdením? A bolo tvrdenie pravdivé, alebo to bol hoax? Daj nám vedieť v Tiny."
+question: "Kedy bola zverejnená nahrávka s týmto tvrdením? A bolo tvrdenie pravdivé, alebo to bol hoax?"
 text: |
   Za covidu na nás urobili podraz!!! 😡 Toto mi práve prišlo, pošlite to ďalej, nech to vedia všetci!!!
 media:

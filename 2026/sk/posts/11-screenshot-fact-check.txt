@@ -7,7 +7,7 @@ badge: false
 time: "2026-04-28"
 points: 3
 cat: pravda
-question: "Zverejnil Peter Sagan tento príspevok na sieti X (bývalý Twitter), alebo nie? Odpovedať môžeš v Tiny."
+question: "Zverejnil Peter Sagan tento príspevok na sieti X (bývalý Twitter), alebo nie?"
 text: "PEŤO SA VRACIA‼️‼️‼️‼️ 🚴‍♂️🇸🇰"
 media:
   type: image
