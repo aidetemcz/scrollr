@@ -1,5 +1,5 @@
 ---
-id: 14
+id: 6
 name: "Zaujímavosti zo sveta"
 handle: zaujimavosti-zo-sveta
 img: "avatars/zajimavosti.jpg"

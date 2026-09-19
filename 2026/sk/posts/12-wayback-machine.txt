@@ -1,5 +1,5 @@
 ---
-id: 9
+id: 12
 name: "Fórum pre žurnalistiku"
 handle: zurnal-forum
 img: "avatars/fpz.jpg"
