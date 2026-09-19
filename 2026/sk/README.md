@@ -21,13 +21,13 @@ Zásady adaptácie:
 
 | # | Čo | Kde |
 |---|----|-----|
-| 1 | **Skrátený odkaz pre quest 15 (iWant).** V českej verzii bol odkaz na phishingovú stránku skrytý cez bit.ly. Po nasadení vytvorte skrátený odkaz na `https://truth-hunters.cz/2026/sk/sites/iwant.html` a vložte ho do postu 15 namiesto `{{BASE}}/sites/iwant.html`. | posts/15-scam.txt |
+| 1 | ~~Skrátený odkaz pre quest 15 (iWant).~~ Hotovo: post odkazuje na `https://bit.ly/3US4IFl` → `https://truth-hunters.cz/2026/sk/sites/iwant.html`. Ak sa zmení umiestnenie SK edície, treba zmeniť cieľ bit.ly odkazu. | posts/15-scam.txt |
 | 2 | **Quest 12 (SME.sk).** Otázka mieri na `https://www.sme.sk/archiv` (21. 5. 2012, 23:49); skutočný titulok doplňte do možností v Tiny. | posts/12-wayback-machine.txt |
 | 3 | **Overiť quest 13 (Google Trends).** Tvrdenie „Košice boli v roku 2025 na Slovensku vyhľadávané viac ako Bratislava“ je navrhnuté ako nepravdivé. Skontrolujte v Google Trends (Slovensko, rok 2025) a podľa výsledku upravte možnosti v Tiny; ak by to nevyšlo, stačí prerobiť obrázok `images/kosice-bratislava.jpg` (zdrojové HTML je v tomto dokumente nižšie). | images/ |
 | 4 | **Tiny.** Vytvoriť slovenskú lekciu v Tiny s novými možnosťami odpovedí (návrh nižšie) a novým heslom pre quest 15 (KOLESO2026). | Tiny |
 | 5 | **Prezentácia a pracovné listy** k lekcii (PDF/Canva) – preložiť a nahradiť odpovede podľa tabuľky nižšie. | mimo repozitára |
 
-Odkazy v postoch (ZIP, stránka Matúša Urbana, stránka iWant) používajú zástupný text `{{BASE}}`,
+Odkazy v postoch (ZIP, stránka Matúša Urbana) používajú zástupný text `{{BASE}}`,
 ktorý feed pri načítaní nahradí adresou priečinka tejto edície (napr. `https://truth-hunters.cz/2026/sk`).
 Doménu preto nie je potrebné nikde prepisovať.
 

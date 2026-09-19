@@ -9,7 +9,7 @@ points: 5
 cat: pravda
 question: "Človek by povedal, že je to scam. Ako veľmi veríš nám, tvorcom AI olympiády? Vytoč si na stránke iWant výhru a zadaj požadované údaje. Tým získaš heslo, ktoré zadáš do Tiny."
 text: |
-  Vyhraj nový iPhone 17 vo svojej obľúbenej farbe! Prejdi na stránku žrebovania a vytoč si svoju výhru! {{BASE}}/sites/iwant.html
+  Vyhraj nový iPhone 17 vo svojej obľúbenej farbe! Prejdi na stránku žrebovania a vytoč si svoju výhru! https://bit.ly/3US4IFl
 media:
   type: image
   src: "images/vyhraj-iphone.png"
