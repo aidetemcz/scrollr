@@ -7,8 +7,8 @@ badge: false
 time: "2026-04-27"
 points: 6
 cat: pravda
-question: "Dokážeš zistiť, čo bola hlavná správa na serveri SME.sk 21. mája 2012 ráno okolo 8:00?"
-text: "Wayback Machine. Googli. To dáš. Je to za šesť! Aká bola hlavná správa na serveri SME.sk 21. mája 2012 ráno okolo 8:00?"
+question: "Dokážeš zistiť, čo bola hlavná správa na serveri SME.sk 21. mája 2012 o 23:49? Wayback Machine ti nemusí stačiť. Veľké noviny si svoje staré vydania odkladajú aj samy – skús to priamo u nich."
+text: "Googli. To dáš. Je to za šesť! Aká bola hlavná správa na serveri SME.sk 21. mája 2012 o 23.49? (Wayback Machine dnes akosi štrajkuje... ale poriadne noviny majú vlastný archív 😉)"
 comments:
   - name: "Olllie_5"
     img: "avatars/Ollie_5.png"

@@ -8,7 +8,7 @@ time: "2026-04-11"
 points: 7
 cat: pravda
 question: "Matúš chcel nachytať kamarátov, ale veľmi sa mu to nepodarilo. Čo má urobiť chatbot, keď navštívi jeho stránku? (Pozor, na mobile to asi nezvládneš, chce to počítač alebo notebook.)"
-text: "pošlite sem gptčko chalani {{BASE}}/sites/matus-kovacik.html"
+text: "pošlite sem gptčko chalani {{BASE}}/sites/matus-urban.html"
 comments: []
 s:
   c: 0

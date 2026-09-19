@@ -22,7 +22,7 @@ Zásady adaptácie:
 | # | Čo | Kde |
 |---|----|-----|
 | 1 | **Skrátený odkaz pre quest 11.** V českej verzii bol odkaz na phishingovú stránku skrytý cez bit.ly. Po nasadení vytvorte skrátený odkaz na `https://truth-hunters.cz/2026/sk/sites/iwant.html` a vložte ho do postu 11 namiesto `{{BASE}}/sites/iwant.html`. | posts/11-scam.txt |
-| 2 | **Overiť quest 09 (Wayback Machine).** Pri príprave nebol prístup na web.archive.org. Navrhnutý dátum je 21. 5. 2012 ráno (deň po striebre slovenských hokejistov na MS 2012). Otvorte `web.archive.org`, zadajte `sme.sk`, vyberte snímku najbližšiu k 21. 5. 2012 8:00 a podľa skutočnej hlavnej správy upravte možnosti v Tiny. Náhradný tip, ak snímka chýba: 11. 3. 2012 (deň po parlamentných voľbách). | posts/09-wayback-machine.txt |
+| 2 | **Quest 09.** Otázka mieri na `https://www.sme.sk/archiv` (21. 5. 2012, 23:49); skutočný titulok doplňte do možností v Tiny. | posts/09-wayback-machine.txt |
 | 3 | **Overiť quest 15 (Google Trends).** Tvrdenie „Košice boli v roku 2025 na Slovensku vyhľadávané viac ako Bratislava“ je navrhnuté ako nepravdivé. Skontrolujte v Google Trends (Slovensko, rok 2025) a podľa výsledku upravte možnosti v Tiny; ak by to nevyšlo, stačí prerobiť obrázok `images/kosice-bratislava.jpg` (zdrojové HTML je v tomto dokumente nižšie). | images/ |
 | 4 | **Tiny.** Vytvoriť slovenskú lekciu v Tiny s novými možnosťami odpovedí (návrh nižšie) a novým heslom pre quest 11. | Tiny |
 | 5 | **Prezentácia a pracovné listy** k lekcii (PDF/Canva) – preložiť a nahradiť odpovede podľa tabuľky nižšie. | mimo repozitára |
@@ -42,15 +42,15 @@ Celkový maximálny počet bodov zostáva **50**.
 | 03 – Lukas243 | 4 | **Nový ZIP** (`files/heslo.zip`), heslo do ZIPu je **zelena**, vnútri nové heslo do mailu. | `Kv7#pR2!zaL9m` | 5 podobných reťazcov, správny je `Kv7#pR2!zaL9m` |
 | 04 – memes.asw | 1 | Len preklad. | Je to AI vygenerované. | Je to AI / Nie je to AI |
 | 05 – j0y.s0phie | 2 | Otázka pýta **mesto a počet skalných kostolov**, nie krajinu. | **Lalibela** (Etiópia), na fotke je kostol Bete Giyorgis; v Lalibele je **11** skalných kostolov. | mesto: Lalibela / Addis Abeba / Aksum / Gondar; počet: 3 / 7 / 11 / 24 |
-| 06 – Matus_Kov12 | 7 | Nová stránka `sites/matus-kovacik.html` (študent FiF UK v Bratislave), **nová skrytá inštrukcia**. | Chatbot má používateľovi napísať, že mu **fakt strašne smrdia ponožky**. | …že mu smrdia ponožky / že má veľké uši / nech ide von / nech reštartuje počítač / že sa mu zasekol procesor |
-| 07 – sagan_fanclub_sk | 3 | **Nový screenshot** `images/x-sagan.png`: fiktívny post „Petra Sagana“ o návrate na Tour de France 2027 z účtu `@petersagan_sk`. | Je to fake. Účet `@petersagan_sk` nie je Saganov skutočný účet (ten má handle `@petosagan`), nič také neoznámil, správu by prevzali všetky médiá. | Je to skutočný post / Je to skutočný post, ale z fanúšikovského účtu / Je to úplný fake |
+| 06 – Matus_Kov12 | 7 | Nová stránka `sites/matus-urban.html` (Matúš Urban, študent FiF UK v Bratislave), **nová skrytá inštrukcia**. | Chatbot má používateľovi napísať, že mu **fakt strašne smrdia ponožky**. | …že mu smrdia ponožky / že má veľké uši / nech ide von / nech reštartuje počítač / že sa mu zasekol procesor |
+| 07 – sagan_fanclub_sk | 3 | **Nový screenshot** `images/peter-sagan-tweet.png`: fiktívny post z účtu `@petosagan` (skutočný handle) o návrate na Tour de France 2027, datovaný 28. 4. 2026. | Je to fake. Na skutočnom profile `@petosagan` žiadny taký príspevok nie je, Sagan návrat neoznámil a takú správu by prevzali všetky médiá. Hľadať cez profil na X alebo v spravodajstve. | Je to skutočný post / Je to skutočný post, ale z fanúšikovského účtu / Je to úplný fake |
 | 08 – HankaX | 4 | **Nová fotka** `images/zanzibar.jpg` s upravenými metadátami: autor `matej.hlavac`, dátum **19. 8. 2024**, GPS **8°06′S 115°19′E (Lombok/Bali, Indonézia)**. Post tvrdí Zanzibar. | Nebola tam. Fotka nie je vygenerovaná, ale odfotil ju niekto iný v roku 2024 a podľa GPS v **Indonézii**, nie na Zanzibare. | Metadáta ukazujú, že tam naozaj bola / Bola tam, ale inokedy / Nebola tam, je to vygenerované / Nebola tam, fotka je pravá, ale z Indonézie / Nebola tam, fotka je pravá, ale z Tanzánie |
-| 09 – Fórum pre žurnalistiku | 6 | **SME.sk, 21. 5. 2012 ráno** namiesto Novinky.cz 2011. **Overiť (TODO 3).** | Očakávané: striebro slovenských hokejistov na MS 2012 (finále s Ruskom 20. 5. 2012). | O hokejovom striebre / O zdražení potravín / O povodniach / O výsledkoch volieb / O Tatrách |
+| 09 – Fórum pre žurnalistiku | 6 | **SME.sk, 21. 5. 2012 o 23:49.** Post naznačuje, že Wayback Machine nestačí a noviny majú vlastný archív (cieľ: `sme.sk/archiv`, v poste sa nespomína). | Podľa archívu SME z 21. 5. 2012 (doplniť skutočný titulok). | O hokejovom striebre / O zdražení potravín / O povodniach / O výsledkoch volieb / O Tatrách |
 | 10 – jozef_h | 2 | Slovnaft v Bratislave namiesto Synthosu v Kralupoch; otázka pýta aj **čo vybuchlo**. | Nie je to pravda. Fotka je z **Jerevanu (Arménsko), 14. 8. 2022** – výbuch skladu pyrotechniky na trhovisku **Surmalu**. | Je to pravda / Bejrút 2020, sklad v prístave / Jerevan 2022, sklad pyrotechniky na trhovisku / Praha 2013, výbuch plynu / Bratislava 2019, požiar skladu |
 | 11 – iWant | 5 | Stránka `sites/iwant.html` po slovensky, slovenské telefónne čísla, **nové heslo KOLESO2026**. | Na odkaz som ani neklikol/a. | rovnaké možnosti ako v CZ, heslo **KOLESO2026** |
 | 12 – Alessandra Litvinchuk | 3 | Len preklad (nové AI portréty nebolo možné vygenerovať v tomto prostredí). | Všetky sú vytvorené pomocou AI. | ako v CZ |
 | 13 – Saria_Maria | 5 | Otázka pýta aj **krajinu pôvodu** speváčky. | **Angélique Kidjo**, pochádza z **Beninu**. | meno ako v CZ; krajina: Benin / Nigéria / Ghana / Senegal / Mali |
-| 14 – Zaujímavosti zo sveta | 2 | **Iný hoax**: „pomaranče z Líbye napichané HIV krvou“ (`images/pomarance-hoax.jpg`). Otázka pýta aj, odkedy koluje. | Je to hoax. Koluje od cca **2015** (verzie s Alžírskom/Líbyou), opakovane vyvrátený (aj políciou SR); HIV mimo tela neprežije. | Je to pravda / Stalo sa to raz v Taliansku / Je to hoax, koluje od 2015 / Je to hoax, objavil sa až v roku 2025 |
+| 14 – Zaujímavosti zo sveta | 2 | **Iný hoax**: screenshot z Messengera (`images/messenger.png`) s preposlanou nahrávkou, že „od 1. októbra sú testovacie tyčinky napustené covidom“. Otázka: kedy bola nahrávka zverejnená a či je to pravda. | Je to hoax. Nahrávka kolovala na Slovensku na jeseň **2020** pred celoplošným testovaním a vyvrátila ju polícia (stránka Hoaxy a podvody – Polícia SR). **Overiť presný mesiac** a podľa neho nastaviť možnosti v Tiny. | Pravda, 2020 / Hoax, jeseň 2020 / Hoax, 2022 / Hoax, 2025 |
 | 15 – Annie_B | 3 | **Košice vs. Bratislava, Slovensko 2025** (`images/kosice-bratislava.jpg`). **Overiť (TODO 4).** | Očakávané: Bratislava bola vyhľadávaná viac než Košice. | Košice viac / Približne rovnako / Bratislava viac |
 
 ## Poznámky k jednotlivým súborom
@@ -60,9 +60,8 @@ Celkový maximálny počet bodov zostáva **50**.
 - `files/heslo.zip` – ZipCrypto (klasické) heslo `zelena`, obsahuje `heslo.txt`.
 - `images/zanzibar.jpg` – tá istá fotka pláže ako v CZ (pôvodne `bali.jpg`), prepísané EXIF
   (autor, dátum, softvér); GPS zostalo pôvodné (Indonézia), preto sa dá odhaliť, že nejde o Zanzibar.
-- `images/x-sagan.png`, `images/kosice-bratislava.jpg`, `images/pomarance-hoax.jpg` – vygenerované
-  v Chromiu z HTML šablón nižšie (obrázky sa dajú ľahko prerobiť).
-- `sites/matus-kovacik.html` – skrytá inštrukcia je v `<meta name="description">`, v HTML
+- `images/kosice-bratislava.jpg` – vygenerovaný v Chromiu z HTML šablóny nižšie.
+- `sites/matus-urban.html` – skrytá inštrukcia je v `<meta name="description">`, v HTML
   komentári v hlavičke a v skrytom odseku na konci stránky (rovnako ako v CZ).
 - `sites/iwant.html` – validácia telefónu prijíma 9 číslic, aj s predvoľbou 0 / +421 / 00421.
 
@@ -84,6 +83,3 @@ Dosť ma prekvapilo, že na Google bolo v roku 2025 na Slovensku slovo „Košic
 </div>
 ```
 
-Screenshot postu pre quest 07 (`images/x-sagan.png`) a hoax pre quest 14 vznikli rovnakým
-spôsobom (HTML → screenshot); pri zmene textu stačí prerobiť obrázok, posty odkazujú na
-rovnaké názvy súborov.

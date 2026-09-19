@@ -2,16 +2,16 @@
 id: 7
 name: sagan_fanclub_sk
 handle: saganfan_sk
-img: "avatars/clima-fightex.png"
+img: "avatars/peter-sagan.jpg"
 badge: false
-time: "2026-08-28"
+time: "2026-04-28"
 points: 3
 cat: pravda
 question: "Zverejnil Peter Sagan tento príspevok na sieti X (bývalý Twitter), alebo nie? Odpovedať môžeš v Tiny."
 text: "PEŤO SA VRACIA‼️‼️‼️‼️ 🚴‍♂️🇸🇰"
 media:
   type: image
-  src: "images/x-sagan.png"
+  src: "images/peter-sagan-tweet.png"
 comments: []
 s:
   c: 0
