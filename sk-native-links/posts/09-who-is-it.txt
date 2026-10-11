@@ -1,0 +1,24 @@
+---
+id: 9
+name: Saria_Maria
+handle: sariamaria
+img: "avatars/santa-maria.png"
+badge: false
+time: "2025-11-30"
+points: 5
+cat: pravda
+question: "Kto je speváčka na fotografii a z ktorej krajiny pochádza? Klasické vyhľadávanie v Obrázkoch Google ti tu nemusí priniesť správne výsledky – fotku sme upravili, možno to už chce poriadne AI vyhľadávanie (napríklad nástroj https://tineye.com/)."
+text: "OMG such a great singer she is! But I can't remember her name! Help!!"
+media:
+  type: image
+  src: "images/woman.png"
+comments:
+  - name: "Ginny Albertas"
+    img: "avatars/ginny-albertas.jpeg"
+    text: "no idea…"
+s:
+  c: 1
+  l: 5
+  h: 0
+  x: 1
+---

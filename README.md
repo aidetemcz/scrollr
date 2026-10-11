@@ -92,6 +92,12 @@ Ke složce `cz/` patří na hostingu ještě obsah složky `vps-root/`, který s
 Díky tomu dál funguje stávající bit.ly odkaz pro quest 11 (`truth-hunters.cz/sites/iwant.html`).
 Zástupný `index.html` můžete nahradit vlastní úvodní stránkou.
 
+## Samostatná kopie slovenské edice (`sk-native-links/`)
+
+Totéž pro slovenskou edici: obsah `sk-native-links/` patří do `www/sk/` na hostingu, adresa je
+`https://truth-hunters.cz/sk/`. Vytvoří se stejným postupem jako `cz-native-links` (nahraďte `cz`
+za `sk`). Bit.ly odkaz pro quest 15 míří na `https://truth-hunters.cz/sk/sites/iwant.html`.
+
 ## Nasazení na Webglobe (truth-hunters.cz)
 
 Hosting je Nginx bez `.htaccess`, pro statické soubory není potřeba nic nastavovat.

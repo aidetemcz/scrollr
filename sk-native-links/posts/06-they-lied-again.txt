@@ -1,0 +1,23 @@
+---
+id: 6
+name: "Zaujímavosti zo sveta"
+handle: zaujimavosti-zo-sveta
+img: "avatars/zajimavosti.jpg"
+badge: false
+time: "2025-08-12"
+points: 2
+cat: pravda
+question: "Kedy bola zverejnená nahrávka s týmto tvrdením? A bolo tvrdenie pravdivé, alebo to bol hoax?"
+text: |
+  Za covidu na nás urobili podraz!!! 😡 Toto mi práve prišlo, pošlite to ďalej, nech to vedia všetci!!!
+media:
+  type: image
+  full: true
+  src: "images/messenger.png"
+comments: []
+s:
+  c: 0
+  l: 3200
+  h: 180
+  x: 8900
+---
